@@ -2,7 +2,7 @@
 
 Developed in Ren'Py
 
-Overview
+Overview:
 This visual novel project is designed as an interactive educational tool to help students in CSCI 2000 understand and apply programming concepts, specifically functions. By blending storytelling with educational content, the project aims to provide an engaging and effective learning experience.
 
 Features
