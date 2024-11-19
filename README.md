@@ -52,4 +52,5 @@ If you have questions or feedback, feel free to reach out:
 
 Developer: Jeevan Parajuli
 Email: jeevanparajuli856@gmail.com
+
 Contributor: Parsana Jha
