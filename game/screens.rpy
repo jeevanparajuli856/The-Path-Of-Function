@@ -237,6 +237,7 @@ style choice_button is default:
 
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
+    color "#000000"
 
 
 ## Quick Menu screen ###########################################################
@@ -248,15 +249,12 @@ screen quick_menu():
 
     ## Ensure this appears on top of other screens.
     zorder 100
-
     if quick_menu:
 
         hbox:
             style_prefix "quick"
-
             xalign 0.5
             yalign 1.0
-
             textbutton _("Back") action Rollback()
             textbutton _("History") action ShowMenu('history')
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
@@ -279,9 +277,13 @@ style quick_button_text is button_text
 
 style quick_button:
     properties gui.button_properties("quick_button")
+    
 
 style quick_button_text:
     properties gui.text_properties("quick_button")
+    color "#9259b8"
+    size 30
+    
 
 
 ################################################################################

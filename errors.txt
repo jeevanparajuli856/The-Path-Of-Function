@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/screens.rpy", line 251: 'color' is not a keyword argument or valid child of the screen statement.
+    color "#000000"
+         ^
+
+Ren'Py Version: Ren'Py 8.3.3.24111502
+Tue Nov 19 22:03:25 2024

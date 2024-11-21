@@ -9,13 +9,13 @@ label hallway:
     k "Hey, Ale!!"
 
     scene bg hallway with fade
-    show ale hello at aligner with dissolve
+    show ale test at aligner with dissolve
     a "Hello, Kevin"
     show ale speaking at aligner with dissolve
     a "How are you today?"
     show ale standing at aligner with dissolve
     k "I am doing fine ale!"
-    k "How about you my pretty friend"
+    k "How about you my friend"
     show ale speaking second at aligner with dissolve
     a "I am doing great kevin"
     show ale listening ask happy at aligner with dissolve
@@ -29,9 +29,9 @@ label hallway:
     a "Where do you want to study?"
     show ale listening neutral at aligner with dissolve
     k " How about in the smart lab class?"
-    k "It should be empty after 3 PM"
+    k "It should be empty after 5 PM"
     show ale speaking second at aligner with dissolve
-    a "Sound perfect! See you there at 3"
+    a "Sound perfect! See you there at 5"
     show ale hello at aligner with dissolve 
     a "Bye Kevin!!!!"
     k "Bye Ale!! See you!"

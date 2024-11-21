@@ -190,8 +190,8 @@ define gui.page_button_borders = Borders(15, 6, 15, 6)
 
 define gui.quick_button_borders = Borders(15, 6, 15, 0)
 define gui.quick_button_text_size = 21
-define gui.quick_button_text_idle_color = gui.idle_small_color
-define gui.quick_button_text_selected_color = gui.accent_color
+define gui.quick_button_text_idle_color =  "#000000"                  #gui.idle_small_color
+define gui.quick_button_text_selected_color =gui.accent_color
 
 ## You can also add your own customizations, by adding properly-named variables.
 ## For example, you can uncomment the following line to set the width of a
@@ -211,8 +211,8 @@ define gui.choice_button_borders = Borders(150, 8, 150, 8)
 define gui.choice_button_text_font = gui.text_font
 define gui.choice_button_text_size = 35
 define gui.choice_button_text_xalign = 0.5
-define gui.choice_button_text_idle_color = '#c7b6b6'
-define gui.choice_button_text_hover_color = "#ffffff"
+define gui.choice_button_text_idle_color = '#000000'
+define gui.choice_button_text_hover_color = "#ffebeb"
 define gui.choice_button_text_insensitive_color = '#8888887f'
 
 

@@ -5,7 +5,7 @@ define aleAlign = Position(xpos = 600, xanchor = 0, ypos=-60, yanchor=1)
 label teachingfirst: 
     play sound "teachingclass.mp3" fadein 1.0 fadeout 2.0 loop
     scene bg classroom with Fade(1.0,3.5,0.9) 
-    show ale speaking at aleAlign with dissolve
+    show ale test at aleAlign with dissolve
     a "Let me use presentation to show my slide in this board so that you can easily understand the function."
     a "I will play a slide and explain the slide just sitting beside you in your desk."
     show ale blushing at aleAlign with dissolve
