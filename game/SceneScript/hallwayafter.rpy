@@ -8,9 +8,11 @@ label hallwayafter:
     scene bg hallway with dissolve
     show ale hello at aligner with fade
     a "Hello Kevin, I am finally here now for you"
-    k "Hello Ale! Thank you soo much ale"
-    show ale speaking at aligner with dissolve
+    show ale standing hand both wrist with dissolve
+    k "Hello Ale! Thank you soo much ale for coming"
+    show ale speaking hand both wrist with dissolve
     a "Now lets go the class and lets start to read"
+    show ale question hand both down with dissolve
     a "Are you ready?"
     show ale listening ask at aligner with dissolve
     k "I am supper excited to learn from you! Ale"

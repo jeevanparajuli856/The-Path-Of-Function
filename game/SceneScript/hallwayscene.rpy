@@ -9,30 +9,31 @@ label hallway:
     k "Hey, Ale!!"
 
     scene bg hallway with fade
-    show ale test at aligner with dissolve
+    show ale hello at aligner with dissolve
     a "Hello, Kevin"
-    show ale speaking at aligner with dissolve
+    show ale speaking hand left side with dissolve
     a "How are you today?"
-    show ale standing at aligner with dissolve
+    show ale standing hand left side with dissolve
     k "I am doing fine ale!"
     k "How about you my friend"
-    show ale speaking second at aligner with dissolve
+    show ale speaking hand both fold with dissolve
     a "I am doing great kevin"
-    show ale listening ask happy at aligner with dissolve
+    show ale standing hand both fold with dissolve
     k "You looking so pretty today my friend"
-    show ale blushing at aligner with fade
+    show ale blush wave with fade
     a "Common!! kevin, I am blushing now. Anyway Thank you"
-    show ale listening neutral at aligner with dissolve
+    show ale standing  hand one fold with dissolve
     k " Can I ask for a favor? You're the queen of Computer Science, and my best Friend.... I'm totally lost with Functions. Can you teach me after classes today?"
-    show ale speaking at aligner with dissolve
+    show ale speaking hand one fold with dissolve
     a "Of course, kevin! Anything for my best Friend."
+    show ale speaking hand left side with dissolve
     a "Where do you want to study?"
-    show ale listening neutral at aligner with dissolve
+    show ale standing hand left side with dissolve
     k " How about in the smart lab class?"
     k "It should be empty after 5 PM"
-    show ale speaking second at aligner with dissolve
+    show ale speaking hand together with dissolve
     a "Sound perfect! See you there at 5"
-    show ale hello at aligner with dissolve 
+    show ale bye at aligner with dissolve 
     a "Bye Kevin!!!!"
     k "Bye Ale!! See you!"
     return
