@@ -14,8 +14,8 @@ label hallwayafter:
     a "Now lets go the class and lets start to read"
     show ale question hand both down with dissolve
     a "Are you ready?"
-    show ale listening ask at aligner with dissolve
+    show ale standing hand both wrist with dissolve
     k "I am supper excited to learn from you! Ale"
-    show ale blushing at aligner with dissolve
+    show ale blush fold with dissolve
     k "Alright kevin lets go!!!!!!!!!!"
     return
