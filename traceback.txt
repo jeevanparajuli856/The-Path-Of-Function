@@ -1,34 +1,43 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 17, in script call
-    call teachingfirst
-  File "game/SceneScript/teaching1.rpy", line 127, in script
-    show ale standing s
-Exception: Image 'ale standing' does not accept attributes 's'.
+While processing the color property of style main_menu_text:
+  File "renpy/common/00start.rpy", line 83, in _init_language
+    renpy.change_language(language)
+  File "renpy/common/00stylepreferences.rpy", line 124, in _m1_00stylepreferences__change_language
+    __update()
+  File "renpy/common/00stylepreferences.rpy", line 96, in _m1_00stylepreferences__update
+    renpy.style.rebuild()
+Exception: Color string '00000' must be 3, 4, 6, or 8 hex digits long.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 17, in script call
-    call teachingfirst
-  File "game/SceneScript/teaching1.rpy", line 127, in script
-    show ale standing s
-  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\ast.py", line 1111, in execute
-    show_imspec(self.imspec, atl=getattr(self, "atl", None))
-  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\ast.py", line 1074, in show_imspec
-    renpy.config.show(name,
-  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\exports\displayexports.py", line 477, in show
-    if not base.find_target() and renpy.config.missing_show:
-  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\display\image.py", line 421, in find_target
-    self.target = target._duplicate(a)
-  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\display\displayable.py", line 249, in _duplicate
-    args.extraneous()
-  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\display\displayable.py", line 109, in extraneous
-    raise Exception("Image '{}' does not accept attributes '{}'.".format(
-Exception: Image 'ale standing' does not accept attributes 's'.
+  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\bootstrap.py", line 359, in bootstrap
+    renpy.main.main()
+  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\main.py", line 652, in main
+    run(restart)
+  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\main.py", line 75, in run
+    renpy.translation.init_translation()
+  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\translation\__init__.py", line 702, in init_translation
+    renpy.store._init_language() # type: ignore
+  File "renpy/common/00start.rpy", line 83, in _init_language
+    renpy.change_language(language)
+  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\translation\__init__.py", line 801, in change_language
+    i()
+  File "renpy/common/00stylepreferences.rpy", line 124, in _m1_00stylepreferences__change_language
+    __update()
+  File "renpy/common/00stylepreferences.rpy", line 96, in _m1_00stylepreferences__update
+    renpy.style.rebuild()
+  File "style.pyx", line 803, in renpy.style.rebuild
+  File "style.pyx", line 796, in renpy.style.build_styles
+  File "style.pyx", line 717, in renpy.style.build_style
+  File "style.pyx", line 714, in renpy.style.build_style
+  File "gen3-static/style_functions.pyx", line 349, in style_functions.color_property
+  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\color.py", line 165, in __new__
+    raise Exception("Color string {!r} must be 3, 4, 6, or 8 hex digits long.".format(c))
+Exception: Color string '00000' must be 3, 4, 6, or 8 hex digits long.
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.3.3.24111502
 RealGame 1.0
-Thu Nov 21 17:34:54 2024
+Thu Nov 21 19:16:41 2024
