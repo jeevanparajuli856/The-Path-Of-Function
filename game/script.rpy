@@ -4,7 +4,7 @@
 # name of the character.
 
 define k = Character("Kevin")
-define a = Character("Alejendra")
+define a = Character("Emma")
 define t = Character("Teacher")
 
 # The game starts here.

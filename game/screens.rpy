@@ -157,7 +157,7 @@ style say_label:
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
-    size 37
+    size 42
     xpos gui.dialogue_xpos
     xsize 1350
     ypos 90
@@ -282,7 +282,7 @@ style quick_button:
 style quick_button_text:
     properties gui.text_properties("quick_button")
     color "#9259b8"
-    size 30
+    size 35
     
 
 
