@@ -35,7 +35,7 @@ label inbed:
     k "Functions? What even is that? Sounds like another boring topic I'll never understand or remember..."
 
     #kevin thinking in class
-    scene bg after30 with pushleft 
+    scene bg after30 with zoomin 
     with Pause(3.0)
     scene bg teacher afterclass with Fade(1.0,1.0,1.0)
     with Pause(1.0)

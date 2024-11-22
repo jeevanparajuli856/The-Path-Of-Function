@@ -4,16 +4,16 @@ label qnsSolved:
     scene bg classroom with fade
     show ale standing hand both wrist at aleAlign with dissolve
     show ale speaking hand both wrist at aleAlign with dissolve
-    a "That’s awesome, Kevin! You did it!"
+    a "That's awesome, Kevin! You did it!"
     show ale speaking hand together with dissolve
-    a "You got all the answers right. I’m so proud of you!"
+    a "You got all the answers right. I'm so proud of you!"
     show ale standing hand both fold with dissolve
-    k "Thank you, Emma! I couldn’t have done it without you."
+    k "Thank you, Emma! I couldn't have done it without you."
     k "Really, all the credit goes to you."
     show ale blush fold with dissolve
-    a "Oh, stop it! You’re the one who put in all the effort."
-    show ale speaking hand both left side with dissolve
-    a "But hey, would you like me to go over the answer to this question just to make sure everything’s clear?"
+    a "Oh, stop it! You're the one who put in all the effort."
+    show ale speaking hand left side with dissolve
+    a "But hey, would you like me to go over the answer to this question just to make sure everything's clear?"
     menu:
         "Do you want Emma to explain you the answer to the question?"
         "Yes":
