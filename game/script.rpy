@@ -14,6 +14,6 @@ label start:
     call inbed #first scene before wakeup 
     call hallway # hallway scene with emma
     call hallwayafter # after deciding they gonna meet
-    call teachingfirst
-    call teachingSecond
+    call teachingfirst # first part of teaching
+    call teachingSecond # Second teaching
     return

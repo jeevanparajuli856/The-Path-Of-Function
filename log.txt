@@ -1,0 +1,5599 @@
+2024-11-22 04:21:29 UTC
+Windows-10-10.0.22631
+Ren'Py 8.3.3.24111502
+
+Early init took 0.06s
+Loading error handling took 0.04s
+Loading script took 0.60s
+Loading save slot metadata took 0.10s
+Loading persistent took 0.00s
+Running init code took 0.04s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.07s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.48s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 1.50s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1269, 714) drawable=(1269, 714)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1348, 741) drawable=(1348, 741)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 142.97s
+Loading error handling took 0.04s
+Loading script took 0.19s
+Loading save slot metadata took 0.10s
+Loading persistent took 0.00s
+
+File "game/SceneScript/BeforeWakeup.rpy", line 1: expected statement.
+    adefine k = Character("Kevin")
+              ^
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Interface start took 1.08s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1316, 740) drawable=(1316, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 161.39s
+Loading error handling took 0.03s
+Loading script took 0.30s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+
+File "game/SceneScript/BeforeWakeup.rpy", line 1: expected statement.
+    adefine k = Character("Kevin")
+              ^
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Interface start took 1.28s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1316, 740) drawable=(1316, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 186.15s
+Loading error handling took 0.03s
+Loading script took 0.21s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.44s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.35s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1316, 740) drawable=(1316, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 226.02s
+Loading error handling took 0.03s
+Loading script took 0.17s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.37s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.35s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 352.76s
+Loading error handling took 0.04s
+Loading script took 0.29s
+Loading save slot metadata took 0.08s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.17s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.51s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Interface start took 0.36s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 431.07s
+Loading error handling took 0.07s
+Loading script took 0.19s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.38s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.03s
+Save screen analysis took 0.03s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 448.15s
+Loading error handling took 0.03s
+Loading script took 0.14s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.08s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.49s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 454.86s
+Loading error handling took 0.07s
+Loading script took 0.21s
+Loading save slot metadata took 0.08s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.26s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.57s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.54s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 458.55s
+Loading error handling took 0.04s
+Loading script took 0.33s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.74s
+Cleaning stores took 0.00s
+Init translation took 0.07s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 468.04s
+Loading error handling took 0.05s
+Loading script took 0.17s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.06s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.45s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 473.03s
+Loading error handling took 0.03s
+Loading script took 0.14s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.14s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 477.96s
+Loading error handling took 0.04s
+Loading script took 0.15s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.07s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.39s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 488.99s
+Loading error handling took 0.04s
+Loading script took 0.13s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.44s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 516.62s
+Loading error handling took 0.03s
+Loading script took 0.18s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.08s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 529.12s
+Loading error handling took 0.02s
+Loading script took 0.12s
+Loading save slot metadata took 0.03s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.14s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.38s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.07s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 544.61s
+Loading error handling took 0.03s
+Loading script took 0.15s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.46s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 552.65s
+Loading error handling took 0.03s
+Loading script took 0.14s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.44s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.46s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 572.78s
+Loading error handling took 0.03s
+Loading script took 0.17s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.05s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.35s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.36s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 585.35s
+Loading error handling took 0.03s
+Loading script took 0.18s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.41s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.37s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 622.24s
+Loading error handling took 0.03s
+Loading script took 0.14s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.04s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.07s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.34s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 633.25s
+Loading error handling took 0.03s
+Loading script took 0.13s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.16s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.43s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 720.14s
+Loading error handling took 0.20s
+Loading script took 3.67s
+Loading save slot metadata took 0.80s
+Loading persistent took 0.00s
+ - Init at game/gui.rpy:11 took 0.28543 s.
+Running init code took 0.43s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.31s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.45s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 1.11s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 738.84s
+Loading error handling took 0.04s
+Loading script took 0.14s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.40s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 774.26s
+Loading error handling took 0.02s
+Loading script took 0.13s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.45s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 823.61s
+Loading error handling took 0.02s
+Loading script took 0.14s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.14s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.38s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 834.59s
+Loading error handling took 0.02s
+Loading script took 0.14s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.15s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.48s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Interface start took 0.55s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 845.97s
+Loading error handling took 0.03s
+Loading script took 0.14s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 896.53s
+Loading error handling took 0.03s
+Loading script took 0.18s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.48s
+Cleaning stores took 0.00s
+Init translation took 0.07s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 928.96s
+Loading error handling took 0.02s
+Loading script took 0.11s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.43s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 941.69s
+Loading error handling took 0.02s
+Loading script took 0.33s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.56s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.01s
+Load screen analysis took 0.02s
+Analyze screens took 0.07s
+Save screen analysis took 0.08s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Interface start took 0.37s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 957.72s
+Loading error handling took 0.01s
+Loading script took 0.17s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.15s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.40s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 962.74s
+Loading error handling took 0.05s
+Loading script took 0.26s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.60s
+Cleaning stores took 0.00s
+Init translation took 0.06s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.46s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1018.10s
+Loading error handling took 0.03s
+Loading script took 0.18s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.40s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1053.43s
+Loading error handling took 0.03s
+Loading script took 0.16s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.06s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1058.42s
+Loading error handling took 0.02s
+Loading script took 0.16s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.53s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.02s
+Save screen analysis took 0.01s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1090.70s
+Loading error handling took 0.07s
+Loading script took 0.24s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.14s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.48s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1098.71s
+Loading error handling took 0.04s
+Loading script took 0.17s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1137.04s
+Loading error handling took 0.03s
+Loading script took 0.17s
+Loading save slot metadata took 0.08s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.44s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.02s
+Interface start took 0.44s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1148.10s
+Loading error handling took 0.03s
+Loading script took 0.26s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.43s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1160.70s
+Loading error handling took 0.02s
+Loading script took 0.16s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.04s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.06s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.51s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1162.51s
+Loading error handling took 0.03s
+Loading script took 0.19s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.15s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.34s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1175.08s
+Loading error handling took 0.03s
+Loading script took 0.19s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.03s
+Save screen analysis took 0.04s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1199.73s
+Loading error handling took 0.03s
+Loading script took 0.16s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.40s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1206.15s
+Loading error handling took 0.03s
+Loading script took 0.17s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.34s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.37s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1221.72s
+Loading error handling took 0.03s
+Loading script took 0.16s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.05s
+Analyze and compile ATL took 0.01s
+Reloading save slot metadata took 0.09s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.45s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1235.83s
+Loading error handling took 0.03s
+Loading script took 0.21s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.36s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1254.40s
+Loading error handling took 0.02s
+Loading script took 0.26s
+Loading save slot metadata took 0.08s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.08s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.07s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.16s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.35s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1271.65s
+Loading error handling took 0.02s
+Loading script took 0.19s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1275.23s
+Loading error handling took 0.02s
+Loading script took 0.12s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.45s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1293.88s
+Loading error handling took 0.03s
+Loading script took 0.19s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.04s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.37s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1309.47s
+Loading error handling took 0.04s
+Loading script took 0.20s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.47s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1320.49s
+Loading error handling took 0.03s
+Loading script took 0.23s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.08s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.41s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1323.89s
+Loading error handling took 0.04s
+Loading script took 0.17s
+Loading save slot metadata took 0.08s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.38s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1356.22s
+Loading error handling took 0.05s
+Loading script took 0.25s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.15s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.46s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1362.85s
+Loading error handling took 0.04s
+Loading script took 0.18s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.17s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.41s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.47s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1366.38s
+Loading error handling took 0.03s
+Loading script took 0.16s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.06s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.40s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1375.89s
+Loading error handling took 0.03s
+Loading script took 0.15s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.35s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1415.71s
+Loading error handling took 0.02s
+Loading script took 0.22s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.45s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.36s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1438.83s
+Loading error handling took 0.04s
+Loading script took 0.19s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.43s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1442.30s
+Loading error handling took 0.03s
+Loading script took 0.17s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.40s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1459.31s
+Loading error handling took 0.02s
+Loading script took 0.18s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.15s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.37s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1485.48s
+Loading error handling took 0.03s
+Loading script took 0.13s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.46s
+Cleaning stores took 0.00s
+Init translation took 0.06s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.02s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.36s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1501.09s
+Loading error handling took 0.03s
+Loading script took 0.18s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.06s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.14s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.38s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.05s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1507.55s
+Loading error handling took 0.03s
+Loading script took 0.20s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.08s
+Loading analysis data took 0.04s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1514.12s
+Loading error handling took 0.02s
+Loading script took 0.20s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.46s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1517.57s
+Loading error handling took 0.03s
+Loading script took 0.15s
+Loading save slot metadata took 0.03s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.21s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.38s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1530.14s
+Loading error handling took 0.02s
+Loading script took 0.15s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.16s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.47s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1536.62s
+Loading error handling took 0.02s
+Loading script took 0.17s
+Loading save slot metadata took 0.03s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.12s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.43s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.44s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1541.61s
+Loading error handling took 0.06s
+Loading script took 0.24s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.06s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.47s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1548.08s
+Loading error handling took 0.02s
+Loading script took 0.20s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.46s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1554.52s
+Loading error handling took 0.03s
+Loading script took 0.17s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.41s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1557.90s
+Loading error handling took 0.03s
+Loading script took 0.18s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.47s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1565.89s
+Loading error handling took 0.03s
+Loading script took 0.14s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.46s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.55s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1578.64s
+Loading error handling took 0.02s
+Loading script took 0.20s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.44s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.04s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1583.61s
+Loading error handling took 0.04s
+Loading script took 0.26s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.14s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.40s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1596.18s
+Loading error handling took 0.04s
+Loading script took 0.18s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.04s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.06s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1616.32s
+Loading error handling took 0.05s
+Loading script took 0.19s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.48s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.36s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1619.76s
+Loading error handling took 0.03s
+Loading script took 0.21s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.57s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.44s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1621.74s
+Loading error handling took 0.03s
+Loading script took 0.19s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.12s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1631.28s
+Loading error handling took 0.02s
+Loading script took 0.18s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.01s
+Reloading save slot metadata took 0.06s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.16s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.37s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1637.86s
+Loading error handling took 0.03s
+Loading script took 0.19s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.40s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1654.93s
+Loading error handling took 0.03s
+Loading script took 0.16s
+Loading save slot metadata took 0.03s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.36s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1687.30s
+Loading error handling took 0.03s
+Loading script took 0.18s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.44s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.37s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1704.41s
+Loading error handling took 0.03s
+Loading script took 0.16s
+Loading save slot metadata took 0.03s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.21s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.37s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.45s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1723.02s
+Loading error handling took 0.05s
+Loading script took 0.45s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.08s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.50s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1737.54s
+Loading error handling took 0.02s
+Loading script took 0.20s
+Loading save slot metadata took 0.08s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.15s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.47s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1744.09s
+Loading error handling took 0.03s
+Loading script took 0.17s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.41s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.36s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1752.05s
+Loading error handling took 0.02s
+Loading script took 0.13s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.17s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.35s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1755.47s
+Loading error handling took 0.02s
+Loading script took 0.18s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.12s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.36s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.37s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1778.65s
+Loading error handling took 0.03s
+Loading script took 0.21s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.05s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.07s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.44s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1780.58s
+Loading error handling took 0.03s
+Loading script took 0.11s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.12s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.33s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1803.76s
+Loading error handling took 0.02s
+Loading script took 0.20s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.43s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1808.83s
+Loading error handling took 0.04s
+Loading script took 0.19s
+Loading save slot metadata took 0.09s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.14s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1819.85s
+Loading error handling took 0.03s
+Loading script took 0.15s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.16s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.39s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1841.63s
+Loading error handling took 0.03s
+Loading script took 0.14s
+Loading save slot metadata took 0.03s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.05s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.54s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1852.64s
+Loading error handling took 0.04s
+Loading script took 0.17s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.08s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1871.28s
+Loading error handling took 0.03s
+Loading script took 0.23s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.61s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Interface start took 0.37s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1877.93s
+Loading error handling took 0.03s
+Loading script took 0.14s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.15s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1890.46s
+Loading error handling took 0.02s
+Loading script took 0.17s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.04s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.06s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.12s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.43s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1893.93s
+Loading error handling took 0.06s
+Loading script took 0.17s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.14s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.64s
+Cleaning stores took 0.00s
+Init translation took 0.06s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1906.76s
+Loading error handling took 0.03s
+Loading script took 0.18s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.48s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1911.73s
+Loading error handling took 0.03s
+Loading script took 0.18s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.44s
+Cleaning stores took 0.00s
+Init translation took 0.06s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.44s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1919.73s
+Loading error handling took 0.04s
+Loading script took 0.17s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.17s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.43s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1923.15s
+Loading error handling took 0.03s
+Loading script took 0.30s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.12s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.38s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1926.63s
+Loading error handling took 0.02s
+Loading script took 0.21s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.08s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.12s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.40s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.02s
+Save screen analysis took 0.07s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1928.57s
+Loading error handling took 0.02s
+Loading script took 0.14s
+Loading save slot metadata took 0.03s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.14s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.37s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1948.78s
+Loading error handling took 0.03s
+Loading script took 0.16s
+Loading save slot metadata took 0.08s
+Loading persistent took 0.00s
+Running init code took 0.04s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.45s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1952.25s
+Loading error handling took 0.03s
+Loading script took 0.17s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.08s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.12s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.43s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1955.76s
+Loading error handling took 0.02s
+Loading script took 0.12s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.12s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.45s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1957.77s
+Loading error handling took 0.03s
+Loading script took 0.22s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.43s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1961.22s
+Loading error handling took 0.03s
+Loading script took 0.16s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.10s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.44s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 1964.66s
+Loading error handling took 0.04s
+Loading script took 0.26s
+Loading save slot metadata took 0.08s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.45s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2001.63s
+Loading error handling took 0.03s
+Loading script took 0.16s
+Loading save slot metadata took 0.03s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.12s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.46s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.36s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2015.67s
+Loading error handling took 0.02s
+Loading script took 0.17s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.15s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.38s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.03s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.44s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2019.19s
+Loading error handling took 0.03s
+Loading script took 0.18s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.05s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.06s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.14s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.45s
+Cleaning stores took 0.00s
+Init translation took 0.08s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.42s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2030.39s
+Loading error handling took 0.04s
+Loading script took 0.18s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.01s
+Interface start took 0.50s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2035.40s
+Loading error handling took 0.02s
+Loading script took 0.18s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.43s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2038.95s
+Loading error handling took 0.02s
+Loading script took 0.15s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.08s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.14s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.48s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2044.00s
+Loading error handling took 0.02s
+Loading script took 0.16s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.08s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.42s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2068.77s
+Loading error handling took 0.02s
+Loading script took 0.15s
+Loading save slot metadata took 0.03s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.14s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.37s
+Cleaning stores took 0.00s
+Init translation took 0.03s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2081.31s
+Loading error handling took 0.03s
+Loading script took 0.14s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.19s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.43s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2090.80s
+Loading error handling took 0.03s
+Loading script took 0.15s
+Loading save slot metadata took 0.07s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.07s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.14s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.53s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.38s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2101.91s
+Loading error handling took 0.04s
+Loading script took 0.13s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.47s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2114.60s
+Loading error handling took 0.05s
+Loading script took 0.12s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.08s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.51s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2133.20s
+Loading error handling took 0.03s
+Loading script took 0.14s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.11s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.41s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.45s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2135.28s
+Loading error handling took 0.03s
+Loading script took 0.15s
+Loading save slot metadata took 0.08s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.47s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Interface start took 0.40s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2144.79s
+Loading error handling took 0.01s
+Loading script took 0.14s
+Loading save slot metadata took 0.04s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.18s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.39s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2166.45s
+Loading error handling took 0.03s
+Loading script took 0.15s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.15s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.39s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.43s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2189.71s
+Loading error handling took 0.03s
+Loading script took 0.15s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.04s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.06s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.13s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.48s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.39s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2202.26s
+Loading error handling took 0.04s
+Loading script took 0.18s
+Loading save slot metadata took 0.05s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.41s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.37s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2214.83s
+Loading error handling took 0.04s
+Loading script took 0.22s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.15s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.44s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Interface start took 0.41s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2260.88s
+Loading error handling took 0.05s
+Loading script took 0.36s
+Loading save slot metadata took 0.11s
+Loading persistent took 0.00s
+Running init code took 0.07s
+Loading analysis data took 0.04s
+Analyze and compile ATL took 0.01s
+Reloading save slot metadata took 0.12s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.38s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.89s
+Cleaning stores took 0.00s
+Init translation took 0.10s
+Build styles took 0.01s
+Load screen analysis took 0.02s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.60s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 2279.55s
+Loading error handling took 0.02s
+Loading script took 0.15s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.04s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\FunctionOMania':
+Dump and make backups took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.17s
+DPI scale factor: 1.250000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.56s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Interface start took 0.50s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 556.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1315, 740) drawable=(1315, 740)
+Maximum texture size: 4096x4096

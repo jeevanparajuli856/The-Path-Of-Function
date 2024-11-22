@@ -3,19 +3,19 @@ label dragqns:
     call screen drag_drop
     return
 
-screen drag_drop:
+screen drag_drop: ## creating the separate screen for the qns over the main scree
     image "images/dragqns/drag background.png"
     add my_qnsAnswerGroup
     imagebutton:
         idle "images/dragqns/buttons.png"
-        xpos 1322
+        xpos 1322 #defining the submit button of qns
         ypos 889
-        action Function(submission)
+        action Function(submission) #calling the function to check the answer
 
 init python:
     global counter
     counter =2
-    dropBoxStates={
+    dropBoxStates={ #dictionary to track the each box dropped value
         "box1":None,
         "box2":None,
         "box3":None,
@@ -23,23 +23,25 @@ init python:
         "box5":None,
     }
     count=2
-    def dragged_func(dragged_items,dropped_on):
-        dragged_name = dragged_items[0].drag_name
+    def dragged_func(dragged_items,dropped_on): #creating the callable to control dragged item behaviour
+        dragged_name = dragged_items[0].drag_name #getting the drag item name
         if dropped_on is not None: #if the box is occupied
-            if dropBoxStates[dropped_on.drag_name] is not None:
-                dragged_items[0].snap(dragged_items[0].start_x,dragged_items[0].start_y,0.2)
+            if dropBoxStates[dropped_on.drag_name] is not None: 
+                dragged_items[0].snap(dragged_items[0].start_x,dragged_items[0].start_y,0.2) #if dragged and near to drop iteam then snappped to drop box
             else: # when box isnt occupied
                 dragged_items[0].snap(dropped_on.x+8,dropped_on.y+8,0.2)
                 dropBoxStates[dropped_on.drag_name]=dragged_name
         else: #when drag is removed from box
-            for box, occupant in dropBoxStates.items():
+            for box, occupant in dropBoxStates.items(): #This loop make sure if drag and dropped in box and again dragged out, the drop box is vacant again
                 if occupant == dragged_name:
                     dropBoxStates[box]=None
                     break
-    def submission():
+                    
+
+    def submission(): #function to check the answer is correct or not
         count=counter
         print(count)
-        if(dropBoxStates["box1"]!=None and dropBoxStates["box2"]!=None and dropBoxStates["box3"]!=None and dropBoxStates["box4"]!=None and dropBoxStates["box5"]!=None):
+        if(dropBoxStates["box1"]!=None and dropBoxStates["box2"]!=None and dropBoxStates["box3"]!=None and dropBoxStates["box4"]!=None and dropBoxStates["box5"]!=None): #checking drop box is empty or not
             if dropBoxStates["box1"]=="optC1" and dropBoxStates["box2"]=="optC2" and dropBoxStates["box3"]=="optC3" and dropBoxStates["box4"]=="optC4" and dropBoxStates["box5"]=="optC5" :
                 renpy.call("qnsSolved") 
             else:

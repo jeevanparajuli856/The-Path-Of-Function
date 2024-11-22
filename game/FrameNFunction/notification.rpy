@@ -1,5 +1,5 @@
 screen notiGuide(chance):
-    frame:
+    frame: #Separate frame for the notificatio of error
         background Frame("images/notification/notiplace.png")
         xalign 0.0
         yalign 0.0
