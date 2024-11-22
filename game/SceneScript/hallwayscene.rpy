@@ -6,34 +6,28 @@ label hallway:
     play sound "hallway.mp3" fadein 1.0 fadeout 2.0 loop
     scene bg hallway backale with Fade(1.0,4.0,0.9)
     with Pause(1.0)
-    k "Hey, Ale!!"
+    k "Hey, Ale!"
 
     scene bg hallway with fade
     show ale hello at aligner with dissolve
-    a "Hello, Kevin"
-    show ale speaking hand left side with dissolve
-    a "How are you today?"
+    a "Hi, Kevin! What’s up?"
     show ale standing hand left side with dissolve
-    k "I am doing fine ale!"
-    k "How about you my friend"
+    k "Not much. Just trying to survive this programming class."
     show ale speaking hand both fold with dissolve
-    a "I am doing great kevin"
+    a "I hear you! How’s everything going?"
     show ale standing hand both fold with dissolve
-    k "You looking so pretty today my friend"
-    show ale blush wave with fade
-    a "Common!! kevin, I am blushing now. Anyway Thank you"
-    show ale standing  hand one fold with dissolve
-    k " Can I ask for a favor? You're the queen of Computer Science, and my best Friend.... I'm totally lost with Functions. Can you teach me after classes today?"
+    k "Honestly? I’m struggling. Functions have me completely lost."
+    show ale blush fold with fade
+    a "Oh no! Don’t worry, I’ve got your back. What do you need?"
+    show ale standing hand one fold with dissolve
+    k "Can you help me? You’re the Computer Science queen! Maybe we could go over functions together after class?"
     show ale speaking hand one fold with dissolve
-    a "Of course, kevin! Anything for my best Friend."
-    show ale speaking hand left side with dissolve
-    a "Where do you want to study?"
+    a "Of course! Where do you want to meet?"
     show ale standing hand left side with dissolve
-    k " How about in the smart lab class?"
-    k "It should be empty after 5 PM"
+    k "The smart lab should be empty after 5 PM. Does that work?"
     show ale speaking hand together with dissolve
-    a "Sound perfect! See you there at 5"
+    a "Perfect! I’ll meet you there."
     show ale bye at aligner with dissolve 
-    a "Bye Kevin!!!!"
-    k "Bye Ale!! See you!"
+    a "See you later, Kevin!"
+    k "See you, Ale! And thanks—you’re the best!"
     return

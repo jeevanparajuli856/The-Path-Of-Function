@@ -6,22 +6,22 @@ label teachingfirst:
     play sound "teachingclass.mp3" fadein 1.0 fadeout 2.0 loop
     scene bg classroom with Fade(1.0,3.5,0.9) 
     show ale speaking hand left side at aleAlign with dissolve
-    a "Let me use presentation to show my slide in this board so that you can easily understand the function."
+    a "Let me pull up a presentation on the board—it’ll make understanding functions a lot easier."
     show ale speaking hand one fold with dissolve
-    a "I will play a slide and explain the slide just sitting beside you in your desk."
+    a "I’ll explain each slide while sitting beside you at your desk, so feel free to stop me if you have questions."
     show ale standing hand one fold with dissolve
-    k "Alright ale! I am ready to nail this down."
+    k "Alright, Ale! I’m ready to tackle this."
     show ale speaking hand both wrist with dissolve
-    a "Lets goo.."
+    a "Let’s do this!"
     scene bg classroom with fade
     with Pause(3.0)
     show ale explaining hand left up at aleAlign with fade
     show function with dissolve
-    a "Ours today topic is function in python"
+    a "Today’s topic is functions in Python."
     show ale speaking hand left side with dissolve
-    a "So, Kevin, Let me ask you one question."
+    a "But before we dive in, Kevin, let me ask you something."
     show ale question hand right down  with dissolve
-    a "Do you know about Python's built-in functions?"
+    a "Do you know anything about Python’s built-in functions?"
     with Pause(1.0)
     menu:
         "Do you know about Python's built-in functions?"
@@ -31,65 +31,65 @@ label teachingfirst:
             call builtInNo
 
     show ale speaking hand both wrist with dissolve
-    a "Now let me sit down with you and lets get started with a built-in Function in python"
+    a "Now let me sit down with you, and we’ll get started with Python’s built-in functions."
 
     hide ale with fade
-    a "Python has many built-in functinons. A function is like a small program that takes an input, processes it, and return an output" ## Here I have to show ale face along with dialgoue as ale will disappear
-    a "Let me show you one example"
+    a "Python has many built-in functions. Think of a function as a mini-program—it takes an input, processes it, and gives you an output."
+    a "Let me show you an example."
     show example int with dissolve
-    a "Here you go, int() function."
+    a "Here you go, the `int()` function."
     a "This function takes any real number as input parameter and returns its integer value, ignoring the decimal part."
-    a "Let me show you another example using int() function"
+    a "Now let me give you another example using the int() function."
     scene bg classroom with fade
     show example int2 with dissolve
-    a "Let me show you drawing some box and arrow diagram how variable 'a' is assigned."
+    a "Here, let’s use a diagram to visualize how the variable 'a' is assigned."
     show example int2 arrowf with dissolve
-    a "Here, we have assigned variable 'a' with value return by int(2.6)"
+    a "We’ve assigned the variable 'a' the value returned by int(2.6)."
     show example int2 arrows with dissolve
-    a "Then, variable 'a' is passed to another function print()."
-    a "Let me step outside and ask you one question"
+    a "Next, the variable 'a' is passed as an argument to another function, print()."
+    a "Let me step aside for a moment and ask you a question."
     show example int2 arrows qns with dissolve
     show ale standing hand left side with dissolve
     show ale question hand left up at aleAlign with dissolve
-    a "Kevin, do you know what will be the output for this small program?"
+    a "Kevin, can you tell me what the output of this small program will be?"
     call inputCheck
 
 
     #user define function
     show ale explaining hand left up with dissolve
-    a "2 is the right answer as we have passed variable 'a' in print() and value of 'a' is 2."
+    a "The answer is 2 because we passed the variable 'a' to print(), and its value is 2."
     show ale speaking hand both wrist with dissolve
-    a "Let's take a step further. Do you know anything about user-defined functions?"
+    a "Let’s step it up a notch. Do you know anything about user-defined functions?"
     show ale standing hand both wrist with dissolve
-    k "No, not really. Did the professor even talk about that?"
+    k "Uh... not really. Did the professor even mention that?"
     show ale question hand left down angr with dissolve
-    a "Kevin, where was your mind during the morning class? The professor covered a lot on this topic!"
+    a "Kevin, where was your head during class? The professor spent ages explaining this!"
     show ale standing hand left side with dissolve
-    a "Sorry, Ale! I don't know why I can't concerntrate in that class. You're my only hope right now"
+    a "Sorry, Ale! I don’t know why I can’t focus in that class. You’re literally my only hope right now."
     show ale speaking hand left side with dissolve
-    a "It's alright. Let's dive into user-defined functions then."
+    a "Alright, alright. Let’s not waste time—let’s talk about user-defined functions!"
     show ale explaining hand both down front with dissolve
-    a "A user-define function is super helpful for removing duplicate code. It also breaks down complex problems into smaller, magaeble pieces."
+    a "User-defined functions are lifesavers! They help you avoid repeating the same code and break down big problems into smaller, manageable chunks."
     show ale explaining hand right up with dissolve
-    a "And also, user-defined functions can be reused when similar problems pop up in other parts of your program."
+    a "And the best part? You can reuse them whenever similar problems show up elsewhere in your program. Think of it as building your personal toolkit."
     show ale speaking hand both fold with dissolve
-    a "Let me show you a basic syntax of user-defined function"
+    a "Let me show you the basic syntax of a user-defined function."
     scene bg classroom with fade
     show userdefine first with dissolve
-    a "So, here is the basic syntax for user defined function."
+    a "Here’s what the basic syntax looks like."
     show userdefine first def with dissolve
-    a "Can you see the word def?"
-    a "Thats the keyword we use to define a user-defined function."
+    a "Notice the word `def`? That’s the magic keyword for defining a function."
     show userdefine first funname with dissolve
-    a "After that, we write the function name, followed by parenthesis. Inside those parentheses, we can define parameters."
+    a "Next, you give your function a name. Make it descriptive, so you know what it does—no `function123` nonsense!"
     show userdefine first param with dissolve
-    a "A parameter is a variable that represents a piece of data passed into the function. We call this \"pass by postion\", meaning the order of parameters matters"
-    a "When we call the function elsewhere in the code, we pass arguments, which are the actual values. These arguments are matched with the parameters in the same order they were defined."
+    a "After the name, you add parentheses. Inside these, you can define parameters. Think of them as placeholders for the data your function will work with."
+    a "Parameters work on a 'pass by position' system, meaning the order of the parameters is super important."
+    a "When you call the function in your code, you pass *arguments*, which are the actual values. These get matched with the parameters in the same order."
     show userdefine first insidefun with dissolve
-    a "Inside the function, we write the code that defines its behaviour-things like calculations, printing or anything else you want the function to do."
+    a "Now, inside the function, you write the code that does the actual work. It could be calculations, printing, or whatever task you need."
     show userdefine first returns with dissolve
-    a "At the end, there's usually a return statement. This sends back a value after the fucntion has finished executing"
-    a "Now let me show you an example of user-defined function"
+    a "Finally, there’s the return statement. It’s like sending a package back—it gives you the function’s result after all the work is done."
+    a "Got it so far? Great! Now, let me show you an example of a user-defined function."
 
     scene bg classroom with fade
     show fahren with dissolve
@@ -136,16 +136,16 @@ label teachingfirst:
 
 label builInYes:
     show ale standing hand both fold with dissolve
-    k "Yeah, I Know a little bit about them. That's about the only thing I manged to focus on during class today."
+    k "Yeah, I know a little about them. Honestly, it’s one of the few things I managed to focus on in class today."
     show ale speaking hand both fold with dissolve
-    a " Great! Let's quickly review those topics to make sure they're clear"
+    a "Great! Let’s quickly review those topics to make sure everything’s crystal clear."
     return
 
 label builtInNo:
     show ale standing hand both fold with dissolve
-    k "Nope, today's lecture went completely over my head"
+    k "Nope, today’s lecture went completely over my head."
     show ale speaking hand both fold with dissolve
-    a "That's fine, Kevin. I'll walk you through it step by step"
+    a "That’s okay, Kevin. Don’t worry—I’ll walk you through it step by step."
     return
 
 label fahrYes:
@@ -176,7 +176,7 @@ label inputCheck:
             if(outputIn=="2"):
                 renpy.transition(dissolve)
                 renpy.show("ale speaking hand left side")
-                renpy.say(a,"You got it right answer")
+                renpy.say(a,"You got it right!")
                 count=0
             else:
                 renpy.transition(moveinleft)

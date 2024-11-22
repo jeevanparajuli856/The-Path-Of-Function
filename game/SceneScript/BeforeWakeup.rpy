@@ -5,19 +5,19 @@ define t = Character("Teacher")
 label inbed: 
     play sound "dream.mp3" fadein 1.0 fadeout 1.0 loop
     scene bg dream with fade
-    t "Kevin, You Failed the Introduction to Programming exam. You need to focus more on class"
+    t "Kevin, You failed the Introduction to Programming exam. This isn't acceptable—you need to start taking your classes seriously!"
     scene bg dream scolding with dissolve
-    t "Did you hear me?" 
+    t "Are you even listening to me?" 
 
     play voice "morningalaram.mp3" fadein 2.0 fadeout 2.0
     scene bg wakeup with Fade(0.5,4.0,0.5)
-    k "Ahh, another nightmare! Why does Introduction to Programming haunt me like this? Why is it so hard?"
-    k "Shoot! Its's already 8 AM! ONly 30 minutes until my first Class. I better get ready" 
+    k "Ugh, another nightmare! Why does Introduction to Programming keep haunting me? Why is it so impossible to figure out?"
+    k "Oh no! It’s already 8 AM! Only 30 minutes until class. I’ve got to move fast!" 
 
     play sound "classroom.mp3" fadein 1.0 fadeout 2.0 loop
     scene bg classentry with Fade(1.0,3.5,0.9) 
     with Pause(2.0)
-    k "Finally I made it in time"
+    k "Phew! I actually made it on time. That was way too close!"
     scene bg clocktower with Dissolve(3.0)
     play voice "CollegeBell2.mp3" fadein 2.0 fadeout 2.0
     with Pause(5.0)
@@ -26,15 +26,15 @@ label inbed:
     with Pause(2.0)
     scene bg teacher explaining with dissolve
     with Pause(3.0)
-    k "Function? What's that? I've never even heard of it. This is probably going to be another boring topic that I'll forget instantly"
+    k "Functions? What even is that? Sounds like another boring topic I’ll never understand or remember..."
 
     scene bg after30 with pushleft 
     with Pause(3.0)
     scene bg teacher afterclass with Fade(1.0,1.0,1.0)
     with Pause(1.0)
-    t " There will be a test on Function next class, so be prepared"
+    t "There will be a test on functions in the next class, so make sure you're prepared."
     scene bg teacher standing with dissolve
-    k "Not again! A test already? I have to figure this out. I guess I'll need Ale's help"
+    k "A test? Already? You've got to be kidding me! I really need to figure this out... Guess I’ll have to ask Ale for help."
     play voice "CollegeBell2.mp3" fadein 1.0 fadeout 2.0
 
     ## Now hallway scene start
