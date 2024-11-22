@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/SceneScript/afterSubmission.rpy", line 101: end of line expected.
-    show ale standing hand left at aligner side with dissolve
-                                           ^
+File "game/SceneScript/BeforeWakeup.rpy", line 1: expected statement.
+    adefine k = Character("Kevin")
+              ^
 
 Ren'Py Version: Ren'Py 8.3.3.24111502
-Thu Nov 21 18:25:04 2024
+Thu Nov 21 22:24:11 2024

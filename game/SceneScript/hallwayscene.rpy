@@ -1,12 +1,11 @@
-define k = Character("Kevin")
 
 define aligner = Position(xpos = 550, xanchor = 10, ypos=-10, yanchor=1)
-define a = Character("Alejendra")
+define a = Character("Emma")
 label hallway:
     play sound "hallway.mp3" fadein 1.0 fadeout 2.0 loop
     scene bg hallway backale with Fade(1.0,4.0,0.9)
     with Pause(1.0)
-    k "Hey, Ale!"
+    k "Hey, Emma!"
 
     scene bg hallway with fade
     show ale hello at aligner with dissolve
@@ -29,5 +28,5 @@ label hallway:
     a "Perfect! I’ll meet you there."
     show ale bye at aligner with dissolve 
     a "See you later, Kevin!"
-    k "See you, Ale! And thanks—you’re the best!"
+    k "See you, Emma! And thanks—you’re the best!"
     return

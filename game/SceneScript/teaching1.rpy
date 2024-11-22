@@ -1,5 +1,5 @@
 define k = Character("Kevin")
-define a = Character("Alejendra")
+define a = Character("Emma")
 define aleAlign = Position(xpos = 600, xanchor = 0, ypos=-60, yanchor=1)
 
 label teachingfirst: 
@@ -94,10 +94,10 @@ label teachingfirst:
     scene bg classroom with fade
     show fahren with dissolve
     with Pause(1.0)
-    a "Let me step outside and ask you a question"
+    a "Let me step outside for a moment and test your understanding."
     show ale standing hand left side at aleAlign with dissolve 
     show ale question hand left up at aleAlign with dissolve 
-    a "What is the name of the function here?"
+    a "Take a look at this example. Can you tell me the name of the function?"
     with Pause(1.0)
     menu:
         "What is the name of the function here?"
@@ -107,30 +107,30 @@ label teachingfirst:
             call fahrYes
     
     show ale speaking hand together with dissolve
-    a "Lets talk more about the fahrenheitToCelsius function"
+    a "Let’s dive deeper into the `fahrenheitToCelsius` function."
     show ale speaking hand left side with dissolve
-    a "Let me sit beside you and explain about this function"
+    a "I’ll sit beside you to explain this in detail."
     hide ale
     show fahren para with dissolve
-    a "As you know now, fahrenheit is a parameter. This mean that when we call this function in other block of code, we need to pass a value for fahrenheit"
+    a "As you know, fahrenheit is the parameter. This means that when we call the function elsewhere in the code, we need to pass a value for fahrenheit."
     show fahren celbody with dissolve
-    a "Inside the body of this function, there is a statement that converts fahrenheit to celsius, and the result is stored in a variable called celsius"
+    a "Inside the function body, there’s a statement that converts the value of fahrenheit to Celsius. The result is stored in a variable called celsius."
     show fahren celqns with dissolve
-    a "Now, here's your next question. What is the value that a variable celsius will hold when the function is called with an argument of 98"
+    a "Here’s your next challenge: What value will the variable \"celsius\" hold if the function is called with an argument of 98?"
     call valcheck
     show fahren solve with dissolve
     show ale speaking hand one fold at aleAlign with dissolve
-    a "As we sent 98 as argument then second statement of function convert the fahrenheit into celsius and value is assigned to variable 'celsius'"
+    a "When we pass 98 as the argument, the second statement in the function converts the Fahrenheit value into Celsius and assigns it to the variable \"celsius\"."
     show ale standing hand both wrist
     show ale speaking hand both wrist with dissolve
-    a "round() method is used to limit the decimal value to 2 decimal place"
+    a "The `round()` method is used to limit the decimal value of `celsius` to two decimal places."
     show ale standing hand left side with dissolve
     show ale speaking hand left side with dissolve
-    a "Now, lets further explore the fahrenheitToCelsius function"
+    a "Now let’s take a closer look at the return statement in the `fahrenheitToCelsius` function."
     hide ale 
     show fahren returns with dissolve
-    a "After the body of the function, you can see a return statement."
-    a "This statement returns the value stored in celsius to wherever the function was called."
+    a "At the end of the function, there’s a return statement. This statement sends the value of `celsius` back to wherever the function was called."
+    a "This way, the converted Celsius value can be used elsewhere in the program. Neat, right?"
     return
 
 
@@ -154,18 +154,18 @@ label fahrYes:
     show ale speaking hand both wrist with dissolve
     a "That's right! You've got it, my friend."
     show ale speaking hand one fold with dissolve
-    a "The function name is fahrenheitToCelsius, and fahrenheit is the parameter."
+    a "The function name is fahrenheitToCelsius, and fahrenheit is its parameter. Great job catching that!"
     return
 
 label fahrNo:
     show ale standing hand both wrist with dissolve
     k "It's fahrenheit"
     show ale sad hand both wrist with dissolve
-    a "That's not a right answer kevin!"
+    a "Not quite, Kevin. That’s the parameter, not the function name."
     show ale speaking one fold with dissolve
-    a "fahrenheit is the parameter, not the function name. You can compare it with the syntax I just showed you"
+    a "Think back to the syntax I just explained. The parameter goes inside the parentheses, and the function name comes before it."
     show ale speaking hand left side with dissolve
-    a "And, the function name is fahrenheitToCelsius"
+    a "The correct function name is fahrenheitToCelsius. Don’t worry, you’ll get it next time!"
     return
 
 label inputCheck: 
@@ -200,7 +200,7 @@ label valcheck:
                 renpy.transition(dissolve)
                 
                 renpy.show("ale speaking hand both fold", at_list = [aleAlign])
-                renpy.say(a,"You got it right answer")
+                renpy.say(a,"You got it. Right answer!")
                 count=0
             else:
                 renpy.transition(moveinleft)

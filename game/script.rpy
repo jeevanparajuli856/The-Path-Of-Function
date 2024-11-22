@@ -11,9 +11,9 @@ define t = Character("Teacher")
 
 label start:
     stop music fadeout 1.0 
-    call inbed
-    call hallway
-    call hallwayafter
+    call inbed #first scene before wakeup 
+    call hallway # hallway scene with emma
+    call hallwayafter # after deciding they gonna meet
     call teachingfirst
     call teachingSecond
     return

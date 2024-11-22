@@ -1,5 +1,5 @@
 define k = Character("Kevin")
-define a = Character("Alejendra")
+define a = Character("Emma")
 define t = Character("Teacher")
 
 label inbed: 
@@ -34,7 +34,7 @@ label inbed:
     with Pause(1.0)
     t "There will be a test on functions in the next class, so make sure you're prepared."
     scene bg teacher standing with dissolve
-    k "A test? Already? You've got to be kidding me! I really need to figure this out... Guess I’ll have to ask Ale for help."
+    k "A test? Already? You've got to be kidding me! I really need to figure this out... Guess I’ll have to ask Emma for help."
     play voice "CollegeBell2.mp3" fadein 1.0 fadeout 2.0
 
     ## Now hallway scene start
