@@ -31,7 +31,7 @@ This visual novel project is an interactive educational tool designed to help CS
 ### **Installation**
 1. Clone the repository:
    ```bash
-   git clone https://github.com/jeevanparajuli856/FunctionOMania.git
+   git clone https://github.com/jeevanparajuli856/The-Path-Of-Function.git
    ```
 2. Open the project in Ren'Py.
 3. Run the project to start the visual novel.
@@ -71,7 +71,7 @@ Contributions are welcome! To improve the visual novel, follow these steps:
 ## **Access the Game**
 Play the game in your PC browser:
 
-[**The Path of Function**](https://jeevanparajuli856.itch.io/thepathoffunction)
+[**The Path of Function**](https://jeevanparajuli856.itch.io/thepathofthefunction)
 
 > **Note**: Currently, the game is supported only on PC browsers.
 
