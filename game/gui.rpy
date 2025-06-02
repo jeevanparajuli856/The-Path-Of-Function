@@ -23,7 +23,7 @@ define config.check_conflicting_properties = True
 ## Colors ######################################################################
 ##
 ## The colors of text in the interface.
-
+    
 ## An accent color used throughout the interface to label and highlight text.
 define gui.accent_color = '#99ccff'
 
