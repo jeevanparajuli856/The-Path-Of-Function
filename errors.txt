@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/SceneScript/BeforeWakeup.rpy", line 1: expected statement.
-    adefine k = Character("Kevin")
-              ^
+File "game/SceneScript/afterSubmission.rpy", line 164: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    play sound "hallway.mp3" fadein 1.0 fadeout 2.0 loop
+    ^
 
 Ren'Py Version: Ren'Py 8.3.3.24111502
-Thu Nov 21 22:24:11 2024
+Mon Jun  2 15:31:49 2025

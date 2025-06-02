@@ -8,6 +8,6 @@ renpy.geometry renpy.texture
 renpy.geometry renpy.matrixcolor renpy.texture
 renpy.geometry renpy.imagedissolve
 renpy.imagedissolve renpy.imagedissolve
-renpy.matrixcolor renpy.texture
 renpy.alpha renpy.texture
+renpy.matrixcolor renpy.texture
 renpy.alpha renpy.geometry renpy.texture

@@ -14,7 +14,7 @@ label inbed:
 
     #after dream
     play voice "morningalaram.mp3" fadein 2.0 fadeout 2.0
-    scene bg wakeup with Fade(0.5,4.0,0.5)
+    scene bg wakeup2 with Fade(0.5,4.0,0.5)
     k "Ugh, another nightmare! Why does Introduction to Programming keep haunting me? Why is it so impossible to figure out?"
     k "Oh no! It's already 8 AM! Only 30 minutes until class. I've got to move fast!" 
 
