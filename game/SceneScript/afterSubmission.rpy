@@ -177,7 +177,7 @@ label ending:
     show ale speaking hand both wrist at finalAlign with dissolve
     a"And hey, all the best for the exam!"
     show ale standing hand both wrist at finalAlign with dissolve
-    k "You too, Ale. You're the best, you're going to crush the exam."
+    k "You too, Emma. You're the best, you're going to crush the exam."
     show ale blush wave at finalAlign with dissolve
     a "Come on, Kevin. Alright, see you tomorrow!"
     scene bg ale final bye with fade
