@@ -11,7 +11,7 @@ screen drag_drop: ## creating the separate screen for the qns over the main scre
         xpos 1322 #defining the submit button of qns
         ypos 889
         action Function(submission) #calling the function to check the answer
-
+    
 init python:
     global counter
     counter =2

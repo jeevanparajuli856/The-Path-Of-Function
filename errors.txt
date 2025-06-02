@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/SceneScript/afterSubmission.rpy", line 164: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    play sound "hallway.mp3" fadein 1.0 fadeout 2.0 loop
-    ^
+File "game/FrameNFunction/dragNDropFirst.rpy", line 3: end of line expected.
+    jump screen drag_drop
+                ^
 
 Ren'Py Version: Ren'Py 8.3.3.24111502
-Mon Jun  2 15:31:49 2025
+Mon Jun  2 17:09:03 2025

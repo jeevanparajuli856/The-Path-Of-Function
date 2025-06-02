@@ -1,48 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 18, in script call
-    call teachingSecond # Second teaching
-  File "game/SceneScript/teaching2.rpy", line 89, in script call
-    call dragqns ## drang and drop qns call
-  File "game/FrameNFunction/dragNDropFirst.rpy", line 3, in script call
-    call screen drag_drop
-  File "game/SceneScript/afterSubmission.rpy", line 33, in script call
-    call puzzleExplaination
-  File "game/SceneScript/afterSubmission.rpy", line 91, in script call
-    call afterDragNDrop
-  File "game/SceneScript/afterSubmission.rpy", line 111, in script
-    show stack point cal top with disolve
-  File "game/SceneScript/afterSubmission.rpy", line 111, in <module>
-    show stack point cal top with disolve
-NameError: name 'disolve' is not defined
+  File "game/SceneScript/afterSubmission.rpy", line 192, in script
+    return
+Exception: Could not find return label ('game/SceneScript/afterSubmission.rpy', 1732234454, 1).
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 18, in script call
-    call teachingSecond # Second teaching
-  File "game/SceneScript/teaching2.rpy", line 89, in script call
-    call dragqns ## drang and drop qns call
-  File "game/FrameNFunction/dragNDropFirst.rpy", line 3, in script call
-    call screen drag_drop
-  File "game/SceneScript/afterSubmission.rpy", line 33, in script call
-    call puzzleExplaination
-  File "game/SceneScript/afterSubmission.rpy", line 91, in script call
-    call afterDragNDrop
-  File "game/SceneScript/afterSubmission.rpy", line 111, in script
-    show stack point cal top with disolve
-  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\ast.py", line 1357, in execute
-    paired = renpy.python.py_eval(self.paired)
-  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\python.py", line 1209, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\python.py", line 1202, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/SceneScript/afterSubmission.rpy", line 111, in <module>
-    show stack point cal top with disolve
-NameError: name 'disolve' is not defined
+  File "game/SceneScript/afterSubmission.rpy", line 192, in script
+    return
+  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\ast.py", line 1493, in execute
+    next_node(renpy.game.context().lookup_return(pop=True))
+  File "C:\Users\Jeevan\Desktop\Research of VN\RenPy Game\renpy-8.3.2-sdk\renpy\execution.py", line 744, in lookup_return
+    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
+Exception: Could not find return label ('game/SceneScript/afterSubmission.rpy', 1732234454, 1).
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.3.24111502
 Path of The Function 1.0
-Mon Jun  2 15:01:13 2025
+Mon Jun  2 17:15:16 2025

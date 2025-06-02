@@ -1,3 +1,4 @@
+define finalAlign = Transform(zoom=0.9, xpos=0.5, xanchor=0.5, ypos=0.9, yanchor=0.6)
 label qnsSolved:
     scene bg classroom with fade
     show ale standing hand both wrist at aleAlign with dissolve
@@ -32,20 +33,23 @@ label qnsUnsolve:
     k "Yeah, Emma, I got a bit confused halfway through. Thanks for stepping in!"
     call puzzleExplaination
     return
+    
 
 label yesExplain:
     show ale standing hand both fold at aleAlign with dissolve
     k "Yeah, for sure. That'll make everything clearer."
     call puzzleExplaination
-    return 
+    return
+     
 label noExplain:
     show ale standing hand both fold at aleAlign with dissolve
     k "I feel pretty confident now."
     k "I don't want to take up more of your time."
     show ale speaking hand both fold at aleAlign with dissolve
     a "Alright, Kevin. You did great today."
-    call ending
+    call afterDragNDrop
     return
+    
     
 
 label puzzleExplaination:
@@ -90,7 +94,7 @@ label puzzleExplaination:
     k "Thank you so much for making this crystal clear."
     call afterDragNDrop
     return
-
+    
 label afterDragNDrop:
     scene bg classroom with fade
     show ale standing hand left side at aleAlign with dissolve
@@ -134,15 +138,20 @@ label afterDragNDrop:
             call lastWrong
         "main()":
             call lastCorrect
-
+    return
+    
+    
 label lastCorrect:
     show ale speaking hand both fold at aleAlign with dissolve
     a "Correct! main() was the last to be removed after it finished executing. Great job remembering the flow!"
-    call ending 
+    call ending
+    return
 label lastWrong:
     show ale explaining hand both down front at aleAlign with dissolve
     a "Close, but not quite. calculate_area() was removed first — right after it returned a value. The last one to go was main()."
     call ending
+    return
+    
 
 label ending: 
     scene bg classroom with fade
@@ -162,28 +171,22 @@ label ending:
     a "Let’s pack up and head home."#now scence change in ale standing
 
     play sound "hallway.mp3" fadein 1.0 fadeout 2.0 loop
-    scene bg road with fade
-    with Pause(2.0)
-    a "Bye bye kevin, See you tomorrow at class all the best!"
+    scene bg road with Fade(0.5,1,1)
+    show ale bye at finalAlign
+    a "Bye-bye, Kevin! See you tomorrow in class."
+    show ale speaking hand both wrist at finalAlign with dissolve
+    a"And hey, all the best for the exam!"
+    show ale standing hand both wrist at finalAlign with dissolve
+    k "You too, Ale. You're the best, you're going to crush the exam."
+    show ale blush wave at finalAlign with dissolve
+    a "Come on, Kevin. Alright, see you tomorrow!"
+    scene bg ale final bye with fade
     # now ale start walking. 
-    k "She is the best I will do best in exam"#black screen apear and end
-
-
-# label ending:
-#     scene bg classroom with fade
-#     show ale standing hand left side at aleAlign with dissolve
-#     show ale speaking hand left side at aleAlign with dissolve
-#     a "There's one more topic to cover, but let's save it for tommorrow morning."
-#     show ale standing hand both fold with dissolve
-#     k "Alright, Emma! Let's head home."
-#     scene bg hallway with fade
-#     show ale standing hand left side at aligner with dissolve
-#     show ale hello at aligner with dissolve
-#     a "Bye Kevin! It was fun teaching you today."
-#     show ale standing hand both fold at aligner  with dissolve
-#     k "Bye, Emma! And thank you so much for your time. See you tomorrow at 8."
-#     show ale blush wave with dissolve
-#     a "See you."
-#     scene bg tobecontinued with fade
-#     with Pause(2.0)
-#     return 
+    k "She’s the best. I’m going to give it my all tomorrow."
+    k "it’s already 6! I better head home now."
+    scene black with fade
+    with Pause(2.0)
+    hide ale
+    show text "Thank you for Playing and Learning!" with dissolve
+    with Pause(3.0)
+    return
