@@ -1,31 +1,33 @@
-2025-03-24 00:03:55 UTC
+2025-06-02 17:35:17 UTC
 Windows-10-10.0.26100
 Ren'Py 8.3.3.24111502
 
-Early init took 0.13s
-Loading error handling took 0.10s
-Loading script took 0.68s
-Loading save slot metadata took 0.72s
+Early init took 0.06s
+Loading error handling took 0.11s
+Loading script took 0.53s
+Loading save slot metadata took 0.63s
 Loading persistent took 0.00s
-Running init code took 0.06s
-Loading analysis data took 0.05s
+Running init code took 0.20s
+Loading analysis data took 0.03s
 Analyze and compile ATL took 0.00s
-Reloading save slot metadata took 0.75s
+Reloading save slot metadata took 0.56s
 Index archives took 0.00s
-Dump and make backups took 0.05s
+Backing up script files to 'C:\\Users\\Jeevan\\AppData\\Roaming/RenPy/backups\\The Path of Function':
+Dump and make backups took 0.07s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc took 0.03s
+Initial gc took 0.06s
 DPI scale factor: 1.250000
 nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: b'DRS_SaveSettings() = -1.' (can be ignored)
-Creating interface object took 0.24s
+nvdrs: Disabled thread optimizations.
+Creating interface object took 0.35s
 Cleaning stores took 0.00s
-Init translation took 0.03s
+Init translation took 0.06s
 Build styles took 0.00s
-Load screen analysis took 0.05s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.12s
+Load screen analysis took 0.02s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.06s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.00s
+Save bytecode. took 0.03s
+Running _start took 0.00s
