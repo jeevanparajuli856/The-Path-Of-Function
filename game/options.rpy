@@ -211,5 +211,5 @@ init python:
 
 # define build.itch_project = "renpytom/test-project"
 #Cusotm that I built for the game
-define config.rollback_enabled = False
+#define config.rollback_enabled = False
 define config.allow_skipping = False

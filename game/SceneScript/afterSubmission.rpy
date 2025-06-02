@@ -88,24 +88,26 @@ label puzzleExplaination:
     a "I know it looks a bit long, but trust me, it's simple once you break it down step by step."
     show ale standing hand left side with dissolve
     k "Thank you so much for making this crystal clear."
-    call ending
+    call afterDragNDrop
     return
 
-label ending:
-    scene bg classroom with fade
-    show ale standing hand left side at aleAlign with dissolve
-    show ale speaking hand left side at aleAlign with dissolve
-    a "There's one more topic to cover, but let's save it for tommorrow morning."
-    show ale standing hand both fold with dissolve
-    k "Alright, Emma! Let's head home."
-    scene bg hallway with fade
-    show ale standing hand left side at aligner with dissolve
-    show ale hello at aligner with dissolve
-    a "Bye Kevin! It was fun teaching you today."
-    show ale standing hand both fold at aligner  with dissolve
-    k "Bye, Emma! And thank you so much for your time. See you tomorrow at 8."
-    show ale blush wave with dissolve
-    a "See you."
-    scene bg tobecontinued with fade
-    with Pause(2.0)
-    return 
+label afterDragNDrop:
+
+# label ending:
+#     scene bg classroom with fade
+#     show ale standing hand left side at aleAlign with dissolve
+#     show ale speaking hand left side at aleAlign with dissolve
+#     a "There's one more topic to cover, but let's save it for tommorrow morning."
+#     show ale standing hand both fold with dissolve
+#     k "Alright, Emma! Let's head home."
+#     scene bg hallway with fade
+#     show ale standing hand left side at aligner with dissolve
+#     show ale hello at aligner with dissolve
+#     a "Bye Kevin! It was fun teaching you today."
+#     show ale standing hand both fold at aligner  with dissolve
+#     k "Bye, Emma! And thank you so much for your time. See you tomorrow at 8."
+#     show ale blush wave with dissolve
+#     a "See you."
+#     scene bg tobecontinued with fade
+#     with Pause(2.0)
+#     return 
