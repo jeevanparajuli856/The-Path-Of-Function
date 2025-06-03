@@ -196,26 +196,6 @@ screen input(prompt):
             text prompt style "input_prompt" xalign 0.5
             input id "input" length 32 style "input_text" xalign 0.5
 
-# screen input(prompt):
-#     style_prefix "input"
-
-#     window:
-#         # background "gui/input_frame.png"  # <-- Your custom background image
-#         # xalign 0.5
-#         # yalign 0.5
-#         # padding(20,10)
-
-#         vbox:
-#             xanchor gui.dialogue_text_xalign
-#             xpos gui.dialogue_xpos
-#             xsize gui.dialogue_width
-#             ypos gui.dialogue_ypos
-
-#             text prompt style "input_prompt"
-#             input id "input"
-
-
-
 style input_prompt is default
 
 style input_prompt:
@@ -287,7 +267,7 @@ screen quick_menu():
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
             textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
+            #textbutton _("Q.Load") action QuickLoad()
             textbutton _("Prefs") action ShowMenu('preferences')
 
 
