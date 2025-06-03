@@ -181,26 +181,52 @@ screen input(prompt):
         background Frame("gui/input_frame.png")
         xalign 0.5
         yalign 0.5
+        padding(20,10)
         vbox:
             ##xanchor gui.dialogue_text_xalign
             ##xpos gui.dialogue_xpos
-            xsize gui.dialogue_width
+            #xsize gui.dialogue_width
             ##ypos gui.dialogue_ypos
 
-            text prompt style "input_prompt"
-            input id "input"
+            #text prompt style "input_prompt"
+            #input id "input"
+            spacing 15
+            xalign 0.5
+            xsize 800  # Width of the input box
+            text prompt style "input_prompt" xalign 0.5
+            input id "input" length 32 style "input_text" xalign 0.5
+
+# screen input(prompt):
+#     style_prefix "input"
+
+#     window:
+#         # background "gui/input_frame.png"  # <-- Your custom background image
+#         # xalign 0.5
+#         # yalign 0.5
+#         # padding(20,10)
+
+#         vbox:
+#             xanchor gui.dialogue_text_xalign
+#             xpos gui.dialogue_xpos
+#             xsize gui.dialogue_width
+#             ypos gui.dialogue_ypos
+
+#             text prompt style "input_prompt"
+#             input id "input"
+
+
 
 style input_prompt is default
 
 style input_prompt:
     color "#000000ff"
     xalign 0.5
-    yalign -10
+    yalign 0.5
     properties gui.text_properties("input_prompt")
 
 style input:
     ##xalign gui.dialogue_text_xalign
-    xalign 0.4
+    xalign 0.5
     color "#000000ff"
     xmaximum gui.dialogue_width
 

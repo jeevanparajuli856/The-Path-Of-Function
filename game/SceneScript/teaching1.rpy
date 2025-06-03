@@ -53,7 +53,7 @@ label teachingfirst:
     #Input box question
     a "Let me step aside for a moment and ask you a question."
     show example int2 arrows qns with dissolve
-    show ale standing hand left side with dissolve
+    show ale standing hand left side at aleAlign with dissolve
     show ale question hand left up at aleAlign with dissolve
     a "Kevin, can you tell me what the output of this small program will be?"
     call inputCheck #calling python scrip to determine the input is correct or not
