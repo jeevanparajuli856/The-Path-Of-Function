@@ -67,15 +67,9 @@ label teachingSecond:
 
     #Last qns section
     show ale speaking hand left side with dissolve
-    a "That's great to hear, Kevin! By the way, it's already 6 PM. Let's wrap up for today with one last question."
-    show ale speaking hand together with dissolve
-    a "Tomorrow morning, we'll dive into an exciting topic: understanding how memory allocation happens in the stack when a program and its functions are executed."
-    show ale standing hand both fold with dissolve
-    k "Sounds great! Let's meet at 8 AM tomorrow morning."
-    show ale speaking hand both fold with dissolve
-    a "That works perfectly for me."
+    a "That's great to hear, Kevin! Before we move on to the next chapter, let’s do a quick challenge."
     show ale speaking hand both wrist with dissolve
-    a "Now, I'll show you a question on the screen where you'll need to drag and drop the correct blocks to complete a Python program."
+    a "I’ll show you a question on the screen where you’ll need to drag and drop the correct blocks to complete a Python program."
     show ale question hand both down with dissolve
     a "Are you ready?"
     menu:
