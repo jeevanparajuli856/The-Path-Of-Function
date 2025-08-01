@@ -9,19 +9,19 @@ label hallway:
     show ale hello at aligner with dissolve
     a "Hi, Kevin! What's up?"
     show ale standing hand left side with dissolve
-    k "Not much. Just trying to survive this programming class."
+    k "Not much. Just trying to survive our Introduction to programming class."
     show ale speaking hand both fold with dissolve
-    a "I hear you! How's everything going?"
+    a "Is there anything I can do for help"
     show ale standing hand both fold with dissolve
-    k "Honestly? I'm struggling. Functions have me completely lost."
+    k "That would be great!!! I'm struggling. Functions have me completely lost."
     show ale blush fold with fade
-    a "Oh no! Don't worry, I've got your back. What do you need?"
+    a "Oh no! Don't worry, I've got your back."
     show ale standing hand one fold with dissolve
-    k "Can you help me? You're the Computer Science queen! Maybe we could go over functions together after class?"
+    k "You're the Introduction to programming  queen! Do you have time later today to go over function material discussed in class together??"
     show ale speaking hand one fold with dissolve
-    a "Of course! Where do you want to meet?"
+    a "Of course! Where do you want to meet and at what time?"
     show ale standing hand left side with dissolve
-    k "The smart lab should be empty after 5 PM. Does that work?"
+    k "The computer science major lab should be empty after 5 P.M. Does that work?"
     show ale speaking hand together with dissolve
     a "Perfect! I'll meet you there."
     show ale bye at aligner with dissolve 

@@ -7,7 +7,7 @@ screen notiGuide(chance):
         ysize 170
         vbox:
             text "Ouch!! It's wrong answer you have [chance] more chance left!! " style "noti_styles"
-        timer 2.0 action Return()
+        timer 4.0 action Return()
 style noti_styles:
     color "#000000"
     xsize 650

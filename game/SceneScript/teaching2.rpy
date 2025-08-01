@@ -6,7 +6,7 @@ label teachingSecond:
     show fahren with dissolve
     show ale standing hand both wrist at aleAlign with dissolve
     show ale question hand both down at aleAlign with dissolve
-    a "What do you think,Kevin? Will this program execute or not?" #Askign the qns
+    a "What do you think, Kevin? Will this program execute or not?" #Askign the qns
     menu: #Choice for the qns
         "Will this program execute?"
         "Yes":
@@ -17,19 +17,19 @@ label teachingSecond:
     #Explaining how the funciton gonna execute
     scene bg classroom with fade
     show fahren2 explain with dissolve
-    a "Ths program will get execute and allow a user to input a number, which will be stored in a variable."
+    a "Ths program will get executed and allow a user to input a number, which will be stored in the variable **temp**."
     show fahren2 input with dissolve
     a "For example, if the user inputs 100, the variable 'temp' will hold the value 100."
     show fahren2 funcall with dissolve
     a "Next, the fahrenheitToCelsius() function is called, passing the value of 'temp' as the argument."
     show fahren2 returns with dissolve
-    a "The returned value form fahrenheitToCelsius() is stored in another variable called celsius, which in this case will be 37.78."
+    a "The value return by fahrenheitToCelsius() function is stored in another variable called **celsius**, which in this case will be 37.78."
     show fahren2 print with dissolve
     a "After that, the print() statement executes to display the result."
     a "However, let me point out something important."
     show fahren2 last3 with dissolve
     a "It's not a good practice to write the main logic of a program—like the last three lines in this example—outside a specific block."
-    a "Instead, it's better to encapsulate the main logic within a `main()` function or similar."
+    a "Instead, it's better to encapsulate the main logic within a `main()` function"
 
     #Starting main() function concept
     a "This is the where the concept of using main() function comes in."
@@ -46,7 +46,7 @@ label teachingSecond:
     a "Then, we include the main logic of the program inside the function."
 
     #Second block of explanation
-    a "Let me come over there and ask you a question."
+    a "Let me ask you a question."
     show ale standing hand left side at aleAlign with fade
     show ale question hand both down with dissolve 
     a "Do you know how to call the main() function to execute the program?"

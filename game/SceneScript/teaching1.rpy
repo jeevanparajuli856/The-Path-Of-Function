@@ -6,27 +6,26 @@ label teachingfirst:
     play sound "teachingclass.mp3" fadein 1.0 fadeout 2.0 loop #changing the sound
     scene bg classroom with Fade(1.0,3.5,0.9) 
     show ale speaking hand left side at aleAlign with dissolve
-    a "Let me pull up a presentation on the board—it'll make understanding functions a lot easier."
+    a "Let me pull up my Function presentation on the smart board—it'll make understanding functions a lot easier."
     show ale speaking hand one fold with dissolve
-    a "I'll explain each slide while sitting beside you at your desk, so feel free to stop me if you have questions."
+    a "I'll explain each slide and feel free to stop me if you have questions."
     show ale standing hand one fold with dissolve
     k "Alright, Emma! I'm ready to tackle this."
     show ale speaking hand both wrist with dissolve
     a "Let's do this!"
-
     #starting of the slide
     scene bg classroom with fade
     with Pause(3.0)
-    show ale explaining hand left up at aleAlign with fade
-    show function with dissolve
+    show function with fade
+    show ale explaining hand left up at aleAlign with dissolve
     a "Today's topic is functions in Python."
     show ale speaking hand left side with dissolve
-    a "But before we dive in, Kevin, let me ask you something."
+    a "But before we dive in, Kevin, let me ask you question."
     show ale question hand right down  with dissolve
-    a "Do you know anything about Python's built-in functions?"
+    a "Do you remember anything about Python's built-in functions?"
     with Pause(1.0)
     menu: #to give option to the player
-        "Do you know about Python's built-in functions?" 
+        "Do you remember anything about Python's built-in functions?" 
         "Yes":
             call builInYes
         "No": 
@@ -40,18 +39,18 @@ label teachingfirst:
     a "Let me show you an example."
     show example int with dissolve
     a "Here you go, the 'int()' function."
-    a "This function takes any real number as input parameter and returns its integer value, ignoring the decimal part."
+    a "This function takes any real number as an input parameter and returns the real number value, ignoring the decimal part."
     a "Now let me give you another example using the int() function."
     scene bg classroom with fade
     show example int2 with dissolve
-    a "Here, let's use a diagram to visualize how the variable 'a' is assigned."
+    a "Here, let's use a diagram to visualize how the variable 'a' is assigned value."
     show example int2 arrowf with dissolve
     a "We've assigned the variable 'a' the value returned by int(2.6)."
     show example int2 arrows with dissolve
     a "Next, the variable 'a' is passed as an argument to another function, print()."
 
     #Input box question
-    a "Let me step aside for a moment and ask you a question."
+    a "Let me ask you a question."
     show example int2 arrows qns with dissolve
     show ale standing hand left side at aleAlign with dissolve
     show ale question hand left up at aleAlign with dissolve
@@ -89,13 +88,13 @@ label teachingfirst:
     show userdefine first funname with dissolve
     a "Next, you give your function a name. Make it descriptive, so you know what it does—no 'function123' nonsense!"
     show userdefine first param with dissolve
-    a "After the name, you add parentheses. Inside these, you can define parameters. Think of them as placeholders for the data your function will work with."
+    a "After the name, you add parentheses. Inside these, you can define zero or more formal parameters. Think of formal parameter as placeholders for the data your function will work with."
     a "Parameters work on a 'pass by position' system, meaning the order of the parameters is super important."
-    a "When you call the function in your code, you pass *arguments*, which are the actual values. These get matched with the parameters in the same order."
+    a "When you call a function in your program, you must pass as many actual values as there are formal parameters. These actual values are matched with the formal parameters in the same order."
     show userdefine first insidefun with dissolve
     a "Now, inside the function, you write the code that does the actual work. It could be calculations, printing, or whatever task you need."
     show userdefine first returns with dissolve
-    a "Finally, there's the return statement. It's like sending a package back—it gives you the function's result after all the work is done."
+    a "Finally, there's the return statement. The return statement sends the defined value back to the calling program."
     a "Got it so far? Great! Now, let me show you an example of a user-defined function."
 
     #ale come ahead and show the example
@@ -120,11 +119,11 @@ label teachingfirst:
     a "I'll sit beside you to explain this in detail."
     hide ale
     show fahren para with dissolve
-    a "As you know, fahrenheit is the parameter. This means that when we call the function elsewhere in the code, we need to pass a value for fahrenheit."
+    a "As you know, fahrenheit is the formal parameter. This means that when we call the function in the program, we need to pass a actual value for fahrenheit parameter."
     show fahren celbody with dissolve
-    a "Inside the function body, there's a statement that converts the value of fahrenheit to Celsius. The result is stored in a variable called celsius."
+    a "Inside the function body, there's a statement that converts the value held by formal parameter-fahrenheit to celsius value. The celsius value is stored in a variable called celsius."
     show fahren celqns with dissolve
-    a "Here's your next challenge: What value will the variable \"celsius\" hold if the function is called with an argument of 98?"
+    a "Here's your next challenge: What value will the function fahrenheitToCelsius return to calling program when an value of 98 is passed to function"
     call valcheck #calling the python script to check the answer
 
     #explanation of example
@@ -133,20 +132,20 @@ label teachingfirst:
     a "When we pass 98 as the argument, the second statement in the function converts the Fahrenheit value into Celsius and assigns it to the variable \"celsius\"."
     show ale standing hand both wrist
     show ale speaking hand both wrist with dissolve
-    a "The 'round()' method is used to limit the decimal value of 'celsius' to two decimal places."
+    a "The 'round()' method is used to limit the decimal value of the variable 'celsius' to two decimal places."
     show ale standing hand left side with dissolve
     show ale speaking hand left side with dissolve
     a "Now let's take a closer look at the return statement in the 'fahrenheitToCelsius' function."
     hide ale  #hiding the front image of ale
     show fahren returns with dissolve
-    a "At the end of the function, there's a return statement. This statement sends the value of 'celsius' back to wherever the function was called."
+    a "At the end of the function, there's a return statement. This statement sends the value of 'celsius' back to calling program"
     a "This way, the converted Celsius value can be used elsewhere in the program. Neat, right?"
     return
 
 
 label builInYes: #option for the builtInquestion
     show ale standing hand both fold with dissolve
-    k "Yeah, I know a little about them. Honestly, it's one of the few things I managed to focus on in class today."
+    k "Yeah, I remember a little about them. Honestly, it's one of the few things I managed to focus on in class today."
     show ale speaking hand both fold with dissolve
     a "Great! Let's quickly review those topics to make sure everything's crystal clear."
     return
@@ -164,15 +163,15 @@ label fahrYes: #option for second qns
     show ale speaking hand both wrist with dissolve
     a "That's right! You've got it, my friend."
     show ale speaking hand one fold with dissolve
-    a "The function name is fahrenheitToCelsius, and fahrenheit is its parameter. Great job catching that!"
+    a "The function name is fahrenheitToCelsius, and fahrenheit is its formal parameter. Great job catching that!"
     return
 label fahrNo:
     show ale standing hand both wrist with dissolve
     k "It's fahrenheit"
     show ale sad hand both wrist with dissolve
-    a "Not quite, Kevin. That’s the parameter, not the function name."
+    a "Not quite, Kevin. That’s the formal parameter, not the function name."
     show ale speaking one fold with dissolve
-    a "Think back to the syntax I just explained. The parameter goes inside the parentheses, and the function name comes before it."
+    a "Think back to the syntax I just explained. The formal parameter goes inside the parentheses, and the function name comes before it."
     show ale speaking hand left side with dissolve
     a "The correct function name is fahrenheitToCelsius. Don’t worry, you’ll get it next time!"
     return
