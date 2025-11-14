@@ -6,7 +6,7 @@ label teachingfirst:
     play sound "teachingclass.mp3" fadein 1.0 fadeout 2.0 loop #changing the sound
     scene bg classroom with Fade(1.0,3.5,0.9) 
     show ale speaking hand left side at aleAlign with dissolve
-    a "Let me pull up my Function presentation on the smart board—it'll make understanding functions a lot easier."
+    a "Let me pull up my Function presentation on the projector, it'll make understanding functions a lot easier."
     show ale speaking hand one fold with dissolve
     a "I'll explain each slide and feel free to stop me if you have questions."
     show ale standing hand one fold with dissolve
@@ -35,17 +35,17 @@ label teachingfirst:
     show ale speaking hand both wrist with dissolve
     a "Now let me sit down with you, and we'll get started with Python's built-in functions."
     hide ale with fade
-    a "Python has many built-in functions. Think of a function as a mini-program—it takes an input, processes it, and gives you an output."
+    a "Python has many built-in functions. Think of a function as a mini-program, it takes an input, processes it, and gives you an output."
     a "Let me show you an example."
     show example int with dissolve
     a "Here you go, the 'int()' function."
-    a "This function takes any real number as an input parameter and returns the real number value, ignoring the decimal part."
+    a "This function takes a number as input and returns an integer by removing the decimal part."
     a "Now let me give you another example using the int() function."
     scene bg classroom with fade
     show example int2 with dissolve
     a "Here, let's use a diagram to visualize how the variable 'a' is assigned value."
     show example int2 arrowf with dissolve
-    a "We've assigned the variable 'a' the value returned by int(2.6)."
+    a "In this case, we're assigning 'a' the value returned by int(2.6)."
     show example int2 arrows with dissolve
     a "Next, the variable 'a' is passed as an argument to another function, print()."
 
@@ -59,7 +59,7 @@ label teachingfirst:
 
     #Explaining the answer
     show ale explaining hand left up with dissolve
-    a "The answer is 2 because we passed the variable 'a' to print(), and its value is 2."
+    a "The answer is 2 because we passed the variable 'a' to print() as argument, and its value is 2."
     show ale speaking hand both wrist with dissolve
 
     #User define function explanation
@@ -67,11 +67,11 @@ label teachingfirst:
     show ale standing hand both wrist with dissolve
     k "Uh... not really. Did the professor even mention that?"
     show ale question hand left down angr with dissolve
-    a "Kevin, where was your head during class? The professor spent ages explaining this!"
+    a "Kevin, where was your head during class? The professor explained this for so long!"
     show ale standing hand left side with dissolve
     a "Sorry, Emma! I don't know why I can't focus in that class. You're literally my only hope right now."
     show ale speaking hand left side with dissolve
-    a "Alright, alright. Let's not waste time—let's talk about user-defined functions!"
+    a "Alright, alright! Let's not waste time. Let's talk about user-defined functions!"
     show ale explaining hand both down front with dissolve
     a "User-defined functions are lifesavers! They help you avoid repeating the same code and break down big problems into smaller, manageable chunks."
     show ale explaining hand right up with dissolve
@@ -86,7 +86,7 @@ label teachingfirst:
     show userdefine first def with dissolve
     a "Notice the word 'def'? That's the magic keyword for defining a function."
     show userdefine first funname with dissolve
-    a "Next, you give your function a name. Make it descriptive, so you know what it does—no 'function123' nonsense!"
+    a "Next, you give your function a name. Make it descriptive, so you know what it does but, none of that 'function123' nonsense!"
     show userdefine first param with dissolve
     a "After the name, you add parentheses. Inside these, you can define zero or more formal parameters. Think of formal parameter as placeholders for the data your function will work with."
     a "Parameters work on a 'pass by position' system, meaning the order of the parameters is super important."
@@ -153,7 +153,7 @@ label builtInNo: #Second option for the builtInquestion
     show ale standing hand both fold with dissolve
     k "Nope, today's lecture went completely over my head."
     show ale speaking hand both fold with dissolve
-    a "That's okay, Kevin. Don't worry—I'll walk you through it step by step."
+    a "That's okay, Kevin. Don't worry, I'll walk you through it step by step."
     return
 
 #second qns option
@@ -206,7 +206,7 @@ label valcheck:
         outputIn = renpy.input("What will be the value hold by celsius?",length =32)
         count =2;
         while(count!=0):
-            if(outputIn=="36.67"):
+            if(outputIn=="36.67" or outputIn=="36.7" or outputIn=="37"):
                 renpy.transition(dissolve)
                 
                 renpy.show("ale speaking hand both fold", at_list = [aleAlign])

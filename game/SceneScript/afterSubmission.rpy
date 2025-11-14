@@ -106,7 +106,7 @@ label afterDragNDrop:
     a "The call stack is a special part of memory that Python uses to remember which function it's currently working on, and where to return when it's done."
     a "You can imagine it like a stack of boxes or a pile of books."
     show ale speaking hand both fold with dissolve
-    a "Let me stay back with you and show it on the screen."
+    a "Let me with you and show it on the screen."
     hide ale
     show stack point main with fade
     a "As you can see, the first function that gets called is main(). It goes at the bottom of the stack." #arrow tala jharxa
@@ -114,15 +114,15 @@ label afterDragNDrop:
     a "main() starts executing. Eventually, it reaches the line that calls calculate_area(length, width) " #arrow pointing to that fun
     show stack point cal top with dissolve
     a "Now, Python places calculate_area() on top of the stack." # move that above stack
-    a "Python begins executing calculate_area(). When it reaches the return statement, the value is sent back to main()" # show the arrow of return
+    a "Python begins executing calculate_area(). When it reaches the return statement, the value of area is sent back to main()" # show the arrow of return
     show stack point cal pop with dissolve
-    a "calculate_area() is now done, so it’s popped off the stack." #remove stack. 
-    a "Python always works on the box at the top. When the function finishes, it's removed and Python goes back to previous box"
+    a "The calculate_area() is now completed, so it’s popped off the stack." #remove stack. 
+    a "Python always runs the function at the top of the stack. When that function finishes, Python pops it off the stack and then continues running the function that’s now on top."
     a "It's like opening notebooks one at a time, top to bottom, and then closing them in reverse."
-    a "area varaible get return value from calculate_area() function — in this case, the area is 50"
-    a "When main() also finishes executing, it’s removed from the stack too." 
+    a "The *area* variable in the main function is assigned with the return value from calculate_area() function so, in this case, the *area* variable receives a value of 50"
+    a "When main() finishes executing, it’s removed from the stack too." 
     show stack point main pop with fade
-    a "And now, the stack is clear!"# pop out the main() also. 
+    a "And now, the stack is empty!"# pop out the main() also. 
     
     #Last Question
     scene bg classroom with fade
@@ -148,7 +148,7 @@ label lastCorrect:
     return
 label lastWrong:
     show ale explaining hand both down front at aleAlign with dissolve
-    a "Close, but not quite. calculate_area() was removed first — right after it returned a value. The last one to go was main()."
+    a "Close, but not quite. calculate_area() was removed first when right after it returned a value. The last one to go was main()."
     call ending
     return
     
@@ -166,7 +166,7 @@ label ending:
     show ale speaking hand one fold with dissolve
     a "Remember, programming is all about solving problems step by step. You've got this."
     show ale standing hand both fold with dissolve
-    k "I’ll review everything again tonight — but yeah, I’m feeling confident."
+    k "I’ll review everything again tonight, but yeah, I’m feeling confident."
     show ale speaking hand both wrist with dissolve
     a "Let’s pack up and head home."#now scence change in ale standing
 
@@ -182,11 +182,11 @@ label ending:
     a "Come on, Kevin. Alright, see you tomorrow!"
     scene bg ale final bye with fade
     # now ale start walking. 
-    k "She’s the best. I’m going to give it my all tomorrow."
+    k "She really is the best. I'm going to give it everything tomorrow."
     k "it’s already 6! I better head home now."
     scene black with fade
     with Pause(2.0)
     hide ale
     show text "Thank you for Playing and Learning!" with dissolve
-    with Pause(3.0)
+    with Pause(4.0)
     return

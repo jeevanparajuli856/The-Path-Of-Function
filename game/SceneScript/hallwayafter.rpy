@@ -6,6 +6,6 @@ label hallwayafter:
     show ale standing hand both wrist at aligner with dissolve 
     k "Hi, Emma! Thank you so much for coming. I really appreciate it."
     show ale speaking hand both wrist with dissolve
-    a "Of course! Now, let's head to class and get started."
+    a "Of course! Now, let's head to lab and get started."
     #The hallway after scene complete
     return

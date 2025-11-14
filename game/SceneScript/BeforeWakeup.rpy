@@ -8,7 +8,7 @@ label inbed:
 
     # scene first where kevin dreaming
     scene bg dream with fade #need to change this background so that its looks like dreamn add with cloud.
-    t "Kevin, You failed the last Introduction to Programming exam. This isn't acceptable—you need to start taking this classes seriously!"
+    t "Kevin, You failed the last Introduction to Programming exam. This isn't acceptable, you need to start taking this classes seriously!"
     scene bg dream scolding with dissolve
     t"Kevin?... Kevin?...Kevin?... Kevin?..."
     t "Are you even listening to me?" 

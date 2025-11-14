@@ -11,7 +11,7 @@ label hallway:
     show ale standing hand left side with dissolve
     k "Not much. Just trying to survive our Introduction to programming class."
     show ale speaking hand both fold with dissolve
-    a "Is there anything I can do for help"
+    a "Is there anything I can do for help?"
     show ale standing hand both fold with dissolve
     k "That would be great!!! I'm struggling. Functions have me completely lost."
     show ale blush fold with fade
@@ -21,11 +21,11 @@ label hallway:
     show ale speaking hand one fold with dissolve
     a "Of course! Where do you want to meet and at what time?"
     show ale standing hand left side with dissolve
-    k "The computer science major lab should be empty after 5 P.M. Does that work?"
+    k "The computer science lab should be free after 5 P.M. Does that work for you?"
     show ale speaking hand together with dissolve
     a "Perfect! I'll meet you there."
     show ale bye at aligner with dissolve 
     a "See you later, Kevin!"
-    k "See you, Emma! And thanks—you're the best!"
+    k "See you, Emma! And thanks, you're the best!"
     #completion of hallway scene
     return

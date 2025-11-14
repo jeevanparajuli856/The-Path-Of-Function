@@ -4,3 +4,12 @@ progressive_download.txt
 project.json
 traceback.txt
 .vscode
+/game/saves
+game/cache
+/game/temp
+/game/logs
+/game/screenshots
+/game/mods
+/game/plugins
+.DS_Store
+traceback.txt

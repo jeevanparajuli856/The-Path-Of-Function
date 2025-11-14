@@ -25,10 +25,10 @@ label teachingSecond:
     show fahren2 returns with dissolve
     a "The value return by fahrenheitToCelsius() function is stored in another variable called **celsius**, which in this case will be 37.78."
     show fahren2 print with dissolve
-    a "After that, the print() statement executes to display the result."
+    a "After that, the print() statement execute to display the result. Inside print(), str() converts the Celsius value into a string, and chr(176) converts the ASCII code 176 into the degree symbol (°)."
     a "However, let me point out something important."
     show fahren2 last3 with dissolve
-    a "It's not a good practice to write the main logic of a program—like the last three lines in this example—outside a specific block."
+    a "It's not a good practice to write the main logic of a program, like the last three lines in this example, outside a specific block."
     a "Instead, it's better to encapsulate the main logic within a `main()` function"
 
     #Starting main() function concept
@@ -81,7 +81,7 @@ label teachingSecond:
 
     with Fade(0.5,1,0.5)
     call dragqns ## drang and drop qns call
-    return
+    return  # first round edit completed till here
 
 #Will this program execute? qns option
 label exYes:
