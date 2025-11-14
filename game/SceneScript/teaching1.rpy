@@ -177,50 +177,108 @@ label fahrNo:
     return
 
 #checking the fist input qns
-label inputCheck: 
-    python:
-        outputIn = renpy.input("What will be the output?",length =32)
-        count =2;
-        while(count!=0):
-            if(outputIn=="2"):
-                renpy.transition(dissolve) #using the renpy script in python block
-                renpy.show("ale speaking hand left side")
-                renpy.say(a,"You got it right!")
-                count=0
-            else:
-                renpy.transition(moveinleft)
-                renpy.call_screen("notiGuide",count) #important to call the screen. It is calling the another frame that is pop when user enter wrong answer and show how many chance is left
-                renpy.transition(dissolve)
-                outputIn = renpy.input("What will be the output?",length =32)
-                count-=1
-                if(count==0):
-                    renpy.transition(dissolve)
-                    renpy.show("ale sad hand left side")
-                    renpy.say(a,"Kevin, you gave a wrong answer.")
+# label inputCheck: #old version of input check we used that we used default input box.
+#     python:
+#         outputIn = renpy.input("What will be the output?",length =32)
+#         count =2;
+#         while(count!=0):
+#             if(outputIn=="2"):
+#                 renpy.transition(dissolve) #using the renpy script in python block
+#                 renpy.show("ale speaking hand left side")
+#                 renpy.say(a,"You got it right!")
+#                 count=0
+#             else:
+#                 renpy.transition(moveinleft)
+#                 renpy.call_screen("notiGuide",count) #important to call the screen. It is calling the another frame that is pop when user enter wrong answer and show how many chance is left
+#                 renpy.transition(dissolve)
+#                 outputIn = renpy.input("What will be the output?",length =32)
+#                 count-=1
+#                 if(count==0):
+#                     renpy.transition(dissolve)
+#                     renpy.show("ale sad hand left side")
+#                     renpy.say(a,"Kevin, you gave a wrong answer.")
+#     return
+
+label inputCheck:
+    default answer = ""
+    $ count = 3
+    
+    while count != 0:
+
+        call screen custom_input("What will be the output?", "answer")
+        $ outputIn = answer
+
+        if outputIn == "2":
+            with dissolve
+            show ale speaking hand left side
+            a "You got it right!"
+            $ count = 0
+
+        else:
+
+            $ count -= 1
+            if count == 0:
+                with dissolve
+                show ale sad hand left side
+                a "Kevin, you gave a wrong answer."
+                with moveinleft
+            else: 
+                call screen notiGuide(count)
+                with dissolve
+
     return
 
 
+
 #checking the second input qns
-label valcheck: 
-    python:
-        outputIn = renpy.input("What will be the value hold by celsius?",length =32)
-        count =2;
-        while(count!=0):
-            if(outputIn=="36.67" or outputIn=="36.7" or outputIn=="37"):
-                renpy.transition(dissolve)
+# label valcheck: 
+#     python:
+#         outputIn = renpy.input("What will be the value hold by celsius?",length =32)
+#         count =2;
+#         while(count!=0):
+#             if(outputIn=="36.67" or outputIn=="36.7" or outputIn=="37"):
+#                 renpy.transition(dissolve)
                 
-                renpy.show("ale speaking hand both fold", at_list = [aleAlign])
-                renpy.say(a,"You got it. Right answer!")
-                count=0
-            else:
-                renpy.transition(moveinleft)
-                renpy.call_screen("notiGuide",count)
-                renpy.transition(dissolve)
-                outputIn = renpy.input("What will be the value hold by celsius?",length =32)
-                count-=1
-                if(count==0):
-                    renpy.transition(dissolve)
-                    renpy.show("ale sad hand both fold",at_list = [aleAlign])
-                    renpy.say(a,"Kevin, It's not a right answer.")
+#                 renpy.show("ale speaking hand both fold", at_list = [aleAlign])
+#                 renpy.say(a,"You got it. Right answer!")
+#                 count=0
+#             else:
+#                 renpy.transition(moveinleft)
+#                 renpy.call_screen("notiGuide",count)
+#                 renpy.transition(dissolve)
+#                 outputIn = renpy.input("What will be the value hold by celsius?",length =32)
+#                 count-=1
+#                 if(count==0):
+#                     renpy.transition(dissolve)
+#                     renpy.show("ale sad hand both fold",at_list = [aleAlign])
+#                     renpy.say(a,"Kevin, It's not a right answer.")
                 
-return
+# return
+
+label valcheck:
+    default answer2 = ""
+    $ count = 3
+    
+    while count != 0:
+
+        call screen custom_input("What will be the value hold by celsius?", "answer2")
+        $ outputIn = answer2
+
+        if (outputIn=="36.67" or outputIn=="36.7" or outputIn=="37" or outputIn == "36.66"):
+            with dissolve
+            show ale speaking hand both fold at aleAlign
+            a "You got it. Right answer!"
+            $ count = 0
+
+        else:
+
+            $ count -= 1
+            if count == 0:
+                with dissolve
+                show ale sad hand both fold
+                a "Kevin, It's not a right answer."
+                with moveinleft
+            else: 
+                call screen notiGuide(count)
+                with dissolve
+    return

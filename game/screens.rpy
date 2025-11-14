@@ -1628,3 +1628,39 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 900
+
+#custom input box
+screen custom_input(prompt, variable):
+    modal True
+    key "K_RETURN" action Return(True)
+    frame:
+        background Frame("gui/input_frame.png", 20, 20)
+        padding (20, 20)
+        xalign 0.5
+        yalign 0.5
+
+        vbox:
+            spacing 20
+            xalign 0.5
+
+            text prompt style "input_prompt" xalign 0.5
+
+            frame:
+                style "input_box"
+                xalign 0.5
+                xsize 800
+
+                input:
+                    value VariableInputValue(variable)
+                    length 32
+                    style "input_text"
+
+
+style input_box:
+    background Frame("gui/textbox.png", 20, 20)
+    padding (15, 20)
+
+style input_text:
+    color "#000"
+    size 42
+    xalign 0.5
