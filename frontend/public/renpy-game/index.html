@@ -236,9 +236,17 @@
           } catch (e) {
               console.warn('sendToFrontend bridge error:', e);
           }
-
           return false;
       };
+
+      // Let parent know bridge is ready for telemetry.
+      try {
+          if (window.parent && window.parent !== window) {
+              window.parent.postMessage({ type: 'bridge_ready', payload: {} }, '*');
+          }
+      } catch (e) {
+          console.warn('bridge_ready postMessage failed:', e);
+      }
 
       // Register the service worker.
       if (navigator.serviceWorker) {
