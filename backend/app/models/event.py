@@ -3,9 +3,11 @@ Event Logging Models
 Tracks all game events, quiz attempts, and checkpoint verifications
 """
 
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean, Text, Float, JSON
+from sqlalchemy import Column, String, DateTime, ForeignKey, Text, Boolean, JSON
+from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from datetime import datetime
+import uuid
 
 from app.core.database import Base
 
@@ -17,8 +19,8 @@ class EventLog(Base):
     """
     __tablename__ = "event_logs"
     
-    id = Column(Integer, primary_key=True, index=True)
-    session_id = Column(Integer, ForeignKey("game_sessions.id"), nullable=False, index=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, index=True)
+    session_id = Column(UUID(as_uuid=True), ForeignKey("game_sessions.id"), nullable=False, index=True)
     event_type = Column(String(50), nullable=False, index=True)
     event_data = Column(JSON, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
@@ -37,8 +39,8 @@ class QuizAttempt(Base):
     """
     __tablename__ = "quiz_attempts"
     
-    id = Column(Integer, primary_key=True, index=True)
-    session_id = Column(Integer, ForeignKey("game_sessions.id"), nullable=False, index=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, index=True)
+    session_id = Column(UUID(as_uuid=True), ForeignKey("game_sessions.id"), nullable=False, index=True)
     quiz_id = Column(String(50), nullable=False, index=True)
     answer_given = Column(Text, nullable=True)
     is_correct = Column(Boolean, nullable=False)
@@ -60,8 +62,8 @@ class CheckpointVerification(Base):
     """
     __tablename__ = "checkpoint_verifications"
     
-    id = Column(Integer, primary_key=True, index=True)
-    session_id = Column(Integer, ForeignKey("game_sessions.id"), nullable=False, index=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, index=True)
+    session_id = Column(UUID(as_uuid=True), ForeignKey("game_sessions.id"), nullable=False, index=True)
     checkpoint_number = Column(Integer, nullable=False)
     code_entered = Column(String(50), nullable=False)
     is_correct = Column(Boolean, nullable=False)

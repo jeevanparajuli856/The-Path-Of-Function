@@ -13,10 +13,9 @@ import json
 
 from app.core.database import get_db
 from app.middleware.auth import verify_session_token
-# TODO: Import models and schemas after creation
-# from app.models.session import GameSession
-# from app.models.event import EventLog, QuizAttempt, CheckpointVerification
-# from app.schemas.game import EventRequest, CheckpointRequest
+from app.models.session import GameSession
+from app.models.event import EventLog, QuizAttempt, CheckpointVerification
+from app.schemas.game import EventRequest, CheckpointRequest, SessionEndRequest
 
 logger = logging.getLogger(__name__)
 
@@ -29,51 +28,13 @@ router = APIRouter()
 
 @router.post("/event")
 async def log_game_event(
-    # event: EventRequest,  # TODO: Use schema
-    event: Dict[str, Any],
+    event: EventRequest,
     session: dict = Depends(verify_session_token),
     db: AsyncSession = Depends(get_db)
 ):
     """
     Log a game event from Ren'Py
-    
-    Request:
-        {
-            "session_token": "abc123...",
-            "event_type": "scene_enter",
-            "event_data": {
-                "scene_id": "teachingfirst",
-                "timestamp": "2024-01-15T10:30:00Z"
-            }
-        }
-    
-    Response:
-        {
-            "success": true,
-            "event_id": 123,
-            "session_id": 42
-        }
-    
-    Event Types (see EVENT_TAXONOMY.md):
-    - session_start
-    - scene_enter
-    - scene_exit
-    - choice_made
-    - quiz_start
-    - quiz_result
-    - assessment_start
-    - assessment_submit
-    - assessment_result
-    - checkpoint_attempt
-    - checkpoint_pass
-    - checkpoint_fail
-    - help_requested
-    - error_occurred
-    - timer_update
-    - session_end
     """
-    event_type = event.get("event_type")
-    event_data = event.get("event_data", {})
     session_id = session["session_id"]
     
     # Validate event type
@@ -85,33 +46,31 @@ async def log_game_event(
         "timer_update", "session_end"
     ]
     
-    if event_type not in valid_event_types:
+    if event.event_type not in valid_event_types:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Invalid event type: {event_type}"
+            detail=f"Invalid event type: {event.event_type}"
         )
     
-    # TODO: Save to database after creating models
-    """
     # Create event log entry
     event_log = EventLog(
         session_id=session_id,
-        event_type=event_type,
-        event_data=event_data,
+        event_type=event.event_type,
+        event_data=event.event_data or {},
         created_at=datetime.now()
     )
     
     db.add(event_log)
     
     # Special handling for quiz results
-    if event_type == "quiz_result":
+    if event.event_type == "quiz_result" and event.event_data:
         quiz_attempt = QuizAttempt(
             session_id=session_id,
-            quiz_id=event_data.get("quiz_id"),
-            answer_given=event_data.get("answer"),
-            is_correct=event_data.get("correct"),
-            attempts_count=event_data.get("attempt_number", 1),
-            time_spent_seconds=event_data.get("time_spent")
+            quiz_id=event.event_data.get("quiz_id"),
+            answer_given=event.event_data.get("answer"),
+            is_correct=event.event_data.get("correct", False),
+            attempts_count=event.event_data.get("attempt_number", 1),
+            time_spent_seconds=event.event_data.get("time_spent")
         )
         db.add(quiz_attempt)
     
@@ -119,7 +78,7 @@ async def log_game_event(
     await db.refresh(event_log)
     
     logger.info(
-        f"Event logged: session={session_id}, type={event_type}, "
+        f"Event logged: session={session_id}, type={event.event_type}, "
         f"event_id={event_log.id}"
     )
     
@@ -127,17 +86,6 @@ async def log_game_event(
         "success": True,
         "event_id": event_log.id,
         "session_id": session_id
-    }
-    """
-    
-    # Placeholder response
-    logger.info(f"Event logged: session={session_id}, type={event_type}")
-    
-    return {
-        "success": True,
-        "event_id": 123,
-        "session_id": session_id,
-        "event_type": event_type
     }
 
 
@@ -216,39 +164,15 @@ async def log_game_events_batch(
 
 @router.post("/checkpoint")
 async def verify_checkpoint(
-    # request: CheckpointRequest,  # TODO: Use schema
-    request: dict,
+    request: CheckpointRequest,
     session: dict = Depends(verify_session_token),
     db: AsyncSession = Depends(get_db)
 ):
     """
     Verify a checkpoint code entered by student
-    
-    Request:
-        {
-            "session_token": "abc123...",
-            "checkpoint_number": 1,
-            "code_entered": "FUNC123"
-        }
-    
-    Response (correct):
-        {
-            "verified": true,
-            "checkpoint": 1,
-            "message": "Checkpoint verified! Continue to next section.",
-            "attempts_used": 1
-        }
-    
-    Response (incorrect):
-        {
-            "verified": false,
-            "checkpoint": 1,
-            "message": "Incorrect code. Try again.",
-            "attempts_remaining": 2
-        }
     """
-    checkpoint_number = request.get("checkpoint_number")
-    code_entered = request.get("code_entered", "").strip().upper()
+    checkpoint_number = request.checkpoint_number
+    code_entered = request.code_entered.strip().upper()
     session_id = session["session_id"]
     
     # Define correct checkpoint codes (from EVENT_TAXONOMY.md)
@@ -266,8 +190,6 @@ async def verify_checkpoint(
     # Check if code is correct
     is_correct = code_entered == CHECKPOINT_CODES[checkpoint_number]
     
-    # TODO: Save verification attempt
-    """
     # Get current attempts count
     attempts_result = await db.execute(
         select(func.count(CheckpointVerification.id))
@@ -322,25 +244,6 @@ async def verify_checkpoint(
             "checkpoint": checkpoint_number,
             "message": "Incorrect code. Try again.",
             "attempts_remaining": max(0, 3 - attempts_count)
-        }
-    """
-    
-    # Placeholder response
-    logger.info(f"Checkpoint verification: session={session_id}, checkpoint={checkpoint_number}")
-    
-    if is_correct:
-        return {
-            "verified": True,
-            "checkpoint": checkpoint_number,
-            "message": "Checkpoint verified! Continue to next section.",
-            "attempts_used": 1
-        }
-    else:
-        return {
-            "verified": False,
-            "checkpoint": checkpoint_number,
-            "message": "Incorrect code. Try again.",
-            "attempts_remaining": 2
         }
 
 

@@ -72,7 +72,13 @@ async def init_db() -> None:
         logger.info("✅ Database connection established successfully")
     except Exception as e:
         logger.error(f"❌ Database connection failed: {e}")
-        raise
+        # In development, allow server to start even if database is unreachable
+        # This lets us work on implementation while troubleshooting connectivity
+        if settings.ENVIRONMENT == "development":
+            logger.warning("⚠️  Running in development mode without database connection")
+            logger.warning("⚠️  API endpoints will fail until database is accessible")
+        else:
+            raise
 
 
 async def close_db() -> None:

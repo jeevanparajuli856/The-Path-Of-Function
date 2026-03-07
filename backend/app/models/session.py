@@ -3,9 +3,11 @@ Game Session Model
 Tracks individual student gameplay sessions
 """
 
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Float, Text, JSON
+from sqlalchemy import Column, String, Boolean, DateTime, ForeignKey, Text, JSON
+from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from datetime import datetime
+import uuid
 
 from app.core.database import Base
 
@@ -17,9 +19,9 @@ class GameSession(Base):
     """
     __tablename__ = "game_sessions"
     
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, index=True)
     session_token = Column(String(255), unique=True, nullable=False, index=True)
-    code_id = Column(Integer, ForeignKey("access_codes.id"), nullable=False)
+    code_id = Column(UUID(as_uuid=True), ForeignKey("access_codes.id"), nullable=False)
     treatment_group = Column(String(50), nullable=True, index=True)
     
     # Timestamps

@@ -3,8 +3,10 @@ Audit Log and Research Configuration Models
 System auditing and research settings
 """
 
-from sqlalchemy import Column, Integer, String, DateTime, Text, JSON
+from sqlalchemy import Column, String, Text, DateTime, JSON
+from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
+import uuid
 
 from app.core.database import Base
 
@@ -16,7 +18,7 @@ class AuditLog(Base):
     """
     __tablename__ = "audit_logs"
     
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, index=True)
     admin_email = Column(String(255), nullable=True, index=True)
     action = Column(String(100), nullable=False)
     resource_type = Column(String(50), nullable=True)
@@ -37,7 +39,7 @@ class ResearchConfig(Base):
     """
     __tablename__ = "research_configs"
     
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, index=True)
     config_key = Column(String(100), unique=True, nullable=False, index=True)
     config_value = Column(JSON, nullable=True)
     description = Column(Text, nullable=True)
@@ -55,14 +57,14 @@ class AIInteraction(Base):
     """
     __tablename__ = "ai_interactions"
     
-    id = Column(Integer, primary_key=True, index=True)
-    session_id = Column(Integer, nullable=True, index=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, index=True)
+    session_id = Column(UUID(as_uuid=True), nullable=True, index=True)
     interaction_type = Column(String(50), nullable=True)
     user_input = Column(Text, nullable=True)
     ai_response = Column(Text, nullable=True)
     model_used = Column(String(100), nullable=True)
-    metadata = Column(JSON, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    interaction_metadata = Column(JSON, nullable=True)  # Renamed from 'metadata' to avoid SQLAlchemy conflict
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
     
     def __repr__(self):
         return f"<AIInteraction(id={self.id}, type='{self.interaction_type}')>"

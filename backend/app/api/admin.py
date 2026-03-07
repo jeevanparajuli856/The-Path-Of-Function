@@ -17,10 +17,11 @@ from app.core.security import (
     verify_password,
 )
 from app.middleware.auth import require_admin, get_current_admin_user
-# TODO: Import models and schemas after creation
-# from app.models.admin import AdminUser
-# from app.models.code import AccessCode, CodeBatch
-# from app.schemas.admin import LoginRequest, TokenResponse, CodeGenerationRequest
+from app.models.admin import AdminUser
+from app.models.code import AccessCode, CodeBatch
+from app.models.session import GameSession
+from app.models.event import EventLog, QuizAttempt
+from app.schemas.admin import LoginRequest, TokenResponse, CodeGenerationRequest, DashboardSummary
 
 logger = logging.getLogger(__name__)
 
@@ -31,10 +32,9 @@ router = APIRouter()
 # AUTHENTICATION
 # ============================================================================
 
-@router.post("/login", response_model=dict)
+@router.post("/login", response_model=TokenResponse)
 async def admin_login(
-    # login_data: LoginRequest,  # TODO: Use schema
-    login_data: dict,
+    login_data: LoginRequest,
     db: AsyncSession = Depends(get_db)
 ):
     """
@@ -53,11 +53,10 @@ async def admin_login(
             "expires_in": 86400
         }
     """
-    email = login_data.get("email")
-    password = login_data.get("password")
+    email = login_data.email
+    password = login_data.password
     
-    # TODO: Verify against database after creating AdminUser model
-    """
+    # Query admin user
     result = await db.execute(
         select(AdminUser).where(AdminUser.email == email)
     )
@@ -80,11 +79,10 @@ async def admin_login(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Account is inactive"
         )
-    """
     
     # Create access token
     token = create_access_token(
-        data={"sub": email, "role": "admin"}
+        data={"sub": email, "role": "admin", "id": admin.id}
     )
     
     logger.info(f"Admin login: {email}")
@@ -113,8 +111,7 @@ async def admin_logout(
 
 @router.post("/generate-codes", response_model=dict)
 async def generate_access_codes(
-    # request: CodeGenerationRequest,  # TODO: Use schema
-    request: dict,
+    request: CodeGenerationRequest,
     db: AsyncSession = Depends(get_db),
     current_user: dict = Depends(require_admin)
 ):
@@ -136,39 +133,35 @@ async def generate_access_codes(
             "codes": ["A3H9K2", "D4F7M3", ...]
         }
     """
-    batch_name = request.get("batch_name")
-    num_codes = request.get("num_codes", 10)
-    treatment_group = request.get("treatment_group")
-    
-    if num_codes < 1 or num_codes > 1000:
+    if request.num_codes < 1 or request.num_codes > 1000:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Number of codes must be between 1 and 1000"
         )
     
-    # TODO: Implement after creating models
-    """
     # Create batch
     batch = CodeBatch(
-        batch_name=batch_name,
+        batch_name=request.batch_name,
         created_by_admin_id=current_user["id"],
-        treatment_group=treatment_group
+        treatment_group=request.treatment_group,
+        notes=request.notes
     )
     db.add(batch)
     await db.flush()
     
-    # Generate codes
+    # Generate codes using database function
     codes = []
-    for _ in range(num_codes):
-        code = await db.execute(
+    for _ in range(request.num_codes):
+        code_result = await db.execute(
             select(func.generate_access_code())
         )
-        code_value = code.scalar()
+        code_value = code_result.scalar()
         
         access_code = AccessCode(
             code=code_value,
             batch_id=batch.id,
-            treatment_group=treatment_group
+            treatment_group=request.treatment_group,
+            expires_at=request.expires_at
         )
         codes.append(access_code)
     
@@ -176,23 +169,16 @@ async def generate_access_codes(
     await db.commit()
     
     logger.info(
-        f"Generated {num_codes} codes in batch '{batch_name}' "
+        f"Generated {request.num_codes} codes in batch '{request.batch_name}' "
         f"by {current_user['sub']}"
     )
     
     return {
         "batch_id": batch.id,
-        "codes_generated": num_codes,
-        "codes": [c.code for c in codes]
-    }
-    """
-    
-    # Placeholder response
-    logger.info(f"Code generation requested: {num_codes} codes by {current_user['sub']}")
-    return {
-        "batch_id": 1,
-        "codes_generated": num_codes,
-        "codes": ["TEST123"] * num_codes
+        "codes_generated": request.num_codes,
+        "codes": [c.code for c in codes],
+        "batch_name": batch.batch_name,
+        "treatment_group": batch.treatment_group
     }
 
 
@@ -216,37 +202,41 @@ async def list_code_batches(
             }
         ]
     """
-    # TODO: Implement after creating models
-    """
     result = await db.execute(
-        select(CodeBatch).order_by(CodeBatch.created_at.desc())
+        select(CodeBatch)
+        .order_by(CodeBatch.created_at.desc())
     )
     batches = result.scalars().all()
     
-    return [
-        {
+    batch_list = []
+    for batch in batches:
+        # Count codes in this batch
+        total_result = await db.execute(
+            select(func.count(AccessCode.id))
+            .where(AccessCode.batch_id == batch.id)
+        )
+        total_codes = total_result.scalar()
+        
+        # Count used codes
+        used_result = await db.execute(
+            select(func.count(AccessCode.id))
+            .where(
+                AccessCode.batch_id == batch.id,
+                AccessCode.used_at.isnot(None)
+            )
+        )
+        used_codes = used_result.scalar()
+        
+        batch_list.append({
             "batch_id": batch.id,
             "batch_name": batch.batch_name,
-            "total_codes": len(batch.codes),
-            "used_codes": sum(1 for c in batch.codes if c.used_at is not None),
+            "total_codes": total_codes,
+            "used_codes": used_codes,
             "treatment_group": batch.treatment_group,
-            "created_at": batch.created_at
-        }
-        for batch in batches
-    ]
-    """
+            "created_at": batch.created_at.isoformat()
+        })
     
-    # Placeholder response
-    return [
-        {
-            "batch_id": 1,
-            "batch_name": "Test Batch",
-            "total_codes": 10,
-            "used_codes": 0,
-            "treatment_group": "control",
-            "created_at": datetime.now().isoformat()
-        }
-    ]
+    return batch_list
 
 
 # ============================================================================
@@ -334,26 +324,53 @@ async def get_dashboard_summary(
             "quiz_avg_score": 78.3
         }
     """
-    # TODO: Query database views for aggregated stats
-    """
-    # Use pre-built database views for performance
-    summary = await db.execute(
-        select(
-            func.count(AccessCode.id).label("total_codes"),
-            func.count(GameSession.id).label("active_sessions"),
-            func.avg(GameSession.duration_minutes).label("avg_time")
-        )
+    # Total codes
+    total_codes_result = await db.execute(
+        select(func.count(AccessCode.id))
     )
-    """
+    total_codes = total_codes_result.scalar() or 0
     
-    # Placeholder response
+    # Used codes
+    used_codes_result = await db.execute(
+        select(func.count(AccessCode.id))
+        .where(AccessCode.used_at.isnot(None))
+    )
+    used_codes = used_codes_result.scalar() or 0
+    
+    # Active sessions (not ended)
+    active_sessions_result = await db.execute(
+        select(func.count(GameSession.id))
+        .where(GameSession.ended_at.is_(None))
+    )
+    active_sessions = active_sessions_result.scalar() or 0
+    
+    # Completed sessions
+    completed_sessions_result = await db.execute(
+        select(func.count(GameSession.id))
+        .where(GameSession.completion_status == "completed")
+    )
+    completed_sessions = completed_sessions_result.scalar() or 0
+    
+    # Average completion time
+    avg_time_result = await db.execute(
+        select(func.avg(GameSession.duration_minutes))
+        .where(GameSession.completion_status == "completed")
+    )
+    avg_completion_time = avg_time_result.scalar() or 0.0
+    
+    # Average quiz score
+    avg_quiz_result = await db.execute(
+        select(func.avg(func.cast(QuizAttempt.is_correct, 'INTEGER')) * 100)
+    )
+    avg_quiz_score = avg_quiz_result.scalar() or 0.0
+    
     return {
-        "total_codes": 100,
-        "used_codes": 45,
-        "active_sessions": 12,
-        "completed_sessions": 33,
-        "avg_completion_time_minutes": 42.5,
-        "quiz_avg_score": 78.3,
+        "total_codes": total_codes,
+        "used_codes": used_codes,
+        "active_sessions": active_sessions,
+        "completed_sessions": completed_sessions,
+        "avg_completion_time_minutes": round(float(avg_completion_time), 1),
+        "quiz_avg_score": round(float(avg_quiz_score), 1),
         "last_updated": datetime.now().isoformat()
     }
 

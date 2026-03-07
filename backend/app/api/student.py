@@ -11,10 +11,9 @@ import logging
 
 from app.core.database import get_db
 from app.core.security import generate_session_token, validate_code_format
-# TODO: Import models and schemas after creation
-# from app.models.code import AccessCode
-# from app.models.session import GameSession
-# from app.schemas.student import ValidateCodeRequest, SessionResponse
+from app.models.code import AccessCode
+from app.models.session import GameSession
+from app.schemas.student import ValidateCodeRequest, StartSessionRequest, SessionResponse
 
 logger = logging.getLogger(__name__)
 
@@ -27,44 +26,13 @@ router = APIRouter()
 
 @router.post("/validate-code", response_model=dict)
 async def validate_access_code(
-    # request: ValidateCodeRequest,  # TODO: Use schema
-    request: dict,
+    request: ValidateCodeRequest,
     db: AsyncSession = Depends(get_db)
 ):
     """
     Validate an access code and check if it can be used
-    
-    Request:
-        {
-            "code": "A3H9K2"
-        }
-    
-    Response (valid):
-        {
-            "valid": true,
-            "code": "A3H9K2",
-            "can_start": true,
-            "treatment_group": "control",
-            "message": "Code is valid. You can start the game."
-        }
-    
-    Response (already used):
-        {
-            "valid": true,
-            "code": "A3H9K2",
-            "can_start": false,
-            "can_resume": true,
-            "message": "Code already used. You can resume your previous session.",
-            "last_session_id": 123
-        }
-    
-    Response (invalid):
-        {
-            "valid": false,
-            "message": "Invalid access code"
-        }
     """
-    code = request.get("code", "").strip().upper()
+    code = request.code.strip().upper()
     
     # Validate format
     if not validate_code_format(code):
@@ -73,8 +41,7 @@ async def validate_access_code(
             detail="Invalid code format"
         )
     
-    # TODO: Query database after creating models
-    """
+    # Query database
     result = await db.execute(
         select(AccessCode).where(AccessCode.code == code)
     )
@@ -108,14 +75,11 @@ async def validate_access_code(
         )
         last_session = session_result.scalar_one_or_none()
         
-        # Check if can resume
+        # Check if can resume (within 7 days and not completed)
         can_resume = False
         if last_session and not last_session.ended_at:
-            # Use database function to check resume eligibility
-            resume_check = await db.execute(
-                select(func.can_resume_session(code))
-            )
-            can_resume = resume_check.scalar()
+            time_since_start = datetime.now() - last_session.started_at
+            can_resume = time_since_start.days < 7
         
         return {
             "valid": True,
@@ -139,50 +103,22 @@ async def validate_access_code(
         "treatment_group": access_code.treatment_group,
         "message": "Code is valid. You can start the game."
     }
-    """
-    
-    # Placeholder response
-    logger.info(f"Code validation requested: {code}")
-    return {
-        "valid": True,
-        "code": code,
-        "can_start": True,
-        "treatment_group": "control",
-        "message": "Code is valid. You can start the game."
-    }
 
 
 # ============================================================================
 # SESSION MANAGEMENT
 # ============================================================================
 
-@router.post("/start-session", response_model=dict)
+@router.post("/start-session", response_model=SessionResponse)
 async def start_game_session(
-    # request: StartSessionRequest,  # TODO: Use schema
-    request: dict,
+    request: StartSessionRequest,
     db: AsyncSession = Depends(get_db)
 ):
     """
     Start a new game session with a validated code
-    
-    Request:
-        {
-            "code": "A3H9K2"
-        }
-    
-    Response:
-        {
-            "session_token": "abc123...",
-            "session_id": 42,
-            "treatment_group": "control",
-            "game_url": "https://your-vercel-app.com/game?token=abc123...",
-            "expires_in": 604800
-        }
     """
-    code = request.get("code", "").strip().upper()
+    code = request.code.strip().upper()
     
-    # TODO: Implement session creation after models
-    """
     # Verify code exists and is unused
     result = await db.execute(
         select(AccessCode).where(
@@ -223,19 +159,6 @@ async def start_game_session(
         "treatment_group": session.treatment_group,
         "game_url": f"https://your-vercel-app.com/game?token={session_token}",
         "expires_in": 604800  # 7 days in seconds
-    }
-    """
-    
-    # Placeholder response
-    session_token = generate_session_token()
-    logger.info(f"Session start requested: code={code}")
-    
-    return {
-        "session_token": session_token,
-        "session_id": 1,
-        "treatment_group": "control",
-        "game_url": f"https://your-vercel-app.com/game?token={session_token}",
-        "expires_in": 604800
     }
 
 
