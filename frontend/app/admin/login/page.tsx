@@ -99,14 +99,18 @@ export default function AdminLoginPage() {
                 'Login'
               )}
             </button>
-          </form>
-        </div>
 
-        {/* Demo Credentials Info */}
-        <div className="mt-6 bg-[#F0EBE0] border border-[#C9A899] rounded-lg p-4 text-sm text-[#2E2E2E]">
-          <p className="font-semibold mb-2">Demo Credentials:</p>
-          <p className="font-mono text-xs">Email: jeevanparajuli856@gmail.com</p>
-          <p className="font-mono text-xs">Password: Admin123!ChangeMe</p>
+            {/* Forgot Password */}
+            <div className="text-center">
+              <button
+                type="button"
+                onClick={() => alert('Please contact the system administrator to reset your password.')}
+                className="text-sm text-[#6AA6D9] hover:text-[#4A8CC4] transition duration-200"
+              >
+                Forgot password?
+              </button>
+            </div>
+          </form>
         </div>
 
         {/* Back Button */}
