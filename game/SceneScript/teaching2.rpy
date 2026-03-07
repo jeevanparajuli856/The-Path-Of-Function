@@ -6,7 +6,7 @@ label teachingSecond:
     show fahren with dissolve
     show ale standing hand both wrist at aleAlign with dissolve
     show ale question hand both down at aleAlign with dissolve
-    a "What do you think, Kevin? Will this program execute or not?" #Askign the qns
+    e "What do you think, Kevin? Will this program execute or not?" #Askign the qns
     menu: #Choice for the qns
         "Will this program execute?"
         "Yes":
@@ -17,61 +17,61 @@ label teachingSecond:
     #Explaining how the funciton gonna execute
     scene bg classroom with fade
     show fahren2 explain with dissolve
-    a "Ths program will get executed and allow a user to input a number, which will be stored in the variable **temp**."
+    e "Ths program will get executed and allow a user to input a number, which will be stored in the variable **temp**."
     show fahren2 input with dissolve
-    a "For example, if the user inputs 100, the variable 'temp' will hold the value 100."
+    e "For example, if the user inputs 100, the variable 'temp' will hold the value 100."
     show fahren2 funcall with dissolve
-    a "Next, the fahrenheitToCelsius() function is called, passing the value of 'temp' as the argument."
+    e "Next, the fahrenheitToCelsius() function is called, passing the value of 'temp' as the argument."
     show fahren2 returns with dissolve
-    a "The value return by fahrenheitToCelsius() function is stored in another variable called **celsius**, which in this case will be 37.78."
+    e "The value return by fahrenheitToCelsius() function is stored in another variable called **celsius**, which in this case will be 37.78."
     show fahren2 print with dissolve
-    a "After that, the print() statement execute to display the result. Inside print(), str() converts the Celsius value into a string, and chr(176) converts the ASCII code 176 into the degree symbol (°)."
-    a "However, let me point out something important."
+    e "After that, the print() statement execute to display the result. Inside print(), str() converts the Celsius value into a string, and chr(176) converts the ASCII code 176 into the degree symbol (°)."
+    e "However, let me point out something important."
     show fahren2 last3 with dissolve
-    a "It's not a good practice to write the main logic of a program, like the last three lines in this example, outside a specific block."
-    a "Instead, it's better to encapsulate the main logic within a `main()` function"
+    e "It's not a good practice to write the main logic of a program, like the last three lines in this example, outside a specific block."
+    e "Instead, it's better to encapsulate the main logic within a `main()` function"
 
     #Starting main() function concept
-    a "This is the where the concept of using main() function comes in."
+    e "This is the where the concept of using main() function comes in."
     hide fahren2 
     show mains with dissolve
-    a "Inside the main() function, we write the main logic of the program. It helps organize and direct the flow of the program effectively."
-    a "Let me show you an example of using a 'main()' function."
+    e "Inside the main() function, we write the main logic of the program. It helps organize and direct the flow of the program effectively."
+    e "Let me show you an example of using a 'main()' function."
     hide mains
     show main examp behind ale with dissolve 
-    a "The syntax is similar to any other user-defined function."
+    e "The syntax is similar to any other user-defined function."
     show main def with dissolve
-    a "We start with the def keyword, followed by main()."
+    e "We start with the def keyword, followed by main()."
     show main bodyst with dissolve
-    a "Then, we include the main logic of the program inside the function."
+    e "Then, we include the main logic of the program inside the function."
 
     #Second block of explanation
-    a "Let me ask you a question."
+    e "Let me ask you a question."
     show ale standing hand left side at aleAlign with fade
     show ale question hand both down with dissolve 
-    a "Do you know how to call the main() function to execute the program?"
+    e "Do you know how to call the main() function to execute the program?"
     show ale standing hand both wrist with dissolve
     k "Yeah, I think we need to write main() at the end of the code to call the function and execute it."
     show ale speaking hand both wrist with dissolve
-    a "Exactly, Kevin! Without calling it, the main() function won't execute on its own."
+    e "Exactly, Kevin! Without calling it, the main() function won't execute on its own."
     show ale standing hand one fold with dissolve
     show ale speaking hand one fold with dissolve
-    a "After defining the main() function, we need to call it, usually at the end, after all the statements have been written."
+    e "After defining the main() function, we need to call it, usually at the end, after all the statements have been written."
     show main cal with dissolve
     show ale explaining hand left up with dissolve
-    a "As you can see on the screen, 'main()' is called right after its definition. When it's called, it executes all the statements within its body."
+    e "As you can see on the screen, 'main()' is called right after its definition. When it's called, it executes all the statements within its body."
     show ale speaking hand left side with dissolve
-    a "Does this help you understand the concept of function definitions and function calls?"
+    e "Does this help you understand the concept of function definitions and function calls?"
     show ale standing hand left side with dissolve
     k "Yeah, it's all starting to make sense now!"
 
     #Last qns section
     show ale speaking hand left side with dissolve
-    a "That's great to hear, Kevin! Before we move on to the next chapter, let’s do a quick challenge."
+    e "That's great to hear, Kevin! Before we move on to the next chapter, let's do a quick challenge."
     show ale speaking hand both wrist with dissolve
-    a "I’ll show you a question on the screen where you’ll need to drag and drop the correct blocks to complete a Python program."
+    e "I'll show you a question on the screen where you'll need to drag and drop the correct blocks to complete a Python program."
     show ale question hand both down with dissolve
-    a "Are you ready?"
+    e "Are you ready?"
     menu:
         "Are you ready?"
         "Yes":
@@ -88,13 +88,13 @@ label exYes:
     show ale standing hand both fold at aleAlign with dissolve
     k "Yes, I think this program is going execute."
     show ale speaking hand both fold with dissolve
-    a "That's right, Kevin! Good job."
+    e "That's right, Kevin! Good job."
     return
 label exConfused:
     show ale standing hand both fold at aleAlign with dissolve
     k "I am confused, Emma. I don't think this program is going to execute."
     show ale speaking hand both fold with dissolve
-    a "I get why it seems confusing at first. Let me break it down for you step by step."
+    e "I get why it seems confusing at first. Let me break it down for you step by step."
     return
 
 #second qns option
@@ -102,17 +102,17 @@ label qnsYes:
     show ale standing hand left side at aleAlign with dissolve
     k "I'm ready for this challenge!"
     show ale speaking hand left side with dissolve
-    a "That's the spirit! Here's your question. Take your time, and remember, you only get one chance to get it right!"
+    e "That's the spirit! Here's your question. Take your time, and remember, you only get one chance to get it right!"
     return
 label qnsNo:
     show ale standing hand left side at aleAlign with dissolve
     k "No, I'm not sure I'm ready yet."
     show ale speaking hand left side  with dissolve
-    a "That's perfectly fine, Kevin. Remember, this is all about learning, and it's okay to feel unsure sometimes."
+    e "That's perfectly fine, Kevin. Remember, this is all about learning, and it's okay to feel unsure sometimes."
     show ale speaking hand together with dissolve
-    a "Just do your best. If you get stuck, don't worry—I'll guide you through the solution step by step."
+    e "Just do your best. If you get stuck, don't worry—I'll guide you through the solution step by step."
     show ale standing hand one fold with dissolve
     k "Alright Emma, I am ready now."
     show ale speaking one fold with dissolve
-    a "Great! Here's the question on your screen."
+    e "Great! Here's the question on your screen."
     return

@@ -1,5 +1,5 @@
 define k = Character("Kevin") #defination of character 
-define a = Character("Emma")
+define e = Character("Emma")
 define t = Character("Teacher")
 
 label inbed: 

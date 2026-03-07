@@ -24,3 +24,4 @@ __pycache__/
 node_modules/
 ThePathofFunction_dist_Web
 .next/
+game_backup/
