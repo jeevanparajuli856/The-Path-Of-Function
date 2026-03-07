@@ -182,6 +182,11 @@ export const adminAPI = {
     return response.data;
   },
 
+  // Delete a batch and all its codes
+  deleteBatch: async (batchId: string): Promise<void> => {
+    await apiClient.delete(`/admin/batches/${batchId}`);
+  },
+
   // Get dashboard summary
   getDashboardSummary: async (): Promise<DashboardSummary> => {
     const response = await apiClient.get<DashboardSummary>('/admin/dashboard/summary');

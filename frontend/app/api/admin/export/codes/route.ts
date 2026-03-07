@@ -9,36 +9,34 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const batchId = searchParams.get('batch_id');
 
-  let query = supabase
-    .from('access_codes')
-    .select('code, is_active, times_used, first_used_at, last_used_at, created_at, code_batches(batch_name, treatment_group)')
-    .order('created_at', { ascending: true });
-
-  if (batchId) {
-    query = query.eq('batch_id', batchId);
+  if (!batchId) {
+    return NextResponse.json({ error: 'batch_id is required' }, { status: 400 });
   }
 
-  const { data, error } = await query;
+  const { data, error } = await supabase
+    .from('access_codes')
+    .select('code, code_batches(batch_name)')
+    .eq('batch_id', batchId)
+    .order('created_at', { ascending: true });
 
   if (error) {
     return NextResponse.json({ error: 'Failed to export codes' }, { status: 500 });
   }
 
-  const rows = (data ?? []).map((row) => {
-    const batch = Array.isArray(row.code_batches) ? row.code_batches[0] : row.code_batches;
-    return {
-      code: row.code,
-      batch_name: (batch as { batch_name?: string } | null)?.batch_name ?? '',
-      treatment_group: (batch as { treatment_group?: string } | null)?.treatment_group ?? '',
-      is_active: row.is_active,
-      times_used: row.times_used,
-      first_used_at: row.first_used_at ?? '',
-      last_used_at: row.last_used_at ?? '',
-      created_at: row.created_at,
-    };
-  });
+  const batchNameRaw = (() => {
+    const first = data?.[0];
+    const batch = first?.code_batches;
+    if (Array.isArray(batch)) return batch[0]?.batch_name ?? '';
+    return (batch as { batch_name?: string } | null)?.batch_name ?? '';
+  })();
+  const safeBatchName = (batchNameRaw || batchId).replace(/[^a-zA-Z0-9-_]+/g, '_');
 
-  const headers = Object.keys(rows[0] ?? { code: '', batch_name: '', treatment_group: '', is_active: '', times_used: '', first_used_at: '', last_used_at: '', created_at: '' });
+  const rows = (data ?? []).map((row) => ({
+    Code: row.code,
+    Name: '',
+  }));
+
+  const headers = ['Code', 'Name'];
   const csv = [
     headers.join(','),
     ...rows.map((r) => headers.map((h) => JSON.stringify(r[h as keyof typeof r] ?? '')).join(',')),
@@ -47,7 +45,7 @@ export async function GET(req: Request) {
   return new Response(csv, {
     headers: {
       'Content-Type': 'text/csv',
-      'Content-Disposition': `attachment; filename="access-codes${batchId ? `-${batchId}` : ''}.csv"`,
+      'Content-Disposition': `attachment; filename="batch-${safeBatchName}.csv"`,
     },
   });
 }

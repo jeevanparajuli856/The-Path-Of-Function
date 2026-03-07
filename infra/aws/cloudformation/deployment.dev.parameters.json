@@ -6,29 +6,5 @@
   {
     "ParameterKey": "BucketName",
     "ParameterValue": "path-of-function-dev-assets"
-  },
-  {
-    "ParameterKey": "DBInstanceIdentifier",
-    "ParameterValue": "path-of-function-dev-pg"
-  },
-  {
-    "ParameterKey": "DBName",
-    "ParameterValue": "path_of_function"
-  },
-  {
-    "ParameterKey": "DBUsername",
-    "ParameterValue": "pathofunction"
-  },
-  {
-    "ParameterKey": "DBPassword",
-    "ParameterValue": "SecureDBR1@123"
-  },
-  {
-    "ParameterKey": "DBInstanceClass",
-    "ParameterValue": "db.t4g.micro"
-  },
-  {
-    "ParameterKey": "DBAllocatedStorage",
-    "ParameterValue": "20"
   }
 ]

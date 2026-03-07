@@ -15,6 +15,7 @@ This stack provisions the AWS infrastructure for the project.
 2. Set your default region and verify identity:
 
 ```powershell
+cd infra
 aws configure
 aws sts get-caller-identity
 ```
@@ -24,19 +25,19 @@ aws sts get-caller-identity
 ```powershell
 aws cloudformation create-stack `
   --stack-name path-of-function-dev `
-  --template-body file://infra/aws/cloudformation/template.yaml `
-  --parameters file://infra/aws/cloudformation/deployment.dev.parameters.json `
+  --template-body file://aws/cloudformation/template.yaml `
+  --parameters file://aws/cloudformation/deployment.dev.parameters.json `
   --capabilities CAPABILITY_IAM
 aws cloudformation wait stack-create-complete --stack-name path-of-function-dev
 ```
 
-## Update
+## Update (when making changes to the template)
 
 ```powershell
 aws cloudformation update-stack `
   --stack-name path-of-function-dev `
-  --template-body file://infra/aws/cloudformation/template.yaml `
-  --parameters file://infra/aws/cloudformation/deployment.dev.parameters.json `
+  --template-body file://aws/cloudformation/template.yaml `
+  --parameters file://aws/cloudformation/deployment.dev.parameters.json `
   --capabilities CAPABILITY_IAM
 aws cloudformation wait stack-update-complete --stack-name path-of-function-dev
 ```
