@@ -1,6 +1,7 @@
 label dragqns:
     $ emit_scene_start(TELEMETRY_SCENE_IDS["dragqns"])
     $ emit_player_state_update({"phase": "dragdrop_scene_started"})
+    $ emit_player_prompt_started("dragdrop_main_prompt", "dragdrop")
     hide ale
     call screen drag_drop
     return
@@ -46,6 +47,7 @@ init python:
                     is_correct=True,
                     extra={"attempt_number": 1}
                 )
+                emit_player_prompt_resolved("dragdrop_main_prompt", "submitted_correct")
                 renpy.call("qnsSolved") 
             else:
                 emit_quiz_submitted(
@@ -54,6 +56,7 @@ init python:
                     is_correct=False,
                     extra={"incorrect_answers": dict(dropBoxStates)}
                 )
+                emit_player_prompt_resolved("dragdrop_main_prompt", "submitted_incorrect")
                 telemetry_add_wrong_attempt(1)
                 dropBoxStates["box1"]=None
                 dropBoxStates["box2"]=None

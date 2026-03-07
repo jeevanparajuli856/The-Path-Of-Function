@@ -22,6 +22,8 @@ export type RenPyEventType =
   | 'checkpoint_reached'
   | 'quiz_started'
   | 'quiz_submitted'
+  | 'player_prompt_started'
+  | 'player_prompt_resolved'
   | 'game_ended'
   | 'request_checkpoint_code'
   | 'request_pause'

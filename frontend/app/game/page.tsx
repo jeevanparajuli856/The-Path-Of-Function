@@ -17,6 +17,9 @@ type ChatGameContext = {
   player_state?: Record<string, unknown>;
 };
 
+const SHOW_TELEMETRY_DEBUG_HUD =
+  process.env.NEXT_PUBLIC_RENPY_DEBUG_HUD === '1' || process.env.NODE_ENV !== 'production';
+
 export default function GamePage() {
   const router = useRouter();
   const session = useGameStore((state) => state.session);
@@ -27,6 +30,7 @@ export default function GamePage() {
   const [finalCode, setFinalCode] = useState('');
   const [finalVerifyError, setFinalVerifyError] = useState<string | null>(null);
   const [isSubmittingFinalVerify, setIsSubmittingFinalVerify] = useState(false);
+  const [lastTelemetryEvent, setLastTelemetryEvent] = useState<string>('none');
 
   useEffect(() => {
     if (!session || !useGameStore.getState().isSessionValid()) {
@@ -52,10 +56,16 @@ export default function GamePage() {
       }
 
       // Fallback lock logic directly from raw bridge messages.
-      if (data.type === 'quiz_started' || data.type === 'request_checkpoint_code') {
+      setLastTelemetryEvent(data.type);
+      if (
+        data.type === 'quiz_started' ||
+        data.type === 'request_checkpoint_code' ||
+        data.type === 'player_prompt_started'
+      ) {
         setIsChatBlocked(true);
       }
       if (
+        data.type === 'player_prompt_resolved' ||
         data.type === 'quiz_submitted' ||
         data.type === 'choice_made' ||
         data.type === 'scene_start'
@@ -85,16 +95,12 @@ export default function GamePage() {
     };
 
     const unsubDialogue = onRenPyEvent('dialogue', async (message) => {
-      const dialogueId = String(message.payload?.dialogue_id ?? '').toLowerCase();
-      const looksLikeQuestionPrompt = dialogueId.includes('prompt');
-
-      if (looksLikeQuestionPrompt) {
-        setIsChatBlocked(true);
-      }
+      setLastTelemetryEvent('dialogue');
       await logRenPyEvent('dialogue', message.payload);
     });
 
     const unsubChoice = onRenPyEvent('choice_made', async (message) => {
+      setLastTelemetryEvent('choice_made');
       setIsChatBlocked(false);
       await logRenPyEvent('choice_made', message.payload);
     });
@@ -105,6 +111,7 @@ export default function GamePage() {
       if (sceneId) {
         setChatContext((prev) => ({ ...prev, scene_id: sceneId }));
       }
+      setLastTelemetryEvent('scene_start');
       await logRenPyEvent('scene_start', message.payload);
     });
 
@@ -115,6 +122,7 @@ export default function GamePage() {
         topic_id: message.payload.topic_id ?? prev.topic_id,
         learning_objective: message.payload.learning_objective ?? prev.learning_objective,
       }));
+      setLastTelemetryEvent('learning_context_update');
       await logRenPyEvent('learning_context_update', message.payload);
     });
 
@@ -126,14 +134,12 @@ export default function GamePage() {
           spoiler_guard: message.payload.spoiler_guard,
         },
       }));
+      setLastTelemetryEvent('help_policy_update');
       await logRenPyEvent('help_policy_update', message.payload);
     });
 
     const unsubPlayerState = onRenPyEvent('player_state_update', async (message) => {
-      const activeQuizId = message.payload?.quiz_id;
-      if (activeQuizId) {
-        setIsChatBlocked(true);
-      }
+      setLastTelemetryEvent('player_state_update');
       setChatContext((prev) => ({
         ...prev,
         player_state: message.payload,
@@ -142,20 +148,42 @@ export default function GamePage() {
     });
 
     const unsubQuizStart = onRenPyEvent('quiz_started', async (message) => {
+      setLastTelemetryEvent('quiz_started');
       setIsChatBlocked(true);
       await logRenPyEvent('quiz_started', message.payload);
     });
 
     const unsubQuizSubmit = onRenPyEvent('quiz_submitted', async (message) => {
+      setLastTelemetryEvent('quiz_submitted');
       setIsChatBlocked(false);
       await logRenPyEvent('quiz_submitted', message.payload);
     });
 
+    const unsubPromptStart = onRenPyEvent('player_prompt_started', async (message) => {
+      setLastTelemetryEvent('player_prompt_started');
+      setIsChatBlocked(true);
+      await logRenPyEvent('player_state_update', {
+        ...message.payload,
+        prompt_state: 'started',
+      });
+    });
+
+    const unsubPromptResolved = onRenPyEvent('player_prompt_resolved', async (message) => {
+      setLastTelemetryEvent('player_prompt_resolved');
+      setIsChatBlocked(false);
+      await logRenPyEvent('player_state_update', {
+        ...message.payload,
+        prompt_state: 'resolved',
+      });
+    });
+
     const unsubCheckpointReached = onRenPyEvent('checkpoint_reached', async (message) => {
+      setLastTelemetryEvent('checkpoint_reached');
       await logRenPyEvent('checkpoint_reached', message.payload);
     });
 
     const unsubCheckpointRequest = onRenPyEvent('request_checkpoint_code', async (message) => {
+      setLastTelemetryEvent('request_checkpoint_code');
       setIsChatBlocked(true);
       await logRenPyEvent('request_checkpoint_code', {
         ...message.payload,
@@ -164,6 +192,7 @@ export default function GamePage() {
     });
 
     const unsubError = onRenPyEvent('error', async (message) => {
+      setLastTelemetryEvent('error');
       await logRenPyEvent('game_error', message.payload);
     });
 
@@ -176,6 +205,8 @@ export default function GamePage() {
       unsubPlayerState();
       unsubQuizStart();
       unsubQuizSubmit();
+      unsubPromptStart();
+      unsubPromptResolved();
       unsubCheckpointReached();
       unsubCheckpointRequest();
       unsubError();
@@ -292,6 +323,14 @@ export default function GamePage() {
         gameContext={chatContext}
         isBlocked={isChatBlocked}
       />
+
+      {SHOW_TELEMETRY_DEBUG_HUD && (
+        <div className="fixed left-3 top-14 z-[140] bg-black/75 text-white text-xs rounded-md px-3 py-2 space-y-1 pointer-events-none">
+          <div>telemetry: {lastTelemetryEvent}</div>
+          <div>chat_blocked: {isChatBlocked ? 'yes' : 'no'}</div>
+          <div>scene: {chatContext.scene_id || currentScene || 'unknown'}</div>
+        </div>
+      )}
 
       {showFinalVerify && (
         <div className="fixed inset-0 bg-black/50 z-[120] flex items-center justify-center px-4">

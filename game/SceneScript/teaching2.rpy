@@ -10,12 +10,15 @@ label teachingSecond:
     show ale question hand both down at aleAlign with dissolve
     $ emit_dialogue(TELEMETRY_DIALOGUE_IDS["teaching2_program_exec_intro"], "e", "Will this program execute or not?")
     e "What do you think, Kevin? Will this program execute or not?" #Askign the qns
+    $ emit_player_prompt_started("teaching2_program_exec_choice", "menu")
     menu: #Choice for the qns
         "Will this program execute?"
         "Yes":
+            $ emit_player_prompt_resolved("teaching2_program_exec_choice", "selected_yes")
             $ emit_choice_made("teaching2_execute_yes", "Yes")
             call exYes
         "Confused":
+            $ emit_player_prompt_resolved("teaching2_program_exec_choice", "selected_confused")
             $ emit_choice_made("teaching2_execute_confused", "Confused")
             call exConfused
 
@@ -90,12 +93,15 @@ label teachingSecond:
     show ale question hand both down with dissolve
     $ emit_dialogue(TELEMETRY_DIALOGUE_IDS["teaching2_ready_prompt"], "e", "Are you ready?")
     e "Are you ready?"
+    $ emit_player_prompt_started("teaching2_ready_choice", "menu")
     menu:
         "Are you ready?"
         "Yes":
+            $ emit_player_prompt_resolved("teaching2_ready_choice", "selected_yes")
             $ emit_choice_made("teaching2_ready_yes", "Yes")
             call qnsYes
         "No":
+            $ emit_player_prompt_resolved("teaching2_ready_choice", "selected_no")
             $ emit_choice_made("teaching2_ready_no", "No")
             call qnsNo
 

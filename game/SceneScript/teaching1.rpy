@@ -34,13 +34,16 @@ label teachingfirst:
     show ale question hand right down  with dissolve
     e "Do you remember anything about Python's built-in functions?"
     with Pause(1.0)
+    $ emit_player_prompt_started("teaching1_builtin_choice", "menu")
     menu: #to give option to the player
         "Do you remember anything about Python's built-in functions?" 
         "Yes":
+            $ emit_player_prompt_resolved("teaching1_builtin_choice", "selected_yes")
             python:
                 emit_choice_made("teaching1_builtin_yes", "Yes")
             call builInYes
         "No": 
+            $ emit_player_prompt_resolved("teaching1_builtin_choice", "selected_no")
             python:
                 emit_choice_made("teaching1_builtin_no", "No")
             call builtInNo
@@ -152,13 +155,16 @@ label teachingfirst:
     $ emit_dialogue(TELEMETRY_DIALOGUE_IDS["teaching1_name_prompt"], "e", "Take a look at this example. Can you tell me the name of the function?")
     e "Take a look at this example. Can you tell me the name of the function?"
     with Pause(1.0)
+    $ emit_player_prompt_started("teaching1_name_choice", "menu")
     menu: #giving the option and calling the label
         "What is the name of the function here?"
         "fahrenheit":
+            $ emit_player_prompt_resolved("teaching1_name_choice", "selected_fahrenheit")
             python:
                 emit_choice_made("teaching1_function_name_fahrenheit", "fahrenheit")
             call fahrNo
         "fahrenheitToCelsius": 
+            $ emit_player_prompt_resolved("teaching1_name_choice", "selected_fahrenheit_to_celsius")
             python:
                 emit_choice_made("teaching1_function_name_correct", "fahrenheitToCelsius")
             call fahrYes
@@ -277,6 +283,7 @@ label inputCheck:
             question_id=TELEMETRY_QUESTION_IDS["input_output_1"],
             extra={"question_text": "What will be the output?", "max_attempts": max_attempts}
         )
+    $ emit_player_prompt_started("teaching1_input_output", "input")
     
     while count != 0:
 
@@ -292,6 +299,7 @@ label inputCheck:
                     is_correct=True,
                     extra={"attempt_number": attempt_number, "student_answer": outputIn}
                 )
+            $ emit_player_prompt_resolved("teaching1_input_output", "answered_correct")
             with dissolve
             show ale speaking hand left side at aleAlign
             e "You got it right!"
@@ -309,6 +317,7 @@ label inputCheck:
                         is_correct=False,
                         extra={"attempt_number": max_attempts, "student_answer": outputIn, "max_attempts": max_attempts}
                     )
+                $ emit_player_prompt_resolved("teaching1_input_output", "max_attempts_reached")
                 with dissolve
                 show ale sad hand left side at aleAlign
                 e "Kevin, you gave a wrong answer."
@@ -356,6 +365,7 @@ label valcheck:
             question_id=TELEMETRY_QUESTION_IDS["celsius_value_1"],
             extra={"question_text": "What value will celsius hold?", "max_attempts": max_attempts}
         )
+    $ emit_player_prompt_started("teaching1_celsius_input", "input")
     
     while count != 0:
 
@@ -371,6 +381,7 @@ label valcheck:
                     is_correct=True,
                     extra={"attempt_number": attempt_number, "student_answer": outputIn}
                 )
+            $ emit_player_prompt_resolved("teaching1_celsius_input", "answered_correct")
             with dissolve
             show ale speaking hand both fold at aleAlign
             e "You got it. Right answer!"
@@ -388,6 +399,7 @@ label valcheck:
                         is_correct=False,
                         extra={"attempt_number": max_attempts, "student_answer": outputIn, "max_attempts": max_attempts}
                     )
+                $ emit_player_prompt_resolved("teaching1_celsius_input", "max_attempts_reached")
                 with dissolve
                 show ale sad hand both fold at aleAlign
                 e "Kevin, It's not a right answer." 

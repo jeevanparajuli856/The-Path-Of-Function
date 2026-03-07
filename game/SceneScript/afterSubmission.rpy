@@ -16,12 +16,15 @@ label qnsSolved:
     e "Oh, stop it! You're the one who put in all the effort."
     show ale speaking hand left side with dissolve
     e "But hey, would you like me to go over the answer to this question just to make sure everything's clear?"
+    $ emit_player_prompt_started("after_solved_explain_choice", "menu")
     menu:
         "Do you want Emma to explain you the answer to the question?"
         "Yes":
+            $ emit_player_prompt_resolved("after_solved_explain_choice", "selected_yes")
             $ emit_choice_made("after_solved_explain_yes", "Yes")
             call yesExplain
         "No":
+            $ emit_player_prompt_resolved("after_solved_explain_choice", "selected_no")
             $ emit_choice_made("after_solved_explain_no", "No")
             call noExplain
     return
@@ -155,9 +158,11 @@ label afterDragNDrop:
             question_id=TELEMETRY_QUESTION_IDS["stack_last_removed_1"],
             extra={"question_text": "Which function was last removed from the stack?", "max_attempts": 1}
         )
+    $ emit_player_prompt_started("stack_last_removed_choice", "menu")
     menu:
         "Which function was the last to be removed from the stack?"
         "calculate_area()":
+            $ emit_player_prompt_resolved("stack_last_removed_choice", "selected_calculate_area")
             $ emit_choice_made("final_stack_quiz_wrong", "calculate_area()")
             python:
                 emit_quiz_submitted(
@@ -168,6 +173,7 @@ label afterDragNDrop:
                 )
             call lastWrong
         "main()":
+            $ emit_player_prompt_resolved("stack_last_removed_choice", "selected_main")
             $ emit_choice_made("final_stack_quiz_correct", "main()")
             python:
                 emit_quiz_submitted(

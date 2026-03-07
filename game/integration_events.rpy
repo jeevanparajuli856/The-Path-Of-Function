@@ -205,6 +205,30 @@ init -10 python:
         )
         send_to_frontend("quiz_submitted", payload)
 
+    def emit_player_prompt_started(prompt_id, prompt_kind="unknown", extra=None):
+        payload = _merge_payload(
+            {
+                "scene_id": _telemetry_runtime_state.get("current_scene_id"),
+                "prompt_id": prompt_id,
+                "prompt_kind": prompt_kind,
+                "timestamp": _telemetry_now_iso(),
+            },
+            extra,
+        )
+        send_to_frontend("player_prompt_started", payload)
+
+    def emit_player_prompt_resolved(prompt_id, resolved_by="answered", extra=None):
+        payload = _merge_payload(
+            {
+                "scene_id": _telemetry_runtime_state.get("current_scene_id"),
+                "prompt_id": prompt_id,
+                "resolved_by": resolved_by,
+                "timestamp": _telemetry_now_iso(),
+            },
+            extra,
+        )
+        send_to_frontend("player_prompt_resolved", payload)
+
     def emit_game_ended(final_scene_id=None, extra=None, **kwargs):
         if final_scene_id is None:
             final_scene_id = kwargs.get("final_scene")
