@@ -28,11 +28,16 @@ apiClient.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {
     if (error.response?.status === 401) {
-      // Clear auth on 401
       if (typeof window !== 'undefined') {
-        localStorage.removeItem('access_token');
-        // Redirect to login page
-        window.location.href = '/admin/login';
+        const requestUrl = error.config?.url ?? '';
+        const isAuthFlowRequest =
+          requestUrl.includes('/admin/login') || requestUrl.includes('/admin/forgot-password');
+
+        // Keep user on auth screens so warning messages are visible.
+        if (!isAuthFlowRequest) {
+          localStorage.removeItem('access_token');
+          window.location.href = '/admin/login';
+        }
       }
     }
     return Promise.reject(error);
@@ -50,6 +55,11 @@ export interface LoginResponse {
   access_token: string;
   token_type: string;
   expires_in: number;
+}
+
+export interface ForgotPasswordResponse {
+  success: boolean;
+  message: string;
 }
 
 export interface GenerateCodesRequest {
@@ -196,6 +206,12 @@ export const adminAPI = {
   logout: (): void => {
     localStorage.removeItem('access_token');
   },
+
+  // Send reset password email (admin only)
+  forgotPassword: async (email: string): Promise<ForgotPasswordResponse> => {
+    const response = await apiClient.post<ForgotPasswordResponse>('/admin/forgot-password', { email });
+    return response.data;
+  },
 };
 
 // ========== STUDENT ENDPOINTS ==========
@@ -293,6 +309,9 @@ export const clearAuthToken = (): void => {
 // Error handler utility
 export const handleAPIError = (error: unknown): string => {
   if (axios.isAxiosError(error)) {
+    if (error.response?.data?.error) {
+      return error.response.data.error;
+    }
     if (error.response?.data?.detail) {
       return error.response.data.detail;
     }

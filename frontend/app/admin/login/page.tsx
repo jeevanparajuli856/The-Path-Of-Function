@@ -25,9 +25,12 @@ export default function AdminLoginPage() {
       toast.success('Login successful!');
       router.push('/admin');
     } catch (err) {
-      const errorMsg = handleAPIError(err);
+      const baseError = handleAPIError(err);
+      const errorMsg = baseError || 'Wrong password.';
       setError(errorMsg);
       toast.error(errorMsg);
+      // Keep warning visible long enough for the user to read.
+      setTimeout(() => setError(null), 8000);
       setIsLoading(false);
     }
   };
@@ -36,13 +39,11 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-[#F7F3EA] flex items-center justify-center px-4">
       <Toaster position="top-right" />
       <div className="w-full max-w-md">
-        {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-2 text-[#2E2E2E]">Admin Portal</h1>
           <p className="text-[#6AA6D9]">Research Team Access Only</p>
         </div>
 
-        {/* Login Form */}
         <div className="bg-white border border-[#C9A899] rounded-2xl shadow-md p-8">
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
@@ -54,7 +55,7 @@ export default function AdminLoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@example.com"
+                placeholder="jeevanparajuli856@gmail.com"
                 className="input-game"
                 disabled={isLoading}
                 required
@@ -70,42 +71,33 @@ export default function AdminLoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder="********"
                 className="input-game"
                 disabled={isLoading}
                 required
               />
             </div>
 
-            {/* Error Message */}
             {error && (
               <div className="bg-red-50 border border-red-300 text-red-700 rounded-lg p-4 text-sm">
                 {error}
               </div>
             )}
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={isLoading}
               className="btn-game w-full disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? (
-                <>
-                  <span className="inline-block animate-spin mr-2">⟳</span>
-                  Logging in...
-                </>
-              ) : (
-                'Login'
-              )}
+              {isLoading ? 'Logging in...' : 'Login'}
             </button>
 
-            {/* Forgot Password */}
             <div className="text-center">
               <button
                 type="button"
-                onClick={() => alert('Please contact the system administrator to reset your password.')}
-                className="text-sm text-[#6AA6D9] hover:text-[#4A8CC4] transition duration-200"
+                onClick={() => router.push('/admin/forgot-password')}
+                disabled={isLoading}
+                className="text-sm text-[#6AA6D9] hover:text-[#4A8CC4] transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Forgot password?
               </button>
@@ -113,10 +105,9 @@ export default function AdminLoginPage() {
           </form>
         </div>
 
-        {/* Back Button */}
         <div className="mt-6 text-center">
           <button
-            onClick={() => location.href = '/'}
+            onClick={() => (location.href = '/')}
             className="text-[#6AA6D9] hover:text-[#4A8CC4] transition duration-200 text-sm underline"
           >
             Back to Home
