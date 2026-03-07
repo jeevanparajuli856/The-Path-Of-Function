@@ -20,6 +20,23 @@ type ChatGameContext = {
 const DEBUG_HUD_FLAG = (process.env.NEXT_PUBLIC_RENPY_DEBUG_HUD ?? '').toLowerCase();
 const SHOW_TELEMETRY_DEBUG_HUD = DEBUG_HUD_FLAG === '1' || DEBUG_HUD_FLAG === 'true';
 const GAME_ENTRY_TOKEN_KEY = 'game-entry-token';
+const CHAT_AVAILABLE_FROM_SCENE = 'hallway';
+const SCENE_PROGRESS_ORDER = [
+  'start',
+  'inbed',
+  'hallway',
+  'hallwayafter',
+  'teaching1',
+  'teaching2',
+  'dragqns',
+  'aftersubmission',
+  'ending',
+];
+
+function sceneRank(sceneId?: string): number {
+  if (!sceneId) return -1;
+  return SCENE_PROGRESS_ORDER.indexOf(sceneId);
+}
 
 export default function GamePage() {
   const router = useRouter();
@@ -33,6 +50,8 @@ export default function GamePage() {
   const [isSubmittingFinalVerify, setIsSubmittingFinalVerify] = useState(false);
   const [lastTelemetryEvent, setLastTelemetryEvent] = useState<string>('none');
   const [isHelpOpen, setIsHelpOpen] = useState(false);
+  const effectiveSceneId = chatContext.scene_id || currentScene || '';
+  const canShowChatIcon = sceneRank(effectiveSceneId) >= sceneRank(CHAT_AVAILABLE_FROM_SCENE);
 
   useEffect(() => {
     if (!session || !useGameStore.getState().isSessionValid()) {
@@ -345,12 +364,14 @@ export default function GamePage() {
       </div>
 
       {/* Emma ChatBot */}
-      <ChatBot 
-        sessionToken={session.session_token} 
-        currentScene={currentScene || ''} 
-        gameContext={chatContext}
-        isBlocked={isChatBlocked}
-      />
+      {canShowChatIcon && (
+        <ChatBot
+          sessionToken={session.session_token}
+          currentScene={currentScene || ''}
+          gameContext={chatContext}
+          isBlocked={isChatBlocked}
+        />
+      )}
 
       {isHelpOpen && (
         <>

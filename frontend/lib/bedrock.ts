@@ -171,16 +171,13 @@ export function checkGuardrails(
 ): string {
   const { normalized } = normalizeForIntent(message);
 
-  let helpLevel = 'default';
   let spoilerGuard = 'off';
 
   if (gameContext?.help_policy) {
     const policy = gameContext.help_policy;
     if (typeof policy === 'string') {
-      helpLevel = policy;
       spoilerGuard = policy === 'restricted' ? 'strict' : 'off';
     } else {
-      helpLevel = policy.allowed_help_level ?? 'default';
       spoilerGuard = policy.spoiler_guard ?? 'off';
     }
   }
@@ -234,10 +231,9 @@ export function checkGuardrails(
 
   if (isLeakAttempt) return 'leak_attempt';
   if (isSocialBoundaryMessage) return 'social_boundary';
-  if (!gameRelated) return 'out_of_scope';
   if (activeAssessment) return 'hint';
+  if (!gameRelated) return 'out_of_scope';
   if (isSpoilerRequest && ['strict', 'medium'].includes(spoilerGuard)) return 'spoiler';
-  if (['nudge', 'hint'].includes(helpLevel)) return 'hint';
 
   return 'none';
 }
@@ -247,6 +243,82 @@ function isGameRelated(message: string): boolean {
   if (normalized.includes('call stack')) return true;
   if (tokens.includes('call') && tokens.includes('stack')) return true;
   return hasApproxKeyword(tokens);
+}
+
+function getConceptTopic(message: string): 'return' | 'parameter' | 'main' | 'call_stack' | 'function' {
+  const { normalized, tokens } = normalizeForIntent(message);
+  if (normalized.includes('call stack') || (tokens.includes('call') && tokens.includes('stack'))) {
+    return 'call_stack';
+  }
+  if (tokens.includes('return') || tokens.includes('returns')) return 'return';
+  if (tokens.includes('parameter') || tokens.includes('parameters') || tokens.includes('argument') || tokens.includes('arguments')) {
+    return 'parameter';
+  }
+  if (tokens.includes('main')) return 'main';
+  return 'function';
+}
+
+function buildTeachingFallback(message: string, hintOnly: boolean): string {
+  const topic = getConceptTopic(message);
+
+  if (hintOnly) {
+    if (topic === 'return') {
+      return 'Hint: track the value inside the function body step by step, then identify what the return line sends back to the caller.';
+    }
+    if (topic === 'parameter') {
+      return 'Hint: match each argument in the call with parameters in order, then follow how those values are used in the function body.';
+    }
+    if (topic === 'main') {
+      return 'Hint: think about control flow: where execution starts, which function is called next, and what runs when main() is invoked.';
+    }
+    if (topic === 'call_stack') {
+      return 'Hint: functions are added to the call stack when called and removed when they return. Follow push/pop order to reason correctly.';
+    }
+    return 'Hint: identify inputs, what the function does with them, and what output is produced, but do not jump straight to the final answer.';
+  }
+
+  if (topic === 'return') {
+    return 'A return value is the output a function sends back to the caller. The function computes a value, then the return statement passes it out so the caller can store or use it.';
+  }
+  if (topic === 'parameter') {
+    return 'Parameters are placeholders in a function definition. Arguments are the real values passed when calling the function, matched by position.';
+  }
+  if (topic === 'main') {
+    return 'The main() function is used to organize a program entry flow. You define main(), put core steps inside it, and call main() so execution follows a clean structure.';
+  }
+  if (topic === 'call_stack') {
+    return 'The call stack tracks active function calls. A call pushes a function on top; when it returns, that function pops, and execution resumes in the previous one.';
+  }
+  return 'A function is a reusable block of code that takes input, performs steps, and may return output. It helps keep programs modular, readable, and easier to test.';
+}
+
+function buildWelcomingFallback(message: string): string {
+  const { normalized } = normalizeForIntent(message);
+  const scopeSignoff = "I'm here today to help with your game and coding questions too.";
+
+  if (
+    normalized.includes('how are you') ||
+    normalized === 'hey' ||
+    normalized === 'hi' ||
+    normalized === 'hello' ||
+    normalized.startsWith('hey ') ||
+    normalized.startsWith('hi ') ||
+    normalized.startsWith('hello ')
+  ) {
+    return `Hi! I'm doing well and ready to help. ${scopeSignoff}`;
+  }
+
+  if (normalized.includes('who are you')) {
+    return `I'm Emma, your in-game tutor. I explain things step by step whenever you get stuck. ${scopeSignoff}`;
+  }
+  if (normalized.includes('what are we studying') || normalized.includes('what are we learning')) {
+    return "Today we're focusing on Python functions: what they are, how inputs flow through parameters, and what gets returned as output.";
+  }
+  if (normalized.includes('do you like function') || normalized.includes('do you like functions')) {
+    return `I do. Functions are great because they break big problems into small reusable pieces. ${scopeSignoff}`;
+  }
+
+  return `Great question. I can chat briefly and still keep us on track. ${scopeSignoff}`;
 }
 
 export async function queryRagCorpus(
@@ -321,7 +393,7 @@ export function buildPrompt(
       'Do not reveal direct solutions or future-scene content. Offer general guidance only.';
   } else if (guardrailMode === 'out_of_scope') {
     guardrailInstruction =
-      'The question is outside game scope. Politely redirect to game-related programming topics.';
+      "Answer briefly in a warm tone, then redirect to today's lesson on functions.";
   } else if (guardrailMode === 'social_boundary') {
     guardrailInstruction =
       'Do not engage in romantic or personal roleplay. Decline politely and redirect to lesson help.';
@@ -333,11 +405,12 @@ export function buildPrompt(
   return `You are Emma, a tutor in an educational game about programming functions.
 ${sceneInfo}
 Rules:
-- Answer only using the provided lesson content.
+- Be helpful and welcoming, even if lesson context is thin.
 - Never reveal future-scene content.
 - Keep responses concise and supportive.
 - Interpret minor spelling mistakes in student questions as intended programming terms.
-- If context is insufficient, say exactly: "I don't have enough lesson information yet."
+- If context is insufficient, provide clear concept-level guidance instead of refusing.
+- During an active prompt/quiz, never reveal the exact final answer, exact choice, or exact output.
 
 ${guardrailInstruction}
 
@@ -422,7 +495,7 @@ export async function callBedrock(
   const body = JSON.parse(new TextDecoder().decode(result.body));
   const text: string =
     (body.content?.[0]?.text as string | undefined) ??
-    "I don't have enough lesson information yet.";
+    "I can still help with the concept. Tell me which part feels confusing, and we'll break it down.";
 
   const tokenCount =
     prompt.split(/\s+/).length + text.split(/\s+/).length;
@@ -465,8 +538,7 @@ export async function generateAIResponse(
   let ragResults: CorpusItem[] = [];
 
   if (guardrailMode === 'out_of_scope') {
-    responseText =
-      "I can help with this game's Python function topics. Try asking about function definitions, parameters, return values, main(), or the call stack.";
+    responseText = buildWelcomingFallback(userMessage);
     tokenCount = userMessage.split(/\s+/).length + responseText.split(/\s+/).length;
   } else if (guardrailMode === 'social_boundary') {
     responseText =
@@ -482,18 +554,25 @@ export async function generateAIResponse(
     tokenCount = userMessage.split(/\s+/).length + responseText.split(/\s+/).length;
   } else {
     ragResults = await queryRagCorpus(userMessage, gameContext);
+    const isHintMode = guardrailMode === 'hint' || guardrailMode === 'spoiler';
 
     if (!ragResults.length) {
-      responseText = "I don't have enough lesson information yet.";
+      responseText = buildTeachingFallback(userMessage, isHintMode);
       tokenCount = userMessage.split(/\s+/).length + responseText.split(/\s+/).length;
     } else {
       const prompt = buildPrompt(userMessage, ragResults, gameContext, guardrailMode);
       try {
         const result = await callBedrock(prompt);
-        responseText = result.text;
+        const modelText = result.text?.trim() || '';
+        const returnedInsufficient =
+          modelText.toLowerCase() === "i don't have enough lesson information yet.";
+        responseText =
+          returnedInsufficient
+            ? buildTeachingFallback(userMessage, isHintMode)
+            : modelText || buildTeachingFallback(userMessage, isHintMode);
         tokenCount = result.tokenCount;
       } catch {
-        responseText = "I don't have enough lesson information yet.";
+        responseText = buildTeachingFallback(userMessage, isHintMode);
         tokenCount = userMessage.split(/\s+/).length + responseText.split(/\s+/).length;
       }
     }

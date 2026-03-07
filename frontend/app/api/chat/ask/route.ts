@@ -7,7 +7,6 @@ type EventLogRow = {
   event_data: Record<string, unknown> | null;
 };
 
-const MIN_SCENE_FOR_OPEN_CHAT = 'teaching1';
 const SCENE_PROGRESS_ORDER = [
   'start',
   'inbed',
@@ -194,44 +193,6 @@ export async function POST(req: Request) {
   const gameContext: GameContext | undefined = context ?? undefined;
   const telemetryContext = await getLatestContextFromTelemetry(session.id);
   const resolvedContext = mergeContextWithTelemetry(gameContext, telemetryContext);
-  const currentSceneRank = sceneRank(resolvedContext?.scene_id);
-  const minimumSceneRank = sceneRank(MIN_SCENE_FOR_OPEN_CHAT);
-
-  if (currentSceneRank < minimumSceneRank) {
-    const assistantMessage =
-      "I don't have enough lesson information yet. Please keep on playing and ask me when you are stuck.";
-
-    await supabase.from('chat_logs').insert({
-      session_id: session.id,
-      user_message: message,
-      ai_response: assistantMessage,
-      scene_id: resolvedContext?.scene_id ?? null,
-      topic_id: resolvedContext?.topic_id ?? null,
-      learning_objective: resolvedContext?.learning_objective ?? null,
-      player_state: resolvedContext?.player_state ?? null,
-      help_policy:
-        typeof resolvedContext?.help_policy === 'string'
-          ? resolvedContext.help_policy
-          : resolvedContext?.help_policy
-          ? JSON.stringify(resolvedContext.help_policy)
-          : null,
-      citations: [],
-      guardrail_mode: 'insufficient_progress',
-      model_id: null,
-      prompt_tokens: null,
-      completion_tokens: null,
-      latency_ms: 0,
-    });
-
-    return NextResponse.json({
-      assistant_message: assistantMessage,
-      applied_guardrail_mode: 'insufficient_progress',
-      citations: [],
-      message_id: `insufficient-${Date.now()}`,
-      token_count: assistantMessage.split(/\s+/).length,
-    });
-  }
-
   const start = Date.now();
   const aiResponse = await generateAIResponse(message, resolvedContext, session.id);
   const latencyMs = Date.now() - start;

@@ -48,6 +48,7 @@ export default function AdminDashboard() {
   const [batches, setBatches] = useState<CodeBatch[]>([]);
   const [summary, setSummary] = useState<DashboardSummary | null>(null);
   const [analytics, setAnalytics] = useState<DashboardAnalytics | null>(null);
+  const [analyticsError, setAnalyticsError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [showGenerateModal, setShowGenerateModal] = useState(false);
@@ -85,6 +86,7 @@ export default function AdminDashboard() {
         setBatches(batchesData);
         setSummary(summaryData);
         setAnalytics(analyticsData);
+        setAnalyticsError(null);
 
         if (!silent) {
           toast.success('Dashboard refreshed');
@@ -92,6 +94,10 @@ export default function AdminDashboard() {
       } catch (error) {
         const errorMsg = handleAPIError(error);
         toast.error(`Failed to load data: ${errorMsg}`);
+        setAnalyticsError(errorMsg);
+        if (!background) {
+          setAnalytics(null);
+        }
       } finally {
         if (background) {
           setIsRefreshing(false);
@@ -536,7 +542,20 @@ export default function AdminDashboard() {
               </div>
             </div>
           </>
-        ) : null}
+        ) : (
+          <div className="bg-white border border-[#C9A899] rounded-xl p-6 shadow-sm mb-8">
+            <div className="text-[#2E2E2E] font-semibold mb-2">Analytics unavailable</div>
+            <p className="text-sm text-[#2E2E2E] opacity-70 mb-4">
+              {analyticsError ?? 'Unable to fetch analytics right now.'}
+            </p>
+            <button
+              onClick={() => void loadDashboardData({ silent: false, background: false })}
+              className="bg-[#6AA6D9] hover:bg-[#4A8CC4] text-white font-bold py-2 px-4 rounded-xl transition duration-200"
+            >
+              Retry Analytics
+            </button>
+          </div>
+        )}
 
         <div className="flex gap-4 mb-8 items-center">
           <button onClick={() => setShowGenerateModal(true)} className="flex items-center gap-2 bg-[#6AA6D9] hover:bg-[#4A8CC4] text-white font-bold py-2 px-4 rounded-xl transition duration-200">

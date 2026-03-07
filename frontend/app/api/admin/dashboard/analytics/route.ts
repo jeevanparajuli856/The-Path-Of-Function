@@ -2,187 +2,241 @@ import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/db';
 import { requireAdmin, isNextResponse } from '@/lib/api-middleware';
 
+type QuizEventRow = {
+  session_id: string;
+  created_at: string;
+  event_data: Record<string, unknown> | null;
+};
+
+type SceneEventRow = {
+  session_id: string;
+  created_at: string;
+  event_data: Record<string, unknown> | null;
+};
+
+type SessionRow = {
+  id: string;
+  code_id: string;
+  status: string | null;
+  current_scene: string | null;
+  scenes_visited_count: number | null;
+  quizzes_attempted_count: number | null;
+};
+
+type AccessCodeRow = {
+  id: string;
+  batch_id: string;
+  code_batches: { treatment_group: string | null } | { treatment_group: string | null }[] | null;
+};
+
+function getNumber(value: unknown, fallback = 0): number {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : fallback;
+}
+
+function getString(value: unknown, fallback = ''): string {
+  return typeof value === 'string' ? value : fallback;
+}
+
+function mapTreatment(raw: string | null | undefined): 'control' | 'treatment_a' | 'treatment_b' {
+  if (raw === 'treatment_a') return 'treatment_a';
+  if (raw === 'treatment_b') return 'treatment_b';
+  return 'control';
+}
+
 export async function GET(req: Request) {
   const auth = await requireAdmin(req);
   if (isNextResponse(auth)) return auth;
 
   try {
-    // Fetch all quiz submission events
-    const { data: quizEvents } = await supabase
-      .from('event_logs')
-      .select('event_data, session_token, created_at')
-      .eq('event_type', 'quiz_submitted');
+    const [
+      quizEventsResult,
+      sceneEventsResult,
+      sessionsResult,
+      accessCodesResult,
+      last5Result,
+      last15Result,
+      last60Result,
+    ] = await Promise.all([
+      supabase
+        .from('event_logs')
+        .select('session_id, event_data, created_at')
+        .eq('event_type', 'quiz_submitted'),
+      supabase
+        .from('event_logs')
+        .select('session_id, event_data, created_at')
+        .eq('event_type', 'scene_start'),
+      supabase
+        .from('game_sessions')
+        .select('id, code_id, status, current_scene, scenes_visited_count, quizzes_attempted_count'),
+      supabase
+        .from('access_codes')
+        .select('id, batch_id, code_batches(treatment_group)'),
+      supabase
+        .from('event_logs')
+        .select('*', { count: 'exact', head: true })
+        .gte('created_at', new Date(Date.now() - 5 * 60 * 1000).toISOString()),
+      supabase
+        .from('event_logs')
+        .select('*', { count: 'exact', head: true })
+        .gte('created_at', new Date(Date.now() - 15 * 60 * 1000).toISOString()),
+      supabase
+        .from('event_logs')
+        .select('*', { count: 'exact', head: true })
+        .gte('created_at', new Date(Date.now() - 60 * 60 * 1000).toISOString()),
+    ]);
 
-    // Fetch all scene start events for engagement calculation
-    const { data: sceneEvents } = await supabase
-      .from('event_logs')
-      .select('event_data, session_token, created_at')
-      .eq('event_type', 'scene_start');
+    if (quizEventsResult.error) {
+      throw new Error(`Failed to fetch quiz events: ${quizEventsResult.error.message}`);
+    }
+    if (sceneEventsResult.error) {
+      throw new Error(`Failed to fetch scene events: ${sceneEventsResult.error.message}`);
+    }
+    if (sessionsResult.error) {
+      throw new Error(`Failed to fetch sessions: ${sessionsResult.error.message}`);
+    }
+    if (accessCodesResult.error) {
+      throw new Error(`Failed to fetch access codes: ${accessCodesResult.error.message}`);
+    }
+    if (last5Result.error || last15Result.error || last60Result.error) {
+      const message =
+        last5Result.error?.message || last15Result.error?.message || last60Result.error?.message || 'unknown error';
+      throw new Error(`Failed to fetch activity counts: ${message}`);
+    }
 
-    // Fetch all sessions for funnel calculation
-    const { data: allSessions } = await supabase.from('game_sessions').select('*');
+    const quizEvents = (quizEventsResult.data ?? []) as QuizEventRow[];
+    const sceneEvents = (sceneEventsResult.data ?? []) as SceneEventRow[];
+    const allSessions = (sessionsResult.data ?? []) as SessionRow[];
+    const accessCodes = (accessCodesResult.data ?? []) as AccessCodeRow[];
+
+    const codeIdToTreatment = new Map<string, 'control' | 'treatment_a' | 'treatment_b'>();
+    for (const accessCode of accessCodes) {
+      const batchData = Array.isArray(accessCode.code_batches)
+        ? accessCode.code_batches[0]
+        : accessCode.code_batches;
+      codeIdToTreatment.set(accessCode.id, mapTreatment(batchData?.treatment_group));
+    }
+
+    const sessionIdToTreatment = new Map<string, 'control' | 'treatment_a' | 'treatment_b'>();
+    for (const session of allSessions) {
+      sessionIdToTreatment.set(session.id, codeIdToTreatment.get(session.code_id) ?? 'control');
+    }
 
     // ===== QUIZ CORRECTNESS ANALYSIS =====
     let totalQuizzes = 0;
     let correctQuizzes = 0;
-    const perQuestionStats: Record<
-      string,
-      { total: number; correct: number; accuracy: number }
-    > = {};
+    const perQuestionStats: Record<string, { total: number; correct: number; accuracy: number }> = {};
 
-    if (quizEvents) {
-      quizEvents.forEach((event) => {
-        try {
-          const data = event.event_data as any;
-          if (data?.is_correct !== undefined) {
-            totalQuizzes++;
-            if (data.is_correct) {
-              correctQuizzes++;
-            }
+    for (const event of quizEvents) {
+      const data = event.event_data ?? {};
+      const isCorrect = data.is_correct;
+      if (typeof isCorrect !== 'boolean') {
+        continue;
+      }
 
-            // Track per-question stats
-            const quizId = data.quiz_id || 'unknown';
-            if (!perQuestionStats[quizId]) {
-              perQuestionStats[quizId] = { total: 0, correct: 0, accuracy: 0 };
-            }
-            perQuestionStats[quizId].total++;
-            if (data.is_correct) {
-              perQuestionStats[quizId].correct++;
-            }
-          }
-        } catch (e) {
-          // Skip malformed events
-        }
-      });
+      totalQuizzes += 1;
+      if (isCorrect) {
+        correctQuizzes += 1;
+      }
+
+      const quizId = getString(data.quiz_id, 'unknown');
+      if (!perQuestionStats[quizId]) {
+        perQuestionStats[quizId] = { total: 0, correct: 0, accuracy: 0 };
+      }
+      perQuestionStats[quizId].total += 1;
+      if (isCorrect) {
+        perQuestionStats[quizId].correct += 1;
+      }
     }
 
-    // Calculate accuracy percentages
     const overallAccuracy = totalQuizzes > 0 ? (correctQuizzes / totalQuizzes) * 100 : 0;
-    Object.entries(perQuestionStats).forEach(([, stats]) => {
+    for (const stats of Object.values(perQuestionStats)) {
       stats.accuracy = stats.total > 0 ? (stats.correct / stats.total) * 100 : 0;
-    });
+    }
 
     // ===== SCENE ENGAGEMENT ANALYSIS =====
-    const sceneEngagement: Record<
-      string,
-      { control: number; treatment_a: number; treatment_b: number; count: number }
-    > = {};
+    const sceneEventsBySession = new Map<string, Array<{ sceneId: string; timestampMs: number }>>();
+    for (const event of sceneEvents) {
+      const payload = event.event_data ?? {};
+      const sceneId =
+        getString(payload.scene_id) ||
+        getString(payload.current_scene_id) ||
+        getString(payload.current_scene) ||
+        'unknown';
+      const timestampMs = new Date(event.created_at).getTime();
+      if (!Number.isFinite(timestampMs)) continue;
 
-    if (sceneEvents && allSessions) {
-      // Build a map of session_token to treatment_group
-      const sessionTreatmentMap: Record<string, string> = {};
-      allSessions.forEach((session) => {
-        sessionTreatmentMap[session.session_token] = session.code_id || 'unknown';
-      });
-
-      // Process scene events
-      let sceneEventsBySession: Record<
-        string,
-        { sceneId: string; timestamp: string; index: number }[]
-      > = {};
-      sceneEvents.forEach((event) => {
-        try {
-          const data = event.event_data as any;
-          const sceneId = data.scene_id || 'unknown';
-          const sessionToken = event.session_token;
-
-          if (!sceneEventsBySession[sessionToken]) {
-            sceneEventsBySession[sessionToken] = [];
-          }
-          sceneEventsBySession[sessionToken].push({
-            sceneId,
-            timestamp: event.created_at,
-            index: sceneEventsBySession[sessionToken].length,
-          });
-        } catch (e) {
-          // Skip malformed events
-        }
-      });
-
-      // Calculate time in each scene
-      Object.entries(sceneEventsBySession).forEach(([sessionToken, events]) => {
-        const treatment = sessionTreatmentMap[sessionToken] || 'unknown';
-
-        events.forEach((event, idx) => {
-          let timeInScene = 0;
-          if (idx < events.length - 1) {
-            const currentTime = new Date(event.timestamp).getTime();
-            const nextTime = new Date(events[idx + 1].timestamp).getTime();
-            timeInScene = (nextTime - currentTime) / 1000; // Convert to seconds
-          }
-
-          if (!sceneEngagement[event.sceneId]) {
-            sceneEngagement[event.sceneId] = {
-              control: 0,
-              treatment_a: 0,
-              treatment_b: 0,
-              count: 0,
-            };
-          }
-
-          const treatmentKey = treatment === 'control' ? 'control' : treatment === 'treatment_a' ? 'treatment_a' : 'treatment_b';
-          sceneEngagement[event.sceneId][treatmentKey] += timeInScene;
-          sceneEngagement[event.sceneId].count++;
-        });
-      });
+      const list = sceneEventsBySession.get(event.session_id) ?? [];
+      list.push({ sceneId, timestampMs });
+      sceneEventsBySession.set(event.session_id, list);
     }
 
-    // Average engagement time per scene per treatment
-    const sceneEngagementAvg: Record<
+    const sceneAccumulator: Record<
       string,
-      { control: number; treatment_a: number; treatment_b: number }
+      {
+        control_sum: number;
+        control_count: number;
+        treatment_a_sum: number;
+        treatment_a_count: number;
+        treatment_b_sum: number;
+        treatment_b_count: number;
+      }
     > = {};
-    Object.entries(sceneEngagement).forEach(([sceneId, stats]) => {
+
+    for (const [sessionId, events] of sceneEventsBySession.entries()) {
+      const treatment = sessionIdToTreatment.get(sessionId) ?? 'control';
+      const ordered = [...events].sort((a, b) => a.timestampMs - b.timestampMs);
+
+      for (let i = 0; i < ordered.length; i += 1) {
+        const current = ordered[i];
+        const next = ordered[i + 1];
+        const timeInScene = next ? Math.max(0, (next.timestampMs - current.timestampMs) / 1000) : 0;
+
+        if (!sceneAccumulator[current.sceneId]) {
+          sceneAccumulator[current.sceneId] = {
+            control_sum: 0,
+            control_count: 0,
+            treatment_a_sum: 0,
+            treatment_a_count: 0,
+            treatment_b_sum: 0,
+            treatment_b_count: 0,
+          };
+        }
+
+        const sceneStats = sceneAccumulator[current.sceneId];
+        if (treatment === 'treatment_a') {
+          sceneStats.treatment_a_sum += timeInScene;
+          sceneStats.treatment_a_count += 1;
+        } else if (treatment === 'treatment_b') {
+          sceneStats.treatment_b_sum += timeInScene;
+          sceneStats.treatment_b_count += 1;
+        } else {
+          sceneStats.control_sum += timeInScene;
+          sceneStats.control_count += 1;
+        }
+      }
+    }
+
+    const sceneEngagementAvg: Record<string, { control: number; treatment_a: number; treatment_b: number }> = {};
+    for (const [sceneId, stats] of Object.entries(sceneAccumulator)) {
       sceneEngagementAvg[sceneId] = {
-        control: stats.count > 0 ? stats.control / stats.count : 0,
-        treatment_a: stats.count > 0 ? stats.treatment_a / stats.count : 0,
-        treatment_b: stats.count > 0 ? stats.treatment_b / stats.count : 0,
+        control: stats.control_count > 0 ? stats.control_sum / stats.control_count : 0,
+        treatment_a: stats.treatment_a_count > 0 ? stats.treatment_a_sum / stats.treatment_a_count : 0,
+        treatment_b: stats.treatment_b_count > 0 ? stats.treatment_b_sum / stats.treatment_b_count : 0,
       };
-    });
+    }
 
     // ===== SESSION COMPLETION FUNNEL =====
     const funnel = {
-      started: 0,
-      reached_lab: 0,
-      attempted_quiz: 0,
-      completed: 0,
+      started: allSessions.length,
+      reached_lab: allSessions.filter((s) => {
+        const currentScene = (s.current_scene ?? '').toLowerCase();
+        const visited = getNumber(s.scenes_visited_count, 0);
+        return currentScene.includes('lab') || visited > 1;
+      }).length,
+      attempted_quiz: allSessions.filter((s) => getNumber(s.quizzes_attempted_count, 0) > 0).length,
+      completed: allSessions.filter((s) => s.status === 'completed').length,
     };
-
-    if (allSessions) {
-      funnel.started = allSessions.length;
-
-      // Reached lab: sessions with current_scene starting with 'lab' or scenes visited > 1
-      funnel.reached_lab = allSessions.filter(
-        (s) => (s.current_scene && s.current_scene.toLowerCase().includes('lab')) || s.scenes_visited_count > 1
-      ).length;
-
-      // Attempted quiz: sessions with quiz attempts > 0
-      funnel.attempted_quiz = allSessions.filter((s) => s.quizzes_attempted_count > 0).length;
-
-      // Completed: sessions with status = 'completed'
-      funnel.completed = allSessions.filter((s) => s.status === 'completed').length;
-    }
-
-    // ===== LIVE ACTIVITY (last 5, 15, 60 minutes) =====
-    const now = new Date();
-    const last5MinEvents = quizEvents
-      ? quizEvents.filter((e) => {
-          const eventTime = new Date(e.created_at);
-          return now.getTime() - eventTime.getTime() < 5 * 60 * 1000;
-        }).length
-      : 0;
-    const last15MinEvents = quizEvents
-      ? quizEvents.filter((e) => {
-          const eventTime = new Date(e.created_at);
-          return now.getTime() - eventTime.getTime() < 15 * 60 * 1000;
-        }).length
-      : 0;
-    const last60MinEvents = quizEvents
-      ? quizEvents.filter((e) => {
-          const eventTime = new Date(e.created_at);
-          return now.getTime() - eventTime.getTime() < 60 * 60 * 1000;
-        }).length
-      : 0;
 
     return NextResponse.json({
       quiz: {
@@ -192,23 +246,16 @@ export async function GET(req: Request) {
         per_question: perQuestionStats,
       },
       scene_engagement: sceneEngagementAvg,
-      funnel: {
-        started: funnel.started,
-        reached_lab: funnel.reached_lab,
-        attempted_quiz: funnel.attempted_quiz,
-        completed: funnel.completed,
-      },
+      funnel,
       activity: {
-        last_5_minutes: last5MinEvents,
-        last_15_minutes: last15MinEvents,
-        last_60_minutes: last60MinEvents,
+        last_5_minutes: last5Result.count ?? 0,
+        last_15_minutes: last15Result.count ?? 0,
+        last_60_minutes: last60Result.count ?? 0,
       },
     });
   } catch (error) {
-    console.error('Analytics error:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch analytics' },
-      { status: 500 }
-    );
+    const message = error instanceof Error ? error.message : 'Unknown analytics failure';
+    console.error('Analytics error:', message);
+    return NextResponse.json({ error: 'Failed to fetch analytics', details: message }, { status: 500 });
   }
 }
