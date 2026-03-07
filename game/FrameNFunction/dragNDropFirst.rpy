@@ -13,8 +13,6 @@ screen drag_drop: ## creating the separate screen for the qns over the main scre
         action Function(submission) #calling the function to check the answer
     
 init python:
-    global counter
-    counter =2
     dropBoxStates={ #dictionary to track the each box dropped value
         "box1":None,
         "box2":None,
@@ -22,7 +20,6 @@ init python:
         "box4":None,
         "box5":None,
     }
-    count=2
     def dragged_func(dragged_items,dropped_on): #creating the callable to control dragged item behaviour
         dragged_name = dragged_items[0].drag_name #getting the drag item name
         if dropped_on is not None: #if the box is occupied
@@ -39,18 +36,28 @@ init python:
                     
 
     def submission(): #function to check the answer is correct or not
-        count=counter
-        print(count)
         if(dropBoxStates["box1"]!=None and dropBoxStates["box2"]!=None and dropBoxStates["box3"]!=None and dropBoxStates["box4"]!=None and dropBoxStates["box5"]!=None): #checking drop box is empty or not
             if dropBoxStates["box1"]=="optC1" and dropBoxStates["box2"]=="optC2" and dropBoxStates["box3"]=="optC3" and dropBoxStates["box4"]=="optC4" and dropBoxStates["box5"]=="optC5" :
+                emit_quiz_submitted(
+                    quiz_id=TELEMETRY_QUIZ_IDS["dragdrop_main"],
+                    question_id=TELEMETRY_QUESTION_IDS["dragdrop_main_1"],
+                    is_correct=True,
+                    extra={"attempt_number": 1}
+                )
                 renpy.call("qnsSolved") 
             else:
+                emit_quiz_submitted(
+                    quiz_id=TELEMETRY_QUIZ_IDS["dragdrop_main"],
+                    question_id=TELEMETRY_QUESTION_IDS["dragdrop_main_1"],
+                    is_correct=False,
+                    extra={"incorrect_answers": dict(dropBoxStates)}
+                )
+                telemetry_add_wrong_attempt(1)
                 dropBoxStates["box1"]=None
                 dropBoxStates["box2"]=None
                 dropBoxStates["box3"]=None
                 dropBoxStates["box4"]=None
                 dropBoxStates["box5"]=None
-                count =2
                 renpy.call("qnsUnsolve")
                 
 

@@ -3,6 +3,9 @@ define e = Character("Emma")
 define t = Character("Teacher")
 
 label inbed: 
+    python:
+        emit_scene_start(TELEMETRY_SCENE_IDS["inbed"])
+
     play sound "dream.mp3" fadein 1.0 fadeout 1.0 loop  #using loop to loop the using
     #Using different trasition in the script to maintain the flow of character expression and scene
 
@@ -46,4 +49,7 @@ label inbed:
     play voice "CollegeBell2.mp3" fadein 1.0 fadeout 2.0
 
     ## Now hallway scene start
+    python:
+        emit_player_state_update({"phase": "inbed_complete"})
+
     return

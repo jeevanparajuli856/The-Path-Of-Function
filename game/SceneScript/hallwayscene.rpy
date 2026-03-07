@@ -1,6 +1,9 @@
 
 define aligner = Position(xpos = 550, xanchor = 10, ypos=-10, yanchor=1) #defining the fix postion to determine the where the character gonna appear
 label hallway:
+    python:
+        emit_scene_start(TELEMETRY_SCENE_IDS["hallway"])
+
     play sound "hallway.mp3" fadein 1.0 fadeout 2.0 loop #changing the sound in the game
     scene bg hallway backale with Fade(1.0,4.0,0.9) #hallway scene where kevin and ale meet
     with Pause(1.0)
@@ -28,4 +31,7 @@ label hallway:
     e "See you later, Kevin!"
     k "See you, Emma! And thanks, you're the best!"
     #completion of hallway scene
+    python:
+        emit_player_state_update({"phase": "hallway_complete"})
+
     return

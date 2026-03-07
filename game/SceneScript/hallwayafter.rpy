@@ -1,4 +1,7 @@
 label hallwayafter:
+    python:
+        emit_scene_start(TELEMETRY_SCENE_IDS["hallwayafter"])
+
     play sound "learning.mp3" fadein 1.0 fadeout 2.0 loop #changing the sound
     scene bg 5pm with Fade(1.0,1.0,1.0)
     with Pause(3.0)
@@ -8,4 +11,7 @@ label hallwayafter:
     show ale speaking hand both wrist with dissolve
     e "Of course! Now, let's head to lab and get started."
     #The hallway after scene complete
+    python:
+        emit_player_state_update({"phase": "hallwayafter_complete"})
+
     return

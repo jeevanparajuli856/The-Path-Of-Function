@@ -3,6 +3,15 @@ define e = Character("Emma")
 define aleAlign = Position(xpos = 600, xanchor = 0, ypos=-60, yanchor=1)
 
 label teachingfirst: 
+    python:
+        emit_scene_start(TELEMETRY_SCENE_IDS["teachingfirst"])
+        emit_learning_context_update(
+            TELEMETRY_TOPIC_IDS["builtin"],
+            "Understand what Python built-in functions do and how to use them.",
+            "beginner",
+            ["function", "built-in", "input", "output"],
+        )
+
     play sound "teachingclass.mp3" fadein 1.0 fadeout 2.0 loop #changing the sound
     scene bg classroom with Fade(1.0,3.5,0.9) 
     show ale speaking hand left side at aleAlign with dissolve
@@ -27,12 +36,18 @@ label teachingfirst:
     menu: #to give option to the player
         "Do you remember anything about Python's built-in functions?" 
         "Yes":
+            python:
+                emit_choice_made("teaching1_builtin_yes", "Yes")
             call builInYes
         "No": 
+            python:
+                emit_choice_made("teaching1_builtin_no", "No")
             call builtInNo
 
     #Starting of the python function explanation
     show ale speaking hand both wrist with dissolve
+    python:
+        emit_player_state_update({"phase": "teaching1_builtin_intro"})
     e "Now let me sit down with you, and we'll get started with Python's built-in functions."
     hide ale with fade
     e "Python has many built-in functions. Think of a function as a mini-program, it takes an input, processes it, and gives you an output."
@@ -63,6 +78,14 @@ label teachingfirst:
     show ale speaking hand both wrist with dissolve
 
     #User define function explanation
+    python:
+        emit_learning_context_update(
+            TELEMETRY_TOPIC_IDS["user_defined"],
+            "Understand user-defined function structure and purpose.",
+            "beginner",
+            ["function", "user-defined", "def", "reuse"],
+        )
+
     e "Let's step it up a notch. Do you know anything about user-defined functions?"
     show ale standing hand both wrist with dissolve
     k "Uh... not really. Did the professor even mention that?"
@@ -88,12 +111,28 @@ label teachingfirst:
     show userdefine first funname with dissolve
     e "Next, you give your function a name. Make it descriptive, so you know what it does but, none of that 'function123' nonsense!"
     show userdefine first param with dissolve
+    python:
+        emit_learning_context_update(
+            TELEMETRY_TOPIC_IDS["parameters"],
+            "Understand formal parameters and argument passing by position.",
+            "beginner",
+            ["formal-parameter", "argument", "position", "function-call"],
+        )
+
     e "After the name, you add parentheses. Inside these, you can define zero or more formal parameters. Think of formal parameter as placeholders for the data your function will work with."
     e "Parameters work on a 'pass by position' system, meaning the order of the parameters is super important."
     e "When you call a function in your program, you must pass as many actual values as there are formal parameters. These actual values are matched with the formal parameters in the same order."
     show userdefine first insidefun with dissolve
     e "Now, inside the function, you write the code that does the actual work. It could be calculations, printing, or whatever task you need."
     show userdefine first returns with dissolve
+    python:
+        emit_learning_context_update(
+            TELEMETRY_TOPIC_IDS["returns"],
+            "Understand how return statements send values back to the caller.",
+            "beginner",
+            ["return", "output", "caller"],
+        )
+
     e "Finally, there's the return statement. The return statement sends the defined value back to the calling program."
     e "Got it so far? Great! Now, let me show you an example of a user-defined function."
 
@@ -109,8 +148,12 @@ label teachingfirst:
     menu: #giving the option and calling the label
         "What is the name of the function here?"
         "fahrenheit":
+            python:
+                emit_choice_made("teaching1_function_name_fahrenheit", "fahrenheit")
             call fahrNo
         "fahrenheitToCelsius": 
+            python:
+                emit_choice_made("teaching1_function_name_correct", "fahrenheitToCelsius")
             call fahrYes
     
     show ale speaking hand together with dissolve
@@ -125,6 +168,8 @@ label teachingfirst:
     show fahren celqns with dissolve
     e "Here's your next challenge: What value will the function fahrenheitToCelsius return to calling program when an value of 98 is passed to function"
     call valcheck #calling the python script to check the answer
+    python:
+        emit_player_state_update({"phase": "teaching1_value_check_complete"})
 
     #explanation of example
     show fahren solve with dissolve
@@ -140,6 +185,9 @@ label teachingfirst:
     show fahren returns with dissolve
     e "At the end of the function, there's a return statement. This statement sends the value of 'celsius' back to calling program"
     e "This way, the converted Celsius value can be used elsewhere in the program. Neat, right?"
+    python:
+        emit_player_state_update({"phase": "teaching1_complete"})
+
     return
 
 
@@ -148,12 +196,18 @@ label builInYes: #option for the builtInquestion
     k "Yeah, I remember a little about them. Honestly, it's one of the few things I managed to focus on in class today."
     show ale speaking hand both fold with dissolve
     e "Great! Let's quickly review those topics to make sure everything's crystal clear."
+    python:
+        emit_player_state_update({"checkpoint": "teaching1_builtin_yes"})
+
     return
 label builtInNo: #Second option for the builtInquestion
     show ale standing hand both fold with dissolve
     k "Nope, today's lecture went completely over my head."
     show ale speaking hand both fold with dissolve
     e "That's okay, Kevin. Don't worry, I'll walk you through it step by step."
+    python:
+        emit_player_state_update({"checkpoint": "teaching1_builtin_no"})
+
     return
 
 #second qns option
@@ -164,6 +218,9 @@ label fahrYes: #option for second qns
     e "That's right! You've got it, my friend."
     show ale speaking hand one fold with dissolve
     e "The function name is fahrenheitToCelsius, and fahrenheit is its formal parameter. Great job catching that!"
+    python:
+        emit_player_state_update({"checkpoint": "teaching1_function_name_correct"})
+
     return
 label fahrNo:
     show ale standing hand both wrist with dissolve
@@ -174,6 +231,9 @@ label fahrNo:
     e "Think back to the syntax I just explained. The formal parameter goes inside the parentheses, and the function name comes before it."
     show ale speaking hand left side with dissolve
     e "The correct function name is fahrenheitToCelsius. Don't worry, you'll get it next time!"
+    python:
+        emit_player_state_update({"checkpoint": "teaching1_function_name_wrong"})
+
     return
 
 #checking the fist input qns
@@ -217,6 +277,7 @@ label inputCheck:
         else:
 
             $ count -= 1
+            $ telemetry_add_wrong_attempt(1)
             if count == 0:
                 with dissolve
                 show ale sad hand left side at aleAlign
@@ -273,6 +334,7 @@ label valcheck:
         else:
 
             $ count -= 1
+            $ telemetry_add_wrong_attempt(1)
             if count == 0:
                 with dissolve
                 show ale sad hand both fold at aleAlign

@@ -1,5 +1,6 @@
 define aleAlign = Position(xpos = 650, xanchor = 2, ypos=-60, yanchor=1)
 label teachingSecond:
+    $ emit_scene_start(TELEMETRY_SCENE_IDS["teachingsecond"])
 
     #Now second part of teaching
     scene bg classroom with dissolve
@@ -10,8 +11,10 @@ label teachingSecond:
     menu: #Choice for the qns
         "Will this program execute?"
         "Yes":
+            $ emit_choice_made("teaching2_execute_yes", "Yes")
             call exYes
         "Confused":
+            $ emit_choice_made("teaching2_execute_confused", "Confused")
             call exConfused
 
     #Explaining how the funciton gonna execute
@@ -32,6 +35,12 @@ label teachingSecond:
     e "Instead, it's better to encapsulate the main logic within a `main()` function"
 
     #Starting main() function concept
+    $ emit_learning_context_update(
+        topic_id=TELEMETRY_TOPIC_IDS["main"],
+        objective="Understand main() function organization pattern",
+        difficulty="medium",
+        tags=["main", "function_organization", "program_structure"]
+    )
     e "This is the where the concept of using main() function comes in."
     hide fahren2 
     show mains with dissolve
@@ -64,22 +73,34 @@ label teachingSecond:
     e "Does this help you understand the concept of function definitions and function calls?"
     show ale standing hand left side with dissolve
     k "Yeah, it's all starting to make sense now!"
+    $ emit_player_state_update({"phase": "main_concept_learned"})
 
     #Last qns section
     show ale speaking hand left side with dissolve
     e "That's great to hear, Kevin! Before we move on to the next chapter, let's do a quick challenge."
     show ale speaking hand both wrist with dissolve
     e "I'll show you a question on the screen where you'll need to drag and drop the correct blocks to complete a Python program."
+    $ emit_help_policy_update(
+        help_level="hint",
+        spoiler_guard="medium"
+    )
     show ale question hand both down with dissolve
     e "Are you ready?"
     menu:
         "Are you ready?"
         "Yes":
+            $ emit_choice_made("teaching2_ready_yes", "Yes")
             call qnsYes
         "No":
+            $ emit_choice_made("teaching2_ready_no", "No")
             call qnsNo
 
+    $ emit_player_state_update({"phase": "quiz_ready"})
     with Fade(0.5,1,0.5)
+    $ emit_quiz_started(
+        quiz_id=TELEMETRY_QUIZ_IDS["dragdrop_main"],
+        question_id=TELEMETRY_QUESTION_IDS["dragdrop_main_1"]
+    )
     call dragqns ## drang and drop qns call
     return  # first round edit completed till here
 

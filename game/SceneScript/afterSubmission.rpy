@@ -1,5 +1,6 @@
 define finalAlign = Transform(zoom=0.9, xpos=0.5, xanchor=0.5, ypos=0.9, yanchor=0.6)
 label qnsSolved:
+    $ emit_player_state_update({"phase": "quiz_solved", "result": "correct"})
     scene bg classroom with fade
     show ale standing hand both wrist at aleAlign with dissolve
     show ale speaking hand both wrist at aleAlign with dissolve
@@ -16,13 +17,16 @@ label qnsSolved:
     menu:
         "Do you want Emma to explain you the answer to the question?"
         "Yes":
+            $ emit_choice_made("after_solved_explain_yes", "Yes")
             call yesExplain
         "No":
+            $ emit_choice_made("after_solved_explain_no", "No")
             call noExplain
     return
      
 
 label qnsUnsolve:
+    $ emit_player_state_update({"phase": "quiz_failed", "result": "incorrect"})
     scene bg classroom with fade
     show ale standing hand both wrist at aleAlign with dissolve
     show ale sad hand both wrist at aleAlign with dissolve
@@ -123,6 +127,7 @@ label afterDragNDrop:
     e "When main() finishes executing, it's removed from the stack too." 
     show stack point main pop with fade
     e "And now, the stack is empty!"# pop out the main() also.
+    $ emit_player_state_update({"phase": "call_stack_learned"})
     
     #Last Question
     scene bg classroom with fade
@@ -135,8 +140,10 @@ label afterDragNDrop:
     menu:
         "Which function was the last to be removed from the stack?"
         "calculate_area()":
+            $ emit_choice_made("final_stack_quiz_wrong", "calculate_area()")
             call lastWrong
         "main()":
+            $ emit_choice_made("final_stack_quiz_correct", "main()")
             call lastCorrect
     return
     
@@ -189,4 +196,12 @@ label ending:
     hide ale
     show text "Thank you for Playing and Learning!" with dissolve
     with Pause(4.0)
+    $ emit_game_ended(
+        final_scene="ending",
+        extra={
+            "completion_status": "full_completion",
+            "total_wrong_attempts": _telemetry_runtime_state.get("wrong_attempt_count", 0),
+            "total_hints_used": _telemetry_runtime_state.get("hints_used", 0)
+        }
+    )
     return
