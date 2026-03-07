@@ -258,7 +258,7 @@ export const gameAPI = {
 
   // End session
   endSession: async (sessionToken: string, completionStatus: 'completed' | 'abandoned', finalScore?: number): Promise<void> => {
-    await apiClient.post('/game/end-session', {
+    await apiClient.post('/game/session-end', {
       session_token: sessionToken,
       completion_status: completionStatus,
       final_score: finalScore,
