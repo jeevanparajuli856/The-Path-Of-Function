@@ -2,6 +2,16 @@ import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/db';
 import { validateCodeFormat } from '@/lib/access-codes';
 
+const RESUME_WINDOW_DAYS = 7;
+
+function isWithinResumeWindow(lastActiveAt?: string | null): boolean {
+  if (!lastActiveAt) return false;
+  const lastActiveMs = new Date(lastActiveAt).getTime();
+  if (Number.isNaN(lastActiveMs)) return false;
+  const elapsedMs = Date.now() - lastActiveMs;
+  return elapsedMs <= RESUME_WINDOW_DAYS * 24 * 60 * 60 * 1000;
+}
+
 export async function POST(req: Request) {
   const body = await req.json().catch(() => ({}));
   const code: string = (body.code ?? '').toUpperCase().trim();
@@ -22,9 +32,10 @@ export async function POST(req: Request) {
 
   const { data: session, error: sessionError } = await supabase
     .from('game_sessions')
-    .select('id, session_token, status')
+    .select('id, session_token, status, last_active_at, completion_percentage')
     .eq('code_id', accessCode.id)
-    .in('status', ['active', 'paused'])
+    .in('status', ['active', 'paused', 'abandoned'])
+    .lt('completion_percentage', 100)
     .order('last_active_at', { ascending: false })
     .limit(1)
     .single();
@@ -33,10 +44,18 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'No active session found for this code' }, { status: 404 });
   }
 
-  // Update last_active_at
+  if (!isWithinResumeWindow(session.last_active_at)) {
+    return NextResponse.json({ error: 'No resumable session found for this code' }, { status: 404 });
+  }
+
+  // Reactivate and refresh the session heartbeat.
   await supabase
     .from('game_sessions')
-    .update({ last_active_at: new Date().toISOString(), status: 'active' })
+    .update({
+      last_active_at: new Date().toISOString(),
+      status: 'active',
+      ended_at: null,
+    })
     .eq('id', session.id);
 
   const batch = Array.isArray(accessCode.code_batches)
