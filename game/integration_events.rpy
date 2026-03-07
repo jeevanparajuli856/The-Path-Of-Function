@@ -54,9 +54,20 @@ init -10 python:
                 json.dumps(event_type),
                 json.dumps(payload),
             )
-            renpy.exports.eval_js(js)
-            _telemetry_log("sent %s" % json.dumps(message))
-            return True
+            # Ren'Py web runtime: execute JS in browser context.
+            # Keep a fallback for older/non-web integrations.
+            if hasattr(renpy, "emscripten") and hasattr(renpy.emscripten, "run_script"):
+                renpy.emscripten.run_script(js)
+                _telemetry_log("sent via emscripten.run_script: %s" % json.dumps(message))
+                return True
+
+            if hasattr(renpy, "exports") and hasattr(renpy.exports, "eval_js"):
+                renpy.exports.eval_js(js)
+                _telemetry_log("sent via exports.eval_js: %s" % json.dumps(message))
+                return True
+
+            _telemetry_log("no JS bridge runtime available for %s" % event_type)
+            return False
         except Exception as exc:
             _telemetry_log("bridge unavailable for %s: %s" % (event_type, exc))
             return False

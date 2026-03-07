@@ -17,8 +17,8 @@ type ChatGameContext = {
   player_state?: Record<string, unknown>;
 };
 
-const SHOW_TELEMETRY_DEBUG_HUD =
-  process.env.NEXT_PUBLIC_RENPY_DEBUG_HUD === '1' || process.env.NODE_ENV !== 'production';
+const DEBUG_HUD_FLAG = (process.env.NEXT_PUBLIC_RENPY_DEBUG_HUD ?? '').toLowerCase();
+const SHOW_TELEMETRY_DEBUG_HUD = DEBUG_HUD_FLAG === '1' || DEBUG_HUD_FLAG === 'true';
 
 export default function GamePage() {
   const router = useRouter();

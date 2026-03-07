@@ -93,6 +93,27 @@ export interface DashboardSummary {
   avg_quiz_score: number;
 }
 
+export interface DashboardAnalytics {
+  quiz: {
+    total_submissions: number;
+    correct_count: number;
+    overall_accuracy: number;
+    per_question: Record<string, { total: number; correct: number; accuracy: number }>;
+  };
+  scene_engagement: Record<string, { control: number; treatment_a: number; treatment_b: number }>;
+  funnel: {
+    started: number;
+    reached_lab: number;
+    attempted_quiz: number;
+    completed: number;
+  };
+  activity: {
+    last_5_minutes: number;
+    last_15_minutes: number;
+    last_60_minutes: number;
+  };
+}
+
 export interface RebuildCorpusResponse {
   rebuilt: boolean;
   embedded_rows: number;
@@ -202,6 +223,12 @@ export const adminAPI = {
   // Get dashboard summary
   getDashboardSummary: async (): Promise<DashboardSummary> => {
     const response = await apiClient.get<DashboardSummary>('/admin/dashboard/summary');
+    return response.data;
+  },
+
+  // Get dashboard analytics
+  getDashboardAnalytics: async (): Promise<DashboardAnalytics> => {
+    const response = await apiClient.get<DashboardAnalytics>('/admin/dashboard/analytics');
     return response.data;
   },
 

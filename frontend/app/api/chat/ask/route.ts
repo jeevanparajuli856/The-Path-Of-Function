@@ -40,6 +40,52 @@ function extractSceneFromEvent(eventData: Record<string, unknown> | null): strin
   );
 }
 
+function inferActivePromptState(rows: EventLogRow[]): {
+  prompt_active: boolean;
+  active_prompt_id?: string;
+} {
+  for (const row of rows) {
+    const payload = row.event_data ?? {};
+
+    if (row.event_type === 'player_prompt_started') {
+      return {
+        prompt_active: true,
+        active_prompt_id: typeof payload.prompt_id === 'string' ? payload.prompt_id : undefined,
+      };
+    }
+
+    if (row.event_type === 'player_prompt_resolved') {
+      return { prompt_active: false };
+    }
+
+    if (row.event_type === 'quiz_started') {
+      return {
+        prompt_active: true,
+        active_prompt_id: typeof payload.quiz_id === 'string' ? payload.quiz_id : undefined,
+      };
+    }
+
+    if (row.event_type === 'quiz_submitted') {
+      return { prompt_active: false };
+    }
+
+    if (row.event_type === 'player_state_update') {
+      const promptState = payload.prompt_state;
+      if (promptState === 'started') {
+        return {
+          prompt_active: true,
+          active_prompt_id: typeof payload.prompt_id === 'string' ? payload.prompt_id : undefined,
+        };
+      }
+      if (promptState === 'resolved') {
+        return { prompt_active: false };
+      }
+    }
+  }
+
+  return { prompt_active: false };
+}
+
 async function getLatestContextFromTelemetry(sessionId: string): Promise<Partial<GameContext>> {
   const { data } = await supabase
     .from('event_logs')
@@ -50,6 +96,7 @@ async function getLatestContextFromTelemetry(sessionId: string): Promise<Partial
 
   const rows = (data ?? []) as EventLogRow[];
   const merged: Partial<GameContext> = {};
+  const inferredPromptState = inferActivePromptState(rows);
 
   for (const row of rows) {
     const payload = row.event_data ?? {};
@@ -82,6 +129,13 @@ async function getLatestContextFromTelemetry(sessionId: string): Promise<Partial
     }
   }
 
+  const currentPlayerState = (merged.player_state ?? {}) as Record<string, unknown>;
+  merged.player_state = {
+    ...currentPlayerState,
+    prompt_active: inferredPromptState.prompt_active,
+    active_prompt_id: inferredPromptState.active_prompt_id ?? currentPlayerState.active_prompt_id,
+  };
+
   return merged;
 }
 
@@ -106,6 +160,11 @@ function mergeContextWithTelemetry(
   }
   if (!incoming.player_state && telemetryContext.player_state) {
     merged.player_state = telemetryContext.player_state;
+  } else if (incoming.player_state && telemetryContext.player_state) {
+    merged.player_state = {
+      ...(incoming.player_state as Record<string, unknown>),
+      ...(telemetryContext.player_state as Record<string, unknown>),
+    };
   }
   if (!incoming.help_policy && telemetryContext.help_policy) {
     merged.help_policy = telemetryContext.help_policy;

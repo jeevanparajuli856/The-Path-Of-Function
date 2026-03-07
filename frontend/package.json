@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next export",
-    "seed:corpus": "node scripts/populate-corpus.mjs"
+    "seed:corpus": "node scripts/populate-corpus.mjs",
+    "renpy:bridge": "node scripts/patch-renpy-bridge.mjs",
+    "renpy:bridge:check": "node scripts/patch-renpy-bridge.mjs --check"
   },
   "dependencies": {
     "react": "^18.2.0",

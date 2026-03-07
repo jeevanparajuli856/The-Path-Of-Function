@@ -50,10 +50,75 @@ const SCENE_PROGRESSION = [
   'ending',
 ];
 
+const GAME_KEYWORDS = [
+  'function', 'functions', 'game', 'scene', 'code', 'program',
+  'variable', 'variables', 'parameter', 'parameters', 'argument',
+  'arguments', 'return', 'main', 'quiz', 'loop', 'if', 'python',
+];
+
+const TYPO_ALIASES: Record<string, string> = {
+  functino: 'function',
+  fucntion: 'function',
+  funtcion: 'function',
+  fnction: 'function',
+  paramter: 'parameter',
+  perameter: 'parameter',
+  arguement: 'argument',
+  retrun: 'return',
+  retun: 'return',
+  calstack: 'stack',
+};
+
 function sceneRank(sceneId?: string): number {
   if (!sceneId) return -1;
   const idx = SCENE_PROGRESSION.indexOf(sceneId);
   return idx === -1 ? -1 : idx;
+}
+
+function normalizeForIntent(message: string): { normalized: string; tokens: string[] } {
+  const normalized = message.toLowerCase().replace(/[^a-z0-9\s]/g, ' ');
+  const tokens = normalized
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((token) => TYPO_ALIASES[token] ?? token);
+  return { normalized: tokens.join(' '), tokens };
+}
+
+function levenshteinDistance(a: string, b: string): number {
+  if (a === b) return 0;
+  if (!a.length) return b.length;
+  if (!b.length) return a.length;
+
+  const dp = Array.from({ length: a.length + 1 }, () => new Array(b.length + 1).fill(0));
+  for (let i = 0; i <= a.length; i += 1) dp[i][0] = i;
+  for (let j = 0; j <= b.length; j += 1) dp[0][j] = j;
+
+  for (let i = 1; i <= a.length; i += 1) {
+    for (let j = 1; j <= b.length; j += 1) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,
+        dp[i][j - 1] + 1,
+        dp[i - 1][j - 1] + cost
+      );
+    }
+  }
+
+  return dp[a.length][b.length];
+}
+
+function hasApproxKeyword(tokens: string[]): boolean {
+  for (const token of tokens) {
+    if (token.length < 4) continue;
+    if (GAME_KEYWORDS.includes(token)) return true;
+
+    for (const keyword of GAME_KEYWORDS) {
+      if (Math.abs(keyword.length - token.length) > 2) continue;
+      if (levenshteinDistance(token, keyword) <= 2) return true;
+    }
+  }
+
+  return false;
 }
 
 function isAllowedBySceneProgress(contentSceneId: string, currentSceneId?: string): boolean {
@@ -104,7 +169,7 @@ export function checkGuardrails(
   message: string,
   gameContext?: GameContext
 ): string {
-  const normalized = message.toLowerCase();
+  const { normalized } = normalizeForIntent(message);
 
   let helpLevel = 'default';
   let spoilerGuard = 'off';
@@ -163,25 +228,25 @@ export function checkGuardrails(
 
   const playerState = (gameContext?.player_state ?? {}) as Record<string, unknown>;
   const activeQuiz = Boolean(playerState.quiz_id);
+  const activePrompt = Boolean(playerState.prompt_active);
+  const activeAssessment = activeQuiz || activePrompt;
+  const gameRelated = isGameRelated(message);
 
   if (isLeakAttempt) return 'leak_attempt';
   if (isSocialBoundaryMessage) return 'social_boundary';
-  if (activeQuiz && isSpoilerRequest) return 'spoiler';
+  if (!gameRelated) return 'out_of_scope';
+  if (activeAssessment) return 'hint';
   if (isSpoilerRequest && ['strict', 'medium'].includes(spoilerGuard)) return 'spoiler';
-  if (!isGameRelated(message)) return 'out_of_scope';
   if (['nudge', 'hint'].includes(helpLevel)) return 'hint';
 
   return 'none';
 }
 
 function isGameRelated(message: string): boolean {
-  const keywords = [
-    'function', 'functions', 'game', 'scene', 'code', 'program',
-    'variable', 'variables', 'parameter', 'parameters', 'argument',
-    'arguments', 'return', 'main', 'call stack', 'quiz', 'loop', 'if',
-  ];
-  const lower = message.toLowerCase();
-  return keywords.some((kw) => lower.includes(kw));
+  const { normalized, tokens } = normalizeForIntent(message);
+  if (normalized.includes('call stack')) return true;
+  if (tokens.includes('call') && tokens.includes('stack')) return true;
+  return hasApproxKeyword(tokens);
 }
 
 export async function queryRagCorpus(
@@ -250,7 +315,7 @@ export function buildPrompt(
   let guardrailInstruction = '';
   if (guardrailMode === 'hint') {
     guardrailInstruction =
-      'Provide hints rather than direct answers. Help the learner reason without giving final solutions.';
+      'Provide step-by-step hints and reasoning. Do not reveal the exact final answer, exact choice selection, or final code/output for an active prompt/quiz.';
   } else if (guardrailMode === 'spoiler') {
     guardrailInstruction =
       'Do not reveal direct solutions or future-scene content. Offer general guidance only.';
@@ -271,6 +336,7 @@ Rules:
 - Answer only using the provided lesson content.
 - Never reveal future-scene content.
 - Keep responses concise and supportive.
+- Interpret minor spelling mistakes in student questions as intended programming terms.
 - If context is insufficient, say exactly: "I don't have enough lesson information yet."
 
 ${guardrailInstruction}
