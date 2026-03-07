@@ -6,6 +6,8 @@ import { studentAPI, handleAPIError } from '@/lib/api';
 import { useGameStore } from '@/lib/store';
 import toast, { Toaster } from 'react-hot-toast';
 
+const GAME_ENTRY_TOKEN_KEY = 'game-entry-token';
+
 export default function CodeEntryPage() {
   const [code, setCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -88,6 +90,10 @@ export default function CodeEntryPage() {
         started_at: Date.now(),
         expires_at: Date.now() + sessionResponse.expires_in * 1000,
       });
+
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem(GAME_ENTRY_TOKEN_KEY, sessionResponse.session_token);
+      }
 
       router.push('/game');
     } catch (err) {

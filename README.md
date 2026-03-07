@@ -68,7 +68,45 @@ npm run dev      # http://localhost:3000
 npm run build    # production build
 ```
 
-No separate backend process needed — everything runs via `npm run dev`.
+No separate backend process needed - everything runs via `npm run dev`.
+
+### **Important: After Every Ren'Py Web Export**
+Ren'Py export rewrites `frontend/public/renpy-game/index.html`.  
+If the bridge is missing, telemetry/chat sync breaks.
+
+1. Copy new Ren'Py web distribution into `frontend/public/renpy-game/`.
+2. Re-inject/check the bridge:
+   ```bash
+   cd frontend
+   npm run renpy:bridge
+   npm run renpy:bridge:check
+   ```
+3. Hard refresh browser (`Ctrl+Shift+R`).
+
+Bridge script expected in `frontend/public/renpy-game/index.html`:
+```html
+<script>
+  window.sendToFrontend = function(type, payload) {
+    try {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: type, payload: payload || {} }, '*');
+        return true;
+      }
+    } catch (e) {
+      console.warn('sendToFrontend bridge error:', e);
+    }
+    return false;
+  };
+
+  try {
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'bridge_ready', payload: {} }, '*');
+    }
+  } catch (e) {
+    console.warn('bridge_ready postMessage failed:', e);
+  }
+</script>
+```
 
 ---
 
@@ -118,3 +156,5 @@ For questions or feedback, feel free to reach out:
   **Email**: prasannajha401@gmail.com  
 
 ---
+
+

@@ -19,6 +19,7 @@ type ChatGameContext = {
 
 const DEBUG_HUD_FLAG = (process.env.NEXT_PUBLIC_RENPY_DEBUG_HUD ?? '').toLowerCase();
 const SHOW_TELEMETRY_DEBUG_HUD = DEBUG_HUD_FLAG === '1' || DEBUG_HUD_FLAG === 'true';
+const GAME_ENTRY_TOKEN_KEY = 'game-entry-token';
 
 export default function GamePage() {
   const router = useRouter();
@@ -31,11 +32,19 @@ export default function GamePage() {
   const [finalVerifyError, setFinalVerifyError] = useState<string | null>(null);
   const [isSubmittingFinalVerify, setIsSubmittingFinalVerify] = useState(false);
   const [lastTelemetryEvent, setLastTelemetryEvent] = useState<string>('none');
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
 
   useEffect(() => {
     if (!session || !useGameStore.getState().isSessionValid()) {
       toast.error('Session expired. Please enter a code again.');
-      router.push('/code-entry');
+      router.replace('/code-entry');
+      return;
+    }
+
+    const entryToken = typeof window !== 'undefined' ? sessionStorage.getItem(GAME_ENTRY_TOKEN_KEY) : null;
+    if (!entryToken || entryToken !== session.session_token) {
+      toast.error('Please enter your code to start the game.');
+      router.replace('/code-entry');
       return;
     }
 
@@ -77,6 +86,19 @@ export default function GamePage() {
     window.addEventListener('message', handleRawTelemetry);
     return () => {
       window.removeEventListener('message', handleRawTelemetry);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsHelpOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleEsc);
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
     };
   }, []);
 
@@ -255,6 +277,9 @@ export default function GamePage() {
       await gameAPI.endSession(session.session_token, 'completed');
       toast.success('Game completed. Thank you for playing.');
       setShowFinalVerify(false);
+      if (typeof window !== 'undefined') {
+        sessionStorage.removeItem(GAME_ENTRY_TOKEN_KEY);
+      }
       useGameStore.getState().reset();
       router.push('/');
     } catch (error) {
@@ -276,8 +301,11 @@ export default function GamePage() {
     } catch (error) {
       console.error('Failed to mark session as abandoned:', error);
     } finally {
+      if (typeof window !== 'undefined') {
+        sessionStorage.removeItem(GAME_ENTRY_TOKEN_KEY);
+      }
       useGameStore.getState().reset();
-      router.push('/');
+      router.replace('/code-entry');
     }
   };
 
@@ -323,6 +351,64 @@ export default function GamePage() {
         gameContext={chatContext}
         isBlocked={isChatBlocked}
       />
+
+      {isHelpOpen && (
+        <>
+          <button
+            type="button"
+            aria-label="Close quick help"
+            onClick={() => setIsHelpOpen(false)}
+            className="fixed inset-0 z-[108] bg-black/35"
+          />
+          <div
+            className="fixed bottom-28 left-6 z-[111] w-[24rem] max-w-[calc(100vw-3rem)] rounded-3xl overflow-hidden shadow-2xl"
+            style={{
+              backgroundColor: 'rgba(249, 246, 240, 0.98)',
+              border: '3px solid #C9A899',
+              backdropFilter: 'blur(10px)',
+            }}
+          >
+            <div className="bg-gradient-to-r from-[#C9A899] to-[#D4B5A5] px-4 py-3 flex items-center justify-between border-b-2 border-[#B8978A]">
+              <span className="text-[#2E2E2E] font-bold text-lg">Quick Help</span>
+              <button
+                onClick={() => setIsHelpOpen(false)}
+                className="text-[#2E2E2E] hover:text-red-600 font-bold text-2xl leading-none w-8 h-8 flex items-center justify-center hover:bg-white/30 rounded-full transition"
+                aria-label="Close help"
+              >
+                ×
+              </button>
+            </div>
+            <div
+              className="p-4 text-[#2E2E2E] text-sm leading-relaxed space-y-3"
+              style={{
+                backgroundColor: 'rgba(247, 243, 234, 0.95)',
+                backgroundImage:
+                  'radial-gradient(circle at 20% 50%, rgba(201, 168, 153, 0.05) 0%, transparent 50%)',
+              }}
+            >
+              <p>
+                <span className="font-semibold">Prefs</span> lets you adjust text speed, auto speed,
+                audio, and display settings.
+              </p>
+              <p>
+                At the end of the game, submit your <span className="font-semibold">original access code</span> to finish your session.
+              </p>
+              <p>
+                <span className="font-semibold">Ask Emma</span> helps with concepts. During active
+                questions, chat may hide and returns after you answer.
+              </p>
+            </div>
+          </div>
+        </>
+      )}
+
+      <button
+        onClick={() => setIsHelpOpen((prev) => !prev)}
+        className="fixed bottom-6 left-6 z-[110] w-16 h-16 rounded-full bg-[#F7F3EA] border-[3px] border-[#C9A899] text-[#2E2E2E] text-4xl leading-none font-bold shadow-xl hover:scale-105 transition"
+        aria-label="Open quick help"
+      >
+        ?
+      </button>
 
       {SHOW_TELEMETRY_DEBUG_HUD && (
         <div className="fixed left-3 top-14 z-[140] bg-black/75 text-white text-xs rounded-md px-3 py-2 space-y-1 pointer-events-none">

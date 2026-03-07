@@ -1,18 +1,9 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useGameStore } from '@/lib/store';
-import { useEffect } from 'react';
 
 export default function Home() {
   const router = useRouter();
-  const session = useGameStore((state) => state.session);
-
-  useEffect(() => {
-    if (session && useGameStore.getState().isSessionValid()) {
-      router.push('/game');
-    }
-  }, [session, router]);
 
   return (
     <div className="h-screen overflow-hidden relative">

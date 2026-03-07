@@ -58,7 +58,7 @@ export async function GET(req: Request) {
 
     // Calculate accuracy percentages
     const overallAccuracy = totalQuizzes > 0 ? (correctQuizzes / totalQuizzes) * 100 : 0;
-    Object.entries(perQuestionStats).forEach(([key, stats]) => {
+    Object.entries(perQuestionStats).forEach(([, stats]) => {
       stats.accuracy = stats.total > 0 ? (stats.correct / stats.total) * 100 : 0;
     });
 

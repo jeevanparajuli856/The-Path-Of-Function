@@ -15,7 +15,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   FunnelChart,
   Funnel,
@@ -53,6 +52,7 @@ export default function AdminDashboard() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [showGenerateModal, setShowGenerateModal] = useState(false);
   const [showResearchExportModal, setShowResearchExportModal] = useState(false);
+  const [showRebuildModal, setShowRebuildModal] = useState(false);
   const [generatingBatch, setGeneratingBatch] = useState(false);
   const [rebuildingCorpus, setRebuildingCorpus] = useState(false);
   const [exportingResearchCsv, setExportingResearchCsv] = useState(false);
@@ -385,8 +385,8 @@ export default function AdminDashboard() {
                           cx="50%"
                           cy="50%"
                           labelLine={false}
-                          label={({ name, value, percent }) =>
-                            `${name}: ${value} (${(percent * 100).toFixed(1)}%)`
+                          label={(props: any) =>
+                            `${props.name}: ${props.value} (${(props.percent * 100).toFixed(1)}%)`
                           }
                           outerRadius={80}
                           fill="#8884d8"
@@ -395,7 +395,9 @@ export default function AdminDashboard() {
                           <Cell fill="#4CAF50" />
                           <Cell fill="#F44336" />
                         </Pie>
-                        <Tooltip formatter={(value: number) => `${value} answers`} />
+                        <Tooltip
+                      formatter={(value: any) => `${value} answers`}
+                    />
                       </PieChart>
                     </ResponsiveContainer>
                     <div className="text-center mt-4 p-3 bg-[#F0EBE0] rounded-lg">
@@ -432,11 +434,11 @@ export default function AdminDashboard() {
                     <XAxis type="number" domain={[0, 100]} />
                     <YAxis dataKey="quiz" type="category" tick={{ fontSize: 12 }} />
                     <Tooltip
-                      formatter={(value: number, name: string) => {
-                        if (name === 'accuracy') return [`${value.toFixed(1)}%`, 'Accuracy'];
+                      formatter={(value: any, name: any) => {
+                        if (name === 'accuracy') return [`${(value as number).toFixed(1)}%`, 'Accuracy'];
                         return [value, name];
                       }}
-                      labelFormatter={(label: string) => `Question: ${label}`}
+                      labelFormatter={(label: any) => `Question: ${label}`}
                     />
                     <Bar dataKey="accuracy" fill="#6AA6D9" radius={[0, 8, 8, 0]} />
                   </BarChart>
@@ -535,20 +537,22 @@ export default function AdminDashboard() {
             </div>
           </>
         ) : null}
-          <button onClick={() => setShowGenerateModal(true)} className="btn-game flex items-center gap-2">
+
+        <div className="flex gap-4 mb-8 items-center">
+          <button onClick={() => setShowGenerateModal(true)} className="flex items-center gap-2 bg-[#6AA6D9] hover:bg-[#4A8CC4] text-white font-bold py-2 px-4 rounded-xl transition duration-200">
             <span>+</span> Generate New Batch
           </button>
           <button
             onClick={() => setShowResearchExportModal(true)}
             disabled={exportingResearchCsv}
-            className="bg-[#4A8CC4] hover:bg-[#3B79AE] disabled:opacity-50 text-white font-bold py-3 px-6 rounded-xl transition duration-200"
+            className="bg-[#4A8CC4] hover:bg-[#3B79AE] disabled:opacity-50 text-white font-bold py-2 px-4 rounded-xl transition duration-200"
           >
             {exportingResearchCsv ? 'Preparing Export...' : 'Download Research Excel (CSV)'}
           </button>
           <button
-            onClick={() => void handleRebuildCorpus()}
+            onClick={() => setShowRebuildModal(true)}
             disabled={rebuildingCorpus}
-            className="bg-[#6AA6D9] hover:bg-[#4A8CC4] disabled:opacity-50 text-white font-bold py-3 px-6 rounded-xl transition duration-200"
+            className="bg-[#6AA6D9] hover:bg-[#4A8CC4] disabled:opacity-50 text-white font-bold py-2 px-4 rounded-xl transition duration-200"
           >
             {rebuildingCorpus ? 'Rebuilding Corpus...' : 'Rebuild Vector Corpus'}
           </button>
@@ -790,6 +794,38 @@ export default function AdminDashboard() {
                 className="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-200 disabled:opacity-50"
               >
                 {busyBatchId === pendingDeleteBatch.id ? 'Deleting...' : 'Delete'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showRebuildModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+          <div className="bg-white border border-[#C9A899] rounded-2xl p-8 shadow-xl max-w-md w-full">
+            <h3 className="text-2xl font-bold text-[#2E2E2E] mb-3">Rebuild Vector Corpus</h3>
+            <p className="text-sm text-[#2E2E2E] opacity-80 mb-6">
+              Are you sure you want to rebuild the vector corpus? This may take a few moments.
+            </p>
+            <div className="flex gap-4">
+              <button
+                type="button"
+                onClick={() => setShowRebuildModal(false)}
+                disabled={rebuildingCorpus}
+                className="flex-1 bg-[#F0EBE0] text-[#2E2E2E] border border-[#C9A899] font-bold py-2 px-4 rounded transition duration-200 disabled:opacity-50"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={async () => {
+                  await handleRebuildCorpus();
+                  setShowRebuildModal(false);
+                }}
+                disabled={rebuildingCorpus}
+                className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-200 disabled:opacity-50"
+              >
+                {rebuildingCorpus ? 'Rebuilding...' : 'Rebuild'}
               </button>
             </div>
           </div>
