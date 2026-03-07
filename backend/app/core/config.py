@@ -54,6 +54,10 @@ class Settings(BaseSettings):
     DATABASE_POOL_TIMEOUT: int = 30
     DATABASE_POOL_RECYCLE: int = 3600
     
+    # Supabase Configuration (optional - for direct API access)
+    SUPABASE_URL: str | None = None
+    SUPABASE_KEY: str | None = None
+    
     # ========================================================================
     # SECURITY
     # ========================================================================
@@ -80,19 +84,12 @@ class Settings(BaseSettings):
     # CORS (Cross-Origin Resource Sharing)
     # ========================================================================
     
-    CORS_ORIGINS: List[str] = [
-        "http://localhost:3000",  # Next.js dev server
-        "http://localhost:5173",  # Vite dev server
-        "http://127.0.0.1:3000",
-        "https://*.vercel.app",  # Vercel preview deployments
-    ]
+    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173,http://127.0.0.1:3000"
     
     @property
     def cors_origins_list(self) -> List[str]:
-        """Parse CORS_ORIGINS if provided as comma-separated string"""
-        if isinstance(self.CORS_ORIGINS, str):
-            return [origin.strip() for origin in self.CORS_ORIGINS.split(",")]
-        return self.CORS_ORIGINS
+        """Parse CORS_ORIGINS from comma-separated string"""
+        return [origin.strip() for origin in self.CORS_ORIGINS.split(",")]
     
     # ========================================================================
     # RATE LIMITING

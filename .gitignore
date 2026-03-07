@@ -14,3 +14,10 @@ game/cache
 traceback.txt
 *.txt
 *.log
+.venv
+__pycache__/
+
+# Environment variables (contains secrets)
+.env
+.env.local
+*.env.local
