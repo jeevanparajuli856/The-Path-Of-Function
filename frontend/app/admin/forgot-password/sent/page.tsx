@@ -1,11 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import toast, { Toaster } from 'react-hot-toast';
 import { adminAPI, handleAPIError } from '@/lib/api';
 
 export default function ForgotPasswordSentPage() {
+  return (
+    <Suspense fallback={null}>
+      <ForgotPasswordSentContent />
+    </Suspense>
+  );
+}
+
+function ForgotPasswordSentContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const email = (searchParams.get('email') ?? '').trim().toLowerCase();
