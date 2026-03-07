@@ -16,7 +16,7 @@ import logging
 
 from app.core.config import get_settings
 from app.core.database import init_db, close_db
-from app.api import admin, student, game
+from app.api import admin, student, game, chat
 from app.middleware.rate_limit import RateLimitMiddleware
 from app.middleware.auth import AuthMiddleware
 
@@ -185,6 +185,12 @@ app.include_router(
     game.router,
     prefix="/api/game",
     tags=["Game"]
+)
+
+app.include_router(
+    chat.router,
+    prefix="/api/chat",
+    tags=["Chat"]
 )
 
 

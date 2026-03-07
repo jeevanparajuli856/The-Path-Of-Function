@@ -44,6 +44,7 @@ class GameSession(Base):
     events = relationship("EventLog", back_populates="session", cascade="all, delete-orphan")
     quiz_attempts = relationship("QuizAttempt", back_populates="session", cascade="all, delete-orphan")
     checkpoint_verifications = relationship("CheckpointVerification", back_populates="session", cascade="all, delete-orphan")
+    chat_logs = relationship("ChatLog", back_populates="session", cascade="all, delete-orphan")
     
     def __repr__(self):
         return f"<GameSession(id={self.id}, status='{self.completion_status}', duration={self.duration_minutes})>"

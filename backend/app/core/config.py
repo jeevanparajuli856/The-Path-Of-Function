@@ -140,10 +140,11 @@ class Settings(BaseSettings):
     # EXTERNAL SERVICES (Future Phases)
     # ========================================================================
     
-    # Vertex AI (Phase 2)
-    GOOGLE_CLOUD_PROJECT: str | None = None
+    # Google Cloud / Vertex AI
+    GCP_PROJECT_ID: str | None = None  # Google Cloud Project ID
+    GOOGLE_CLOUD_PROJECT: str | None = None  # Alias for compatibility
     VERTEX_AI_LOCATION: str = "us-central1"
-    VERTEX_AI_MODEL: str = "gemini-1.5-pro"
+    VERTEX_AI_MODEL: str = "gemini-1.5-flash"
     
     # Email notifications (Optional)
     SMTP_HOST: str | None = None
