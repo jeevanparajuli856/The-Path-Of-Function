@@ -7,7 +7,6 @@ import {
   sendRenPyMessage,
   setupCheckpointListener,
 } from '@/lib/renpy';
-import toast, { Toaster } from 'react-hot-toast';
 
 interface GameWindowProps {
   renpyUrl?: string;
@@ -110,19 +109,13 @@ export default function GameWindow({
 
   const handleIframeLoad = () => {
     setIsLoading(false);
-    toast.success('Game loaded!');
   };
 
   return (
     <div className="relative w-full h-full bg-black rounded-lg overflow-hidden">
-      <Toaster position="top-right" />
-
       {isLoading && !loadError && (
         <div className="absolute inset-0 bg-[#F7F3EA] flex items-center justify-center z-20">
-          <div className="text-center">
-            <div className="inline-block animate-spin text-4xl mb-4 text-[#6AA6D9]">...</div>
-            <p className="text-xl text-[#2E2E2E]">Loading game...</p>
-          </div>
+          <div className="w-10 h-10 border-4 border-[#C9A899] border-t-[#6AA6D9] rounded-full animate-spin" />
         </div>
       )}
 
@@ -145,7 +138,6 @@ export default function GameWindow({
           allow="fullscreen"
           style={{
             border: 'none',
-            display: isLoading ? 'none' : 'block',
           }}
         />
       )}

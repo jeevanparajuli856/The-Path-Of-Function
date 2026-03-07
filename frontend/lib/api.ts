@@ -150,6 +150,11 @@ export interface CheckpointResponse {
   message: string;
 }
 
+export interface FinalVerifyResponse {
+  verified: boolean;
+  message: string;
+}
+
 export interface SessionProgress {
   session_id: string;
   current_scene: string;
@@ -305,6 +310,15 @@ export const gameAPI = {
       completion_status: completionStatus,
       final_score: finalScore,
     });
+  },
+
+  // Final code verification before session completion
+  finalVerifyCode: async (sessionToken: string, codeEntered: string): Promise<FinalVerifyResponse> => {
+    const response = await apiClient.post<FinalVerifyResponse>('/game/final-verify', {
+      session_token: sessionToken,
+      code_entered: codeEntered,
+    });
+    return response.data;
   },
 };
 

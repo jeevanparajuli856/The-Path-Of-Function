@@ -219,6 +219,27 @@
       // The URL to game.zip, relative to the URL of this file.
       window.gameZipURL = 'game.zip';
 
+      // Bridge for Ren'Py -> Next.js telemetry.
+      // Called from Ren'Py using eval_js("window.sendToFrontend(...)").
+      window.sendToFrontend = function(type, payload) {
+          try {
+              if (window.parent && window.parent !== window) {
+                  window.parent.postMessage(
+                      {
+                          type: type,
+                          payload: payload || {},
+                      },
+                      '*'
+                  );
+                  return true;
+              }
+          } catch (e) {
+              console.warn('sendToFrontend bridge error:', e);
+          }
+
+          return false;
+      };
+
       // Register the service worker.
       if (navigator.serviceWorker) {
           if (!navigator.serviceWorker.controller) {

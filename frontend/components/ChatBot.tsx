@@ -6,6 +6,7 @@ import { apiClient } from '@/lib/api';
 interface ChatBotProps {
   sessionToken: string;
   currentScene: string;
+  isBlocked?: boolean;
   gameContext?: {
     scene_id?: string;
     topic_id?: string;
@@ -22,7 +23,7 @@ const avatarMap = {
   confused:   '/assets/chatbot/Avatar_Confused.png',
 };
 
-export default function ChatBot({ sessionToken, currentScene, gameContext }: ChatBotProps) {
+export default function ChatBot({ sessionToken, currentScene, isBlocked = false, gameContext }: ChatBotProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant'; text: string }>>([
     { role: 'assistant', text: "Hi! I'm Emma. Ask me anything about what we're learning in the game!" },
@@ -32,7 +33,7 @@ export default function ChatBot({ sessionToken, currentScene, gameContext }: Cha
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSend = async () => {
-    if (!inputValue.trim() || isLoading) return;
+    if (!inputValue.trim() || isLoading || isBlocked) return;
     const userMsg = inputValue.trim();
     setMessages((prev) => [...prev, { role: 'user', text: userMsg }]);
     setInputValue('');
@@ -65,6 +66,10 @@ export default function ChatBot({ sessionToken, currentScene, gameContext }: Cha
       handleSend();
     }
   };
+
+  if (isBlocked) {
+    return null;
+  }
 
   return (
     <>

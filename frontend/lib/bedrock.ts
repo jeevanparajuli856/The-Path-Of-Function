@@ -271,7 +271,7 @@ Rules:
 - Answer only using the provided lesson content.
 - Never reveal future-scene content.
 - Keep responses concise and supportive.
-- If context is insufficient, say exactly: "I don't have enough information from this lesson yet."
+- If context is insufficient, say exactly: "I don't have enough lesson information yet."
 
 ${guardrailInstruction}
 
@@ -356,7 +356,7 @@ export async function callBedrock(
   const body = JSON.parse(new TextDecoder().decode(result.body));
   const text: string =
     (body.content?.[0]?.text as string | undefined) ??
-    "I don't have enough information from this lesson yet.";
+    "I don't have enough lesson information yet.";
 
   const tokenCount =
     prompt.split(/\s+/).length + text.split(/\s+/).length;
@@ -418,7 +418,7 @@ export async function generateAIResponse(
     ragResults = await queryRagCorpus(userMessage, gameContext);
 
     if (!ragResults.length) {
-      responseText = "I don't have enough information from this lesson yet.";
+      responseText = "I don't have enough lesson information yet.";
       tokenCount = userMessage.split(/\s+/).length + responseText.split(/\s+/).length;
     } else {
       const prompt = buildPrompt(userMessage, ragResults, gameContext, guardrailMode);
@@ -427,7 +427,7 @@ export async function generateAIResponse(
         responseText = result.text;
         tokenCount = result.tokenCount;
       } catch {
-        responseText = "I don't have enough information from this lesson yet.";
+        responseText = "I don't have enough lesson information yet.";
         tokenCount = userMessage.split(/\s+/).length + responseText.split(/\s+/).length;
       }
     }

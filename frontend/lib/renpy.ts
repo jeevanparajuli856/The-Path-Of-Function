@@ -129,12 +129,16 @@ const handleIncomingMessage = async (event: MessageEvent<any>) => {
   // Security: only accept messages from same origin (adjust if needed)
   // if (event.origin !== window.location.origin) return;
 
-  const message = event.data as RenPyMessage;
-
-  if (!message.type || !message.payload) {
-    console.warn('Invalid message format from Ren\'Py:', message);
+  const rawMessage = event.data as Partial<RenPyMessage> | null;
+  if (!rawMessage || typeof rawMessage !== 'object' || !rawMessage.type) {
+    console.warn('Invalid message format from Ren\'Py:', rawMessage);
     return;
   }
+
+  const message: RenPyMessage = {
+    type: rawMessage.type as RenPyEventType,
+    payload: (rawMessage.payload ?? {}) as Record<string, any>,
+  };
 
   console.log(`📨 RenPy Event: ${message.type}`, message.payload);
 

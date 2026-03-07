@@ -22,6 +22,11 @@ export default function GamePage() {
   const session = useGameStore((state) => state.session);
   const currentScene = useGameStore((state) => state.currentScene);
   const [chatContext, setChatContext] = useState<ChatGameContext>({});
+  const [isChatBlocked, setIsChatBlocked] = useState(false);
+  const [showFinalVerify, setShowFinalVerify] = useState(false);
+  const [finalCode, setFinalCode] = useState('');
+  const [finalVerifyError, setFinalVerifyError] = useState<string | null>(null);
+  const [isSubmittingFinalVerify, setIsSubmittingFinalVerify] = useState(false);
 
   useEffect(() => {
     if (!session || !useGameStore.getState().isSessionValid()) {
@@ -40,6 +45,32 @@ export default function GamePage() {
   }, [session, router]);
 
   useEffect(() => {
+    const handleRawTelemetry = (event: MessageEvent) => {
+      const data = event.data as { type?: string } | null;
+      if (!data || typeof data !== 'object' || typeof data.type !== 'string') {
+        return;
+      }
+
+      // Fallback lock logic directly from raw bridge messages.
+      if (data.type === 'quiz_started' || data.type === 'request_checkpoint_code') {
+        setIsChatBlocked(true);
+      }
+      if (
+        data.type === 'quiz_submitted' ||
+        data.type === 'choice_made' ||
+        data.type === 'scene_start'
+      ) {
+        setIsChatBlocked(false);
+      }
+    };
+
+    window.addEventListener('message', handleRawTelemetry);
+    return () => {
+      window.removeEventListener('message', handleRawTelemetry);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!session) return;
 
     const logRenPyEvent = async (eventType: string, eventData?: Record<string, any>) => {
@@ -54,10 +85,17 @@ export default function GamePage() {
     };
 
     const unsubDialogue = onRenPyEvent('dialogue', async (message) => {
+      const dialogueId = String(message.payload?.dialogue_id ?? '').toLowerCase();
+      const looksLikeQuestionPrompt = dialogueId.includes('prompt');
+
+      if (looksLikeQuestionPrompt) {
+        setIsChatBlocked(true);
+      }
       await logRenPyEvent('dialogue', message.payload);
     });
 
     const unsubChoice = onRenPyEvent('choice_made', async (message) => {
+      setIsChatBlocked(false);
       await logRenPyEvent('choice_made', message.payload);
     });
 
@@ -92,6 +130,10 @@ export default function GamePage() {
     });
 
     const unsubPlayerState = onRenPyEvent('player_state_update', async (message) => {
+      const activeQuizId = message.payload?.quiz_id;
+      if (activeQuizId) {
+        setIsChatBlocked(true);
+      }
       setChatContext((prev) => ({
         ...prev,
         player_state: message.payload,
@@ -100,10 +142,12 @@ export default function GamePage() {
     });
 
     const unsubQuizStart = onRenPyEvent('quiz_started', async (message) => {
+      setIsChatBlocked(true);
       await logRenPyEvent('quiz_started', message.payload);
     });
 
     const unsubQuizSubmit = onRenPyEvent('quiz_submitted', async (message) => {
+      setIsChatBlocked(false);
       await logRenPyEvent('quiz_submitted', message.payload);
     });
 
@@ -112,6 +156,7 @@ export default function GamePage() {
     });
 
     const unsubCheckpointRequest = onRenPyEvent('request_checkpoint_code', async (message) => {
+      setIsChatBlocked(true);
       await logRenPyEvent('request_checkpoint_code', {
         ...message.payload,
         bypassed: true,
@@ -149,15 +194,43 @@ export default function GamePage() {
       await gameAPI.logEvent(session.session_token, 'game_ended', {
         timestamp: new Date().toISOString(),
       });
+      setShowFinalVerify(true);
+      setFinalVerifyError(null);
+      setFinalCode('');
+    } catch (error) {
+      toast.error('Failed to start final verification. Please try again.');
+      console.error('Failed to start final verification:', error);
+    }
+  };
+
+  const handleFinalVerificationSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!session) return;
+
+    if (!finalCode.trim()) {
+      setFinalVerifyError('Please enter your original session code.');
+      return;
+    }
+
+    setFinalVerifyError(null);
+    setIsSubmittingFinalVerify(true);
+    try {
+      const verifyResult = await gameAPI.finalVerifyCode(session.session_token, finalCode.trim());
+      if (!verifyResult.verified) {
+        setFinalVerifyError('Code does not match this session. Please try again.');
+        return;
+      }
 
       await gameAPI.endSession(session.session_token, 'completed');
-
       toast.success('Game completed. Thank you for playing.');
+      setShowFinalVerify(false);
       useGameStore.getState().reset();
       router.push('/');
     } catch (error) {
-      toast.error('Failed to end session. Please try again.');
-      console.error('Failed to end session:', error);
+      setFinalVerifyError('Unable to verify code right now. Please try again.');
+      console.error('Final verification failed:', error);
+    } finally {
+      setIsSubmittingFinalVerify(false);
     }
   };
 
@@ -217,7 +290,44 @@ export default function GamePage() {
         sessionToken={session.session_token} 
         currentScene={currentScene || ''} 
         gameContext={chatContext}
+        isBlocked={isChatBlocked}
       />
+
+      {showFinalVerify && (
+        <div className="fixed inset-0 bg-black/50 z-[120] flex items-center justify-center px-4">
+          <div className="w-full max-w-md bg-[#F7F3EA] border border-[#C9A899] rounded-2xl shadow-2xl p-6">
+            <h2 className="text-2xl font-bold text-[#2E2E2E] mb-2">Final Verification</h2>
+            <p className="text-sm text-[#2E2E2E] opacity-80 mb-4">
+              Enter your original access code to confirm you completed the game.
+            </p>
+
+            <form onSubmit={handleFinalVerificationSubmit} className="space-y-4">
+              <input
+                type="text"
+                value={finalCode}
+                onChange={(e) => setFinalCode(e.target.value.toUpperCase())}
+                placeholder="Enter your code"
+                className="input-game font-mono tracking-widest"
+                disabled={isSubmittingFinalVerify}
+              />
+
+              {finalVerifyError && (
+                <div className="bg-red-50 border border-red-300 text-red-700 rounded-lg p-3 text-sm">
+                  {finalVerifyError}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmittingFinalVerify}
+                className="btn-game w-full disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmittingFinalVerify ? 'Verifying...' : 'Verify and Finish'}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
