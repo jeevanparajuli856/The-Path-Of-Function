@@ -153,13 +153,20 @@ CREATE TABLE event_logs (
     session_id UUID NOT NULL REFERENCES game_sessions(id) ON DELETE CASCADE,
     
     event_type TEXT NOT NULL CHECK (event_type IN (
+        -- Canonical telemetry event set
         'session_start', 'session_resume', 'session_pause', 'session_end',
+        'scene_start', 'dialogue', 'choice_made',
+        'learning_context_update', 'help_policy_update', 'player_state_update',
+        'quiz_started', 'quiz_submitted',
+        'checkpoint_reached', 'request_checkpoint_code',
+        'game_ended', 'error',
+        -- Legacy aliases kept for backward compatibility
         'scene_enter', 'scene_exit',
         'choice_presented', 'choice_selected',
         'quiz_attempt', 'quiz_result',
         'assessment_start', 'assessment_submit', 'assessment_result',
         'checkpoint_prompt', 'checkpoint_pass', 'checkpoint_fail',
-        'error_occurred'
+        'error_occurred', 'game_error'
     )),
     
     event_name TEXT, -- Specific identifier: "scene_teaching1", "quiz_int_output"

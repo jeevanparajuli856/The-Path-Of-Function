@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   initializeRenPyIntegration,
   onRenPyEvent,
@@ -24,19 +24,50 @@ export default function GameWindow({
 }: GameWindowProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [resolvedUrl, setResolvedUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!iframeRef.current) {
+    let active = true;
+
+    const checkRenpyBuild = async () => {
+      setIsLoading(true);
+      setLoadError(null);
+
+      try {
+        const response = await fetch(renpyUrl, { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        if (active) {
+          setResolvedUrl(renpyUrl);
+        }
+      } catch {
+        if (active) {
+          setResolvedUrl(null);
+          setIsLoading(false);
+          setLoadError(
+            `Ren'Py build not found at ${renpyUrl}. Export your web build and copy it to frontend/public/renpy-game/.`
+          );
+        }
+      }
+    };
+
+    checkRenpyBuild();
+    return () => {
+      active = false;
+    };
+  }, [renpyUrl]);
+
+  useEffect(() => {
+    if (!iframeRef.current || !resolvedUrl || loadError) {
       return;
     }
 
-    // Initialize Ren'Py communication
     initializeRenPyIntegration(iframeRef.current);
-
-    // Setup checkpoint listener
     setupCheckpointListener();
 
-    // Listen for checkpoint requests
     const unsubscribeCheckpoint = onRenPyEvent('request_checkpoint_code', async (message) => {
       const payload = message.payload;
 
@@ -44,7 +75,6 @@ export default function GameWindow({
         onCheckpointRequested(payload.checkpoint_number, payload.prompt_text);
       }
 
-      // Requirement: no mid-game code entry. Auto-acknowledge and continue.
       sendRenPyMessage('checkpoint_verified', {
         checkpoint_number: payload.checkpoint_number,
         verified: true,
@@ -57,28 +87,26 @@ export default function GameWindow({
       });
     });
 
-    // Listen for scene changes
     const unsubscribeScene = onRenPyEvent('scene_start', async (message) => {
-      const sceneName = message.payload.scene_id || message.payload.current_scene_id || message.payload.scene_name;
+      const sceneName =
+        message.payload.scene_id || message.payload.current_scene_id || message.payload.scene_name;
       if (onSceneChanged) {
         onSceneChanged(sceneName);
       }
     });
 
-    // Listen for game end
     const unsubscribeEnd = onRenPyEvent('game_ended', async () => {
       if (onGameEnded) {
         onGameEnded();
       }
     });
 
-    // Cleanup
     return () => {
       unsubscribeCheckpoint();
       unsubscribeScene();
       unsubscribeEnd();
     };
-  }, [onCheckpointRequested, onSceneChanged, onGameEnded]);
+  }, [loadError, onCheckpointRequested, onGameEnded, onSceneChanged, resolvedUrl]);
 
   const handleIframeLoad = () => {
     setIsLoading(false);
@@ -89,38 +117,38 @@ export default function GameWindow({
     <div className="relative w-full h-full bg-black rounded-lg overflow-hidden">
       <Toaster position="top-right" />
 
-      {/* Loading State */}
-      {isLoading && (
+      {isLoading && !loadError && (
         <div className="absolute inset-0 bg-[#F7F3EA] flex items-center justify-center z-20">
           <div className="text-center">
-            <div className="inline-block animate-spin text-4xl mb-4 text-[#6AA6D9]">⟳</div>
+            <div className="inline-block animate-spin text-4xl mb-4 text-[#6AA6D9]">...</div>
             <p className="text-xl text-[#2E2E2E]">Loading game...</p>
           </div>
         </div>
       )}
 
-      {/* Ren'Py Game iframe */}
-      <iframe
-        ref={iframeRef}
-        src={renpyUrl}
-        title="The Path of Function Game"
-        className="w-full h-full"
-        onLoad={handleIframeLoad}
-        allow="fullscreen"
-        style={{
-          border: 'none',
-          display: isLoading ? 'none' : 'block',
-        }}
-      />
-
-      {/* Fallback for when Ren'Py isn't available */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0">
-        <div className="text-center">
-          <p className="text-slate-400 text-lg">
-            Game not loaded. Make sure the Ren'Py web build is available at: {renpyUrl}
-          </p>
+      {loadError && (
+        <div className="absolute inset-0 bg-[#F7F3EA] flex items-center justify-center z-20 px-8">
+          <div className="max-w-xl text-center">
+            <p className="text-lg font-semibold text-[#2E2E2E] mb-3">Unable to load Ren'Py build</p>
+            <p className="text-sm text-[#2E2E2E]">{loadError}</p>
+          </div>
         </div>
-      </div>
+      )}
+
+      {resolvedUrl && (
+        <iframe
+          ref={iframeRef}
+          src={resolvedUrl}
+          title="The Path of Function Game"
+          className="w-full h-full"
+          onLoad={handleIframeLoad}
+          allow="fullscreen"
+          style={{
+            border: 'none',
+            display: isLoading ? 'none' : 'block',
+          }}
+        />
+      )}
     </div>
   );
 }

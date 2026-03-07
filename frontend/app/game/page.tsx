@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import toast, { Toaster } from 'react-hot-toast';
 import GameWindow from '@/components/GameWindow';
@@ -9,10 +9,19 @@ import { gameAPI } from '@/lib/api';
 import { useGameStore } from '@/lib/store';
 import { onRenPyEvent } from '@/lib/renpy';
 
+type ChatGameContext = {
+  scene_id?: string;
+  topic_id?: string;
+  learning_objective?: string;
+  help_policy?: { allowed_help_level?: string; spoiler_guard?: string };
+  player_state?: Record<string, unknown>;
+};
+
 export default function GamePage() {
   const router = useRouter();
   const session = useGameStore((state) => state.session);
   const currentScene = useGameStore((state) => state.currentScene);
+  const [chatContext, setChatContext] = useState<ChatGameContext>({});
 
   useEffect(() => {
     if (!session || !useGameStore.getState().isSessionValid()) {
@@ -53,18 +62,40 @@ export default function GamePage() {
     });
 
     const unsubSceneStart = onRenPyEvent('scene_start', async (message) => {
+      const sceneId =
+        message.payload.scene_id || message.payload.current_scene_id || message.payload.scene_name;
+      if (sceneId) {
+        setChatContext((prev) => ({ ...prev, scene_id: sceneId }));
+      }
       await logRenPyEvent('scene_start', message.payload);
     });
 
     const unsubLearningContext = onRenPyEvent('learning_context_update', async (message) => {
+      setChatContext((prev) => ({
+        ...prev,
+        scene_id: message.payload.scene_id ?? prev.scene_id,
+        topic_id: message.payload.topic_id ?? prev.topic_id,
+        learning_objective: message.payload.learning_objective ?? prev.learning_objective,
+      }));
       await logRenPyEvent('learning_context_update', message.payload);
     });
 
     const unsubHelpPolicy = onRenPyEvent('help_policy_update', async (message) => {
+      setChatContext((prev) => ({
+        ...prev,
+        help_policy: {
+          allowed_help_level: message.payload.allowed_help_level,
+          spoiler_guard: message.payload.spoiler_guard,
+        },
+      }));
       await logRenPyEvent('help_policy_update', message.payload);
     });
 
     const unsubPlayerState = onRenPyEvent('player_state_update', async (message) => {
+      setChatContext((prev) => ({
+        ...prev,
+        player_state: message.payload,
+      }));
       await logRenPyEvent('player_state_update', message.payload);
     });
 
@@ -106,19 +137,9 @@ export default function GamePage() {
     };
   }, [session]);
 
-  const handleSceneChanged = async (sceneName: string) => {
+  const handleSceneChanged = (sceneName: string) => {
     useGameStore.getState().updateScene(sceneName);
-
-    if (!session) return;
-
-    try {
-      await gameAPI.logEvent(session.session_token, 'scene_enter', {
-        scene_name: sceneName,
-        timestamp: new Date().toISOString(),
-      });
-    } catch (error) {
-      console.error('Failed to log scene_enter:', error);
-    }
+    setChatContext((prev) => ({ ...prev, scene_id: sceneName }));
   };
 
   const handleGameEnded = async () => {
@@ -197,7 +218,7 @@ export default function GamePage() {
       </div>
 
       {/* Emma ChatBot */}
-      <ChatBot sessionToken={session.session_token} currentScene={currentScene || ''} />
+      <ChatBot sessionToken={session.session_token} currentScene={currentScene || ''} gameContext={chatContext} />
     </div>
   );
 }

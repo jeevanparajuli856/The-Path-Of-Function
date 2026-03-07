@@ -1,11 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import axios from 'axios';
+import { apiClient } from '@/lib/api';
 
 interface ChatBotProps {
   sessionToken: string;
   currentScene: string;
+  gameContext?: {
+    scene_id?: string;
+    topic_id?: string;
+    learning_objective?: string;
+    help_policy?: { allowed_help_level?: string; spoiler_guard?: string };
+    player_state?: Record<string, unknown>;
+  };
 }
 
 const avatarMap = {
@@ -15,7 +22,7 @@ const avatarMap = {
   confused:   '/assets/chatbot/Avatar_Confused.png',
 };
 
-export default function ChatBot({ sessionToken, currentScene }: ChatBotProps) {
+export default function ChatBot({ sessionToken, currentScene, gameContext }: ChatBotProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant'; text: string }>>([
     { role: 'assistant', text: "Hi! I'm Emma. Ask me anything about what we're learning in the game!" },
@@ -32,10 +39,15 @@ export default function ChatBot({ sessionToken, currentScene }: ChatBotProps) {
     setAvatarState('thinking');
     setIsLoading(true);
     try {
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api'}/chat/ask`,
-        { session_token: sessionToken, message: userMsg, context: { scene_id: currentScene } }
-      );
+      const context = {
+        ...(gameContext || {}),
+        scene_id: gameContext?.scene_id || currentScene || undefined,
+      };
+      const res = await apiClient.post('/chat/ask', {
+        session_token: sessionToken,
+        message: userMsg,
+        context,
+      });
       setMessages((prev) => [...prev, { role: 'assistant', text: res.data.assistant_message }]);
       setAvatarState('explaining');
     } catch {
