@@ -369,6 +369,20 @@ ALTER TABLE admin_users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE audit_logs ENABLE ROW LEVEL SECURITY;
 ALTER TABLE chat_logs ENABLE ROW LEVEL SECURITY;
 ALTER TABLE content_corpus ENABLE ROW LEVEL SECURITY;
+ALTER TABLE research_configs ENABLE ROW LEVEL SECURITY;
+
+-- Force RLS so table owners do not bypass policies accidentally
+ALTER TABLE game_sessions FORCE ROW LEVEL SECURITY;
+ALTER TABLE event_logs FORCE ROW LEVEL SECURITY;
+ALTER TABLE quiz_attempts FORCE ROW LEVEL SECURITY;
+ALTER TABLE checkpoint_verifications FORCE ROW LEVEL SECURITY;
+ALTER TABLE access_codes FORCE ROW LEVEL SECURITY;
+ALTER TABLE code_batches FORCE ROW LEVEL SECURITY;
+ALTER TABLE admin_users FORCE ROW LEVEL SECURITY;
+ALTER TABLE audit_logs FORCE ROW LEVEL SECURITY;
+ALTER TABLE chat_logs FORCE ROW LEVEL SECURITY;
+ALTER TABLE content_corpus FORCE ROW LEVEL SECURITY;
+ALTER TABLE research_configs FORCE ROW LEVEL SECURITY;
 
 -- Backend service role has full access (configured in Supabase)
 -- CREATE POLICY "Backend service full access" ON game_sessions FOR ALL USING (true);
@@ -425,6 +439,7 @@ JOIN code_batches cb ON ac.batch_id = cb.id
 WHERE gs.status = 'active';
 
 COMMENT ON VIEW active_sessions_summary IS 'Currently active gameplay sessions';
+ALTER VIEW active_sessions_summary SET (security_invoker = true);
 
 -- View: Quiz performance summary
 CREATE OR REPLACE VIEW quiz_performance_summary AS
@@ -440,6 +455,7 @@ FROM quiz_attempts qa
 GROUP BY qa.quiz_id;
 
 COMMENT ON VIEW quiz_performance_summary IS 'Quiz statistics aggregated by question';
+ALTER VIEW quiz_performance_summary SET (security_invoker = true);
 
 -- View: Treatment group comparison
 CREATE OR REPLACE VIEW treatment_group_comparison AS
@@ -457,6 +473,7 @@ LEFT JOIN game_sessions gs ON ac.id = gs.code_id
 GROUP BY cb.treatment_group;
 
 COMMENT ON VIEW treatment_group_comparison IS 'Performance metrics by treatment group';
+ALTER VIEW treatment_group_comparison SET (security_invoker = true);
 
 -- View: Code usage report (for professor export)
 CREATE OR REPLACE VIEW code_usage_report AS
@@ -478,6 +495,7 @@ GROUP BY cb.batch_name, cb.treatment_group, ac.code, ac.is_active, ac.times_used
 ORDER BY cb.batch_name, ac.code;
 
 COMMENT ON VIEW code_usage_report IS 'Code usage status for professor tracking';
+ALTER VIEW code_usage_report SET (security_invoker = true);
 
 -- ============================================================================
 -- FUNCTIONS
@@ -593,9 +611,21 @@ FROM generate_series(1, 10);
 -- Set appropriate permissions (adjust based on Supabase roles)
 -- ============================================================================
 
--- Grant read-only access to authenticated users for specific views
--- GRANT SELECT ON active_sessions_summary TO authenticated;
--- GRANT SELECT ON quiz_performance_summary TO authenticated;
+-- Revoke direct API role access from public schema objects.
+-- Server-side API routes should use service role key instead.
+REVOKE ALL ON ALL TABLES IN SCHEMA public FROM anon, authenticated;
+REVOKE ALL ON ALL SEQUENCES IN SCHEMA public FROM anon, authenticated;
+
+-- Revoke direct access to views explicitly
+REVOKE ALL ON active_sessions_summary FROM anon, authenticated;
+REVOKE ALL ON quiz_performance_summary FROM anon, authenticated;
+REVOKE ALL ON treatment_group_comparison FROM anon, authenticated;
+REVOKE ALL ON code_usage_report FROM anon, authenticated;
+
+-- Revoke execute on helper functions from public API roles
+REVOKE ALL ON FUNCTION generate_access_code() FROM anon, authenticated;
+REVOKE ALL ON FUNCTION can_resume_session(TEXT) FROM anon, authenticated;
+REVOKE ALL ON FUNCTION get_session_progress(UUID) FROM anon, authenticated;
 
 -- Backend service role gets full access (configured in Supabase dashboard)
 
