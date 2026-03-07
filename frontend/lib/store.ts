@@ -102,7 +102,7 @@ export const useGameStore = create<GameState>()(
         set({ currentScene: scene });
       },
 
-      recordCheckpoint: (checkpointNumber: number, passed: boolean) => {
+      recordCheckpoint: (_checkpointNumber: number, passed: boolean) => {
         if (passed) {
           set((state) => ({
             checkpointsPassed: state.checkpointsPassed + 1,
@@ -110,7 +110,7 @@ export const useGameStore = create<GameState>()(
         }
       },
 
-      recordQuiz: (passed: boolean) => {
+      recordQuiz: (_passed: boolean) => {
         set((state) => ({
           quizzesCompleted: state.quizzesCompleted + 1,
         }));

@@ -8,6 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        game: {
+          paper:        '#F7F3EA',
+          blue:         '#6AA6D9',
+          beige:        '#C9A899',
+          highlight:    '#9DD2FF',
+          text:         '#2E2E2E',
+          'blue-dark':  '#4A8CC4',
+          'beige-light':'#F0EBE0',
+        },
         slate: {
           50: '#f8fafc',
           100: '#f1f5f9',

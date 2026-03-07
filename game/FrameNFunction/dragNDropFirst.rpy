@@ -1,4 +1,6 @@
 label dragqns:
+    $ emit_scene_start(TELEMETRY_SCENE_IDS["dragqns"])
+    $ emit_player_state_update({"phase": "dragdrop_scene_started"})
     hide ale
     call screen drag_drop
     return

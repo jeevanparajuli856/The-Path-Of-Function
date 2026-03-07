@@ -1,5 +1,7 @@
 define finalAlign = Transform(zoom=0.9, xpos=0.5, xanchor=0.5, ypos=0.9, yanchor=0.6)
 label qnsSolved:
+    $ emit_scene_start(TELEMETRY_SCENE_IDS["aftersubmission"])
+    $ emit_player_state_update({"phase": "aftersubmission_started", "entry_path": "solved"})
     $ emit_player_state_update({"phase": "quiz_solved", "result": "correct"})
     scene bg classroom with fade
     show ale standing hand both wrist at aleAlign with dissolve
@@ -26,6 +28,8 @@ label qnsSolved:
      
 
 label qnsUnsolve:
+    $ emit_scene_start(TELEMETRY_SCENE_IDS["aftersubmission"])
+    $ emit_player_state_update({"phase": "aftersubmission_started", "entry_path": "unsolved"})
     $ emit_player_state_update({"phase": "quiz_failed", "result": "incorrect"})
     scene bg classroom with fade
     show ale standing hand both wrist at aleAlign with dissolve
@@ -100,6 +104,13 @@ label puzzleExplaination:
     return
     
 label afterDragNDrop:
+    $ emit_learning_context_update(
+        topic_id=TELEMETRY_TOPIC_IDS["call_stack"],
+        objective="Understand call stack push/pop order during function calls",
+        difficulty="medium",
+        tags=["call_stack", "execution_order", "functions"]
+    )
+    $ emit_player_state_update({"phase": "call_stack_section_started"})
     scene bg classroom with fade
     show ale standing hand left side at aleAlign with dissolve
     show ale speaking hand left side at aleAlign with dissolve

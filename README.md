@@ -48,11 +48,27 @@ This visual novel project is an interactive educational tool designed to help CS
 
 ## **Development Details**
 - **Engine**: Ren'Py
-- **Programming Language**: Python (Ren'Py Framework)
-- **Target Audience**: 
+- **Programming Language**: Python (Ren'Py Framework), TypeScript
+- **Web Layer**: Next.js 14 App Router (deployed on Vercel)
+- **API**: Next.js API Routes (serverless) — no separate backend server
+- **AI Assistant**: AWS Bedrock (Claude Haiku) via `@aws-sdk/client-bedrock-runtime`
+- **Database**: Supabase (PostgreSQL)
+- **Target Audience**:
   - CSCI 2000 students
   - Beginners learning programming functions
 - **Main Objective**: Assist in teaching programming functions interactively through a fun and engaging medium.
+
+### **Running the Web Layer**
+
+```bash
+cd frontend
+cp .env.local.example .env.local   # fill in Supabase + AWS + JWT values
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+```
+
+No separate backend process needed — everything runs via `npm run dev`.
 
 ---
 

@@ -1,6 +1,7 @@
 define aleAlign = Position(xpos = 650, xanchor = 2, ypos=-60, yanchor=1)
 label teachingSecond:
     $ emit_scene_start(TELEMETRY_SCENE_IDS["teachingsecond"])
+    $ emit_player_state_update({"phase": "teaching2_started"})
 
     #Now second part of teaching
     scene bg classroom with dissolve

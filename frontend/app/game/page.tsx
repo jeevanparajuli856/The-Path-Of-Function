@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import toast, { Toaster } from 'react-hot-toast';
 import GameWindow from '@/components/GameWindow';
+import ChatBot from '@/components/ChatBot';
 import { gameAPI } from '@/lib/api';
 import { useGameStore } from '@/lib/store';
 import { onRenPyEvent } from '@/lib/renpy';
@@ -51,6 +52,22 @@ export default function GamePage() {
       await logRenPyEvent('choice_made', message.payload);
     });
 
+    const unsubSceneStart = onRenPyEvent('scene_start', async (message) => {
+      await logRenPyEvent('scene_start', message.payload);
+    });
+
+    const unsubLearningContext = onRenPyEvent('learning_context_update', async (message) => {
+      await logRenPyEvent('learning_context_update', message.payload);
+    });
+
+    const unsubHelpPolicy = onRenPyEvent('help_policy_update', async (message) => {
+      await logRenPyEvent('help_policy_update', message.payload);
+    });
+
+    const unsubPlayerState = onRenPyEvent('player_state_update', async (message) => {
+      await logRenPyEvent('player_state_update', message.payload);
+    });
+
     const unsubQuizStart = onRenPyEvent('quiz_started', async (message) => {
       await logRenPyEvent('quiz_started', message.payload);
     });
@@ -63,7 +80,6 @@ export default function GamePage() {
       await logRenPyEvent('checkpoint_reached', message.payload);
     });
 
-    // Keep a record if Ren'Py still emits checkpoint prompts, but do not ask player for a code.
     const unsubCheckpointRequest = onRenPyEvent('request_checkpoint_code', async (message) => {
       await logRenPyEvent('request_checkpoint_code', {
         ...message.payload,
@@ -78,6 +94,10 @@ export default function GamePage() {
     return () => {
       unsubDialogue();
       unsubChoice();
+      unsubSceneStart();
+      unsubLearningContext();
+      unsubHelpPolicy();
+      unsubPlayerState();
       unsubQuizStart();
       unsubQuizSubmit();
       unsubCheckpointReached();
@@ -138,42 +158,46 @@ export default function GamePage() {
 
   if (!session || !useGameStore.getState().isSessionValid()) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-6">
-        <p className="text-slate-200">Checking session...</p>
+      <div className="min-h-screen bg-[#F7F3EA] flex items-center justify-center">
+        <p className="text-[#2E2E2E]">Checking session...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-900 p-6">
+    <div className="min-h-screen bg-[#F7F3EA]">
       <Toaster position="top-right" />
 
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-          <div>
-            <h1 className="text-3xl font-bold text-white">Game In Progress</h1>
-            <p className="text-slate-300 text-sm mt-1">
-              Group: <span className="font-mono text-cyan-400">{session.treatment_group}</span>
-              {' | '}Scene: <span className="font-mono text-cyan-400">{currentScene}</span>
-            </p>
-          </div>
-
-          <button
-            onClick={handleExit}
-            className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition duration-200"
-          >
-            Exit Game
-          </button>
+      {/* Game Header */}
+      <header className="bg-[#C9A899] border-b border-[#6AA6D9] px-4 py-2 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <span className="font-bold text-[#2E2E2E]">The Path of Function</span>
+          {currentScene && (
+            <span className="text-xs bg-[#F0EBE0] text-[#2E2E2E] px-2 py-1 rounded-full border border-[#6AA6D9]">
+              {currentScene}
+            </span>
+          )}
         </div>
 
-        <div className="h-[70vh] md:h-[78vh] bg-slate-800 border border-slate-700 rounded-lg p-2 md:p-4">
-          <GameWindow
-            renpyUrl="/game/index.html"
-            onSceneChanged={handleSceneChanged}
-            onGameEnded={handleGameEnded}
-          />
-        </div>
+        <button
+          onClick={handleExit}
+          className="text-red-500 hover:text-red-700 text-sm font-medium transition duration-200"
+        >
+          Exit Game
+        </button>
+      </header>
+
+      {/* Game Container */}
+      <div className="h-[85vh] border border-[#C9A899] rounded-b-xl overflow-hidden">
+        <GameWindow
+          renpyUrl="/renpy-game/index.html"
+          onSceneChanged={handleSceneChanged}
+          onGameEnded={handleGameEnded}
+        />
       </div>
+
+      {/* Emma ChatBot */}
+      <ChatBot sessionToken={session.session_token} currentScene={currentScene || ''} />
     </div>
   );
 }

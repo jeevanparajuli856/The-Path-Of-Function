@@ -1,10 +1,14 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'The Path of Function',
   description: 'An interactive learning game about programming functions',
-  viewport: 'width=device-width, initial-scale=1',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -14,15 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
-      <body className="bg-gradient-to-br from-slate-900 to-slate-800 text-white min-h-screen">
+
+      <body className="bg-[#F7F3EA] text-[#2E2E2E] min-h-screen">
         <div className="flex flex-col min-h-screen">
           <main className="flex-1">
             {children}
           </main>
-          <footer className="text-center py-4 text-sm text-slate-400">
+          <footer className="text-center py-4 text-sm text-[#6AA6D9]">
             <p>© 2024 The Path of Function - An Interactive Learning Experience</p>
           </footer>
         </div>

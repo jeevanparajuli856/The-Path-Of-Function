@@ -4,11 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**The Path of Function** is an educational visual novel built with Ren'Py 8.4.1, designed to teach CSCI 2000 students about Python functions. The project has three components:
+**The Path of Function** is an educational visual novel built with Ren'Py 8.4.1, designed to teach CSCI 2000 students about Python functions. The project has two components:
 
 1. **Ren'Py game** (`game/`) — the core interactive visual novel
-2. **FastAPI backend** (`backend/`) — research data collection, student access codes, Vertex AI chat
-3. **Next.js frontend** (`frontend/`) — web wrapper, admin portal, student code-entry, game iframe container
+2. **Next.js frontend** (`frontend/`) — web wrapper, admin portal, student code-entry, game iframe container, and all API routes (serverless, Vercel)
 
 ## Running the Project
 
@@ -17,26 +16,17 @@ Open the project root in the Ren'Py launcher and click "Launch Project". The gam
 
 To build the web distribution: use Ren'Py launcher > Web > Build. The output goes to `ThePathofFunction_dist_Web/`.
 
-### Backend (FastAPI)
-```bash
-cd backend
-# Activate venv
-.venv\Scripts\activate          # Windows
-# Run dev server
-uvicorn app.main:app --reload --port 8000
-```
-Dependencies: `pip install -r requirements.txt` (Python 3.11+)
-
-API docs available at `http://localhost:8000/docs` when `ENVIRONMENT=development`.
-
-### Frontend (Next.js)
+### Frontend + API (Next.js)
 ```bash
 cd frontend
+cp .env.local.example .env.local   # fill in Supabase + AWS + JWT values
 npm install
-npm run dev       # development server
+npm run dev       # development server on :3000 (includes all API routes)
 npm run build     # production build
 npm run lint      # ESLint
 ```
+
+No separate backend process. All API routes live at `frontend/app/api/`.
 
 ## Architecture
 
@@ -64,34 +54,44 @@ Key files:
 
 Character sprites are in `game/images/ale package/` with subdirectories for expression categories (speaking, explaining, question, sad, standing, other).
 
-### Backend Structure (`backend/app/`)
+### API Routes Structure (`frontend/app/api/`)
+
+All routes are Next.js App Router route handlers (serverless on Vercel):
 
 ```
-app/
-  main.py          — FastAPI app, middleware, router registration
-  core/
-    config.py      — settings via pydantic-settings
-    database.py    — async SQLAlchemy engine init/close
-    security.py    — JWT + password hashing
-  api/
-    admin.py       — /api/admin/* (code generation, CSV export, dashboard)
-    student.py     — /api/student/* (code validation, session start)
-    game.py        — /api/game/event (gameplay event logging)
-    chat.py        — /api/chat/ask (Vertex AI grounded chat)
-  models/          — SQLAlchemy ORM models (admin, code, session, event, chat, system)
-  schemas/         — Pydantic request/response schemas (admin, student, game, chat)
-  services/
-    vertex_ai.py   — Vertex AI RAG integration
-  middleware/
-    auth.py        — JWT auth middleware
-    rate_limit.py  — rate limiting (slowapi)
+app/api/
+  student/
+    validate-code/route.ts   — POST: look up code in Supabase
+    start-session/route.ts   — POST: create game_session, return session_token
+    resume-session/route.ts  — POST: find active session, return token
+  game/
+    event/route.ts           — POST: log single gameplay event
+    events/batch/route.ts    — POST: bulk insert up to 100 events
+    checkpoint/route.ts      — POST: verify checkpoint code
+    session-end/route.ts     — POST: mark session complete/abandoned
+    session/progress/route.ts — GET: session progress summary
+  chat/
+    ask/route.ts             — POST: Bedrock-grounded chat, logs to chat_logs
+    history/route.ts         — GET: fetch chat history for session
+  admin/
+    login/route.ts           — POST: bcrypt verify + sign JWT
+    logout/route.ts          — POST: client-side discard (returns 200)
+    generate-codes/route.ts  — POST: create batch + N access_codes
+    batches/route.ts         — GET: list batches with usage counts
+    dashboard/
+      summary/route.ts             — GET: aggregate stats
+      treatment-comparison/route.ts — GET: view query
+    export/
+      codes/route.ts         — GET: CSV export
+      analytics/route.ts     — GET: JSON sessions + events export
 ```
 
-API route groups:
-- `POST /api/student/validate-code` + `POST /api/student/start-session`
-- `POST /api/game/event` — receives Ren'Py telemetry events
-- `POST /api/chat/ask` — Vertex-grounded chat with spoiler guard
-- `POST /api/admin/codes/generate` — generate access codes
+Shared lib (`frontend/lib/`):
+- `db.ts` — Supabase admin client
+- `jwt.ts` — `signAdminToken` / `verifyAdminToken` via `jose`
+- `access-codes.ts` — `generateAccessCode()` / `validateCodeFormat()`
+- `bedrock.ts` — RAG corpus, guardrails, Bedrock invocation, `generateAIResponse()`
+- `api-middleware.ts` — `requireAdmin()` guard for admin routes
 
 ### Frontend Structure (`frontend/`)
 
@@ -131,9 +131,9 @@ window.sendToFrontend = function(type, payload) {
 
 ### Database Schema (Supabase / PostgreSQL)
 
-Core tables: `access_codes`, `code_batches`, `game_sessions`, `game_events`, `chat_messages`, `chat_citations`, `vertex_traces`
+Core tables: `admin_users`, `code_batches`, `access_codes`, `game_sessions`, `event_logs`, `quiz_attempts`, `checkpoint_verifications`, `audit_logs`, `research_configs`, `chat_logs`, `content_corpus`
 
-Session flow: code validated -> session created with `session_token` -> all subsequent events use only `session_token` (never raw code again). Student identity is anonymous by design; professor maps code -> name externally.
+Session flow: code validated → session created with `session_token` (UUID v4) → all subsequent events use only `session_token` (never raw code again). Student identity is anonymous by design; professor maps code → name externally.
 
 ## Key Conventions
 
@@ -143,7 +143,6 @@ Session flow: code validated -> session created with `session_token` -> all subs
 - Each scene file is a separate `.rpy` file called via `call` from `script.rpy`; scenes `return` control back.
 - The drag-and-drop puzzle uses a global `dropBoxStates` dict initialized in `init python:` — correct answer requires `box1=optC1` through `box5=optC5`.
 - `config.allow_skipping = False` is intentional (educational integrity).
-- Backend `ENVIRONMENT` variable controls: dev docs exposure, debug routes, reload mode.
 
 ## Known Issues
 

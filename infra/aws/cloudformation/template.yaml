@@ -1,0 +1,62 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Path of Function - AWS baseline stack (S3 + Bedrock IAM)
+
+Parameters:
+  EnvironmentName:
+    Type: String
+    Default: dev
+  BucketName:
+    Type: String
+    Default: path-of-function-dev-assets
+
+Resources:
+  AssetsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref BucketName
+      VersioningConfiguration:
+        Status: Enabled
+      Tags:
+        - Key: app
+          Value: path-of-function
+        - Key: env
+          Value: !Ref EnvironmentName
+
+  BedrockUser:
+    Type: AWS::IAM::User
+    Properties:
+      Tags:
+        - Key: app
+          Value: path-of-function
+        - Key: env
+          Value: !Ref EnvironmentName
+      Policies:
+        - PolicyName: BedrockInvokePolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: bedrock:InvokeModel
+                Resource: arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-haiku-*
+
+  BedrockAccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref BedrockUser
+
+Outputs:
+  AssetsBucketName:
+    Description: S3 bucket for web assets and backups
+    Value: !Ref AssetsBucket
+
+  BedrockUserArn:
+    Description: IAM user ARN for Bedrock invocations
+    Value: !GetAtt BedrockUser.Arn
+
+  BedrockAccessKeyId:
+    Description: AWS access key ID for Bedrock user (use in Vercel env vars)
+    Value: !Ref BedrockAccessKey
+
+  BedrockSecretAccessKey:
+    Description: AWS secret access key for Bedrock user (store securely)
+    Value: !GetAtt BedrockAccessKey.SecretAccessKey

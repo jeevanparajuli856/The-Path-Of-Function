@@ -116,7 +116,13 @@ init -10 python:
         )
         send_to_frontend("choice_made", payload)
 
-    def emit_learning_context_update(topic_id, learning_objective, difficulty_level="beginner", concept_tags=None, extra=None):
+    def emit_learning_context_update(topic_id=None, learning_objective=None, difficulty_level="beginner", concept_tags=None, extra=None, **kwargs):
+        if learning_objective is None:
+            learning_objective = kwargs.get("objective")
+        if "difficulty" in kwargs and difficulty_level == "beginner":
+            difficulty_level = kwargs.get("difficulty")
+        if concept_tags is None and kwargs.get("tags") is not None:
+            concept_tags = kwargs.get("tags")
         if concept_tags is None:
             concept_tags = []
 
@@ -138,7 +144,9 @@ init -10 python:
         )
         send_to_frontend("learning_context_update", payload)
 
-    def emit_help_policy_update(allowed_help_level, spoiler_guard, extra=None):
+    def emit_help_policy_update(allowed_help_level=None, spoiler_guard="strict", extra=None, **kwargs):
+        if allowed_help_level is None:
+            allowed_help_level = kwargs.get("help_level", "nudge")
         _telemetry_runtime_state["allowed_help_level"] = allowed_help_level
         _telemetry_runtime_state["spoiler_guard"] = spoiler_guard
 
@@ -197,7 +205,9 @@ init -10 python:
         )
         send_to_frontend("quiz_submitted", payload)
 
-    def emit_game_ended(final_scene_id, extra=None):
+    def emit_game_ended(final_scene_id=None, extra=None, **kwargs):
+        if final_scene_id is None:
+            final_scene_id = kwargs.get("final_scene")
         payload = _merge_payload(
             {
                 "final_scene": final_scene_id,

@@ -16,6 +16,9 @@ export type RenPyEventType =
   | 'scene_end'
   | 'dialogue'
   | 'choice_made'
+  | 'learning_context_update'
+  | 'help_policy_update'
+  | 'player_state_update'
   | 'checkpoint_reached'
   | 'quiz_started'
   | 'quiz_submitted'
@@ -136,8 +139,9 @@ const handleIncomingMessage = async (event: MessageEvent<any>) => {
   console.log(`📨 RenPy Event: ${message.type}`, message.payload);
 
   // Update game state
-  if (message.payload.current_scene) {
-    updateGameState({ current_scene: message.payload.current_scene });
+  const sceneId = message.payload.scene_id || message.payload.current_scene_id || message.payload.current_scene;
+  if (sceneId) {
+    updateGameState({ current_scene: sceneId });
   }
   if (message.payload.checkpoint_passed !== undefined) {
     updateGameState({ checkpoint_passed: message.payload.checkpoint_passed });
@@ -236,7 +240,7 @@ export const endGame = () => {
  * Usage: setupCheckpointListener((checkpointNumber, promptText) => { ... })
  */
 export const setupCheckpointListener = () => {
-  onRenPyEvent('request_checkpoint_code', async (message, state) => {
+  onRenPyEvent('request_checkpoint_code', async (message) => {
     const payload = message.payload as CheckpointPromptPayload;
     console.log(
       `🔐 Checkpoint ${payload.checkpoint_number} reached. Current attempt: ${payload.current_attempt}/${payload.max_attempts}`
@@ -249,7 +253,7 @@ export const setupCheckpointListener = () => {
  * Setup automatic logging for quiz events
  */
 export const setupQuizListener = () => {
-  onRenPyEvent('quiz_submitted', async (message, state) => {
+  onRenPyEvent('quiz_submitted', async (message) => {
     const payload = message.payload;
     console.log(`📝 Quiz submitted. Score: ${payload.score}/${payload.total}`);
   });
@@ -259,7 +263,7 @@ export const setupQuizListener = () => {
  * Setup automatic logging for scene changes
  */
 export const setupSceneListener = () => {
-  onRenPyEvent('scene_start', async (message, state) => {
+  onRenPyEvent('scene_start', async (message) => {
     const payload = message.payload;
     console.log(`🎬 Scene: ${payload.scene_name}`);
   });

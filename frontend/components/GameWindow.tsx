@@ -17,7 +17,7 @@ interface GameWindowProps {
 }
 
 export default function GameWindow({
-  renpyUrl = '/game/index.html',
+  renpyUrl = '/renpy-game/index.html',
   onCheckpointRequested,
   onSceneChanged,
   onGameEnded,
@@ -59,7 +59,7 @@ export default function GameWindow({
 
     // Listen for scene changes
     const unsubscribeScene = onRenPyEvent('scene_start', async (message) => {
-      const sceneName = message.payload.scene_name;
+      const sceneName = message.payload.scene_id || message.payload.current_scene_id || message.payload.scene_name;
       if (onSceneChanged) {
         onSceneChanged(sceneName);
       }
@@ -91,10 +91,10 @@ export default function GameWindow({
 
       {/* Loading State */}
       {isLoading && (
-        <div className="absolute inset-0 bg-slate-900 flex items-center justify-center z-20">
+        <div className="absolute inset-0 bg-[#F7F3EA] flex items-center justify-center z-20">
           <div className="text-center">
-            <div className="inline-block animate-spin text-4xl mb-4 text-cyan-400">⟳</div>
-            <p className="text-xl text-slate-300">Loading game...</p>
+            <div className="inline-block animate-spin text-4xl mb-4 text-[#6AA6D9]">⟳</div>
+            <p className="text-xl text-[#2E2E2E]">Loading game...</p>
           </div>
         </div>
       )}

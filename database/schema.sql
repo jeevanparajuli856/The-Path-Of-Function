@@ -11,6 +11,7 @@
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pg_trgm"; -- For text search optimization
+CREATE EXTENSION IF NOT EXISTS vector;    -- pgvector for future semantic search
 
 -- ============================================================================
 -- TABLE 1: admin_users
@@ -292,35 +293,58 @@ CREATE TABLE research_configs (
 COMMENT ON TABLE research_configs IS 'Study-level configuration and IRB metadata';
 
 -- ============================================================================
--- TABLE 10: ai_interactions (Phase 2/3 placeholder)
--- Future: Vertex AI + RAG conversation logs
+-- TABLE 10: chat_logs
+-- Bedrock-powered chatbot conversation logs
 -- ============================================================================
 
-CREATE TABLE ai_interactions (
+CREATE TABLE chat_logs (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     session_id UUID NOT NULL REFERENCES game_sessions(id) ON DELETE CASCADE,
-    
-    interaction_type TEXT, -- 'hint_request', 'question', 'clarification', 'encouragement'
-    student_input TEXT,
-    ai_response TEXT,
-    
-    context_used JSONB, -- RAG context passages retrieved
-    model_name TEXT, -- e.g., 'gemini-pro', 'gpt-4'
+
+    user_message TEXT NOT NULL,
+    ai_response TEXT NOT NULL,
+
+    scene_id TEXT,
+    topic_id TEXT,
+    learning_objective TEXT,
+    player_state JSONB,
+    help_policy TEXT DEFAULT 'default',
+    citations JSONB,
+    guardrail_mode TEXT DEFAULT 'none',
+
+    model_id TEXT,              -- e.g., anthropic.claude-3-haiku-20240307-v1:0
     prompt_tokens INTEGER,
     completion_tokens INTEGER,
     latency_ms INTEGER,
-    
-    was_helpful BOOLEAN, -- Student feedback
-    feedback_comment TEXT,
-    
+
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
-COMMENT ON TABLE ai_interactions IS 'Phase 2/3: AI chatbot conversation logs';
+COMMENT ON TABLE chat_logs IS 'Bedrock-powered chatbot conversation logs';
 
-CREATE INDEX idx_ai_session ON ai_interactions(session_id);
-CREATE INDEX idx_ai_type ON ai_interactions(interaction_type);
-CREATE INDEX idx_ai_created ON ai_interactions(created_at DESC);
+CREATE INDEX idx_chat_logs_session ON chat_logs(session_id);
+CREATE INDEX idx_chat_logs_created ON chat_logs(created_at DESC);
+
+-- ============================================================================
+-- TABLE 11: content_corpus
+-- Placeholder for future pgvector semantic search
+-- ============================================================================
+
+CREATE TABLE content_corpus (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    source_id TEXT UNIQUE NOT NULL,
+    source_type TEXT NOT NULL,
+    scene_id TEXT,
+    topic TEXT,
+    content TEXT NOT NULL,
+    embedding vector(1536),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+COMMENT ON TABLE content_corpus IS 'Game knowledge corpus with vector embeddings (pgvector)';
+
+CREATE INDEX idx_corpus_source ON content_corpus(source_id);
+CREATE INDEX idx_corpus_scene ON content_corpus(scene_id) WHERE scene_id IS NOT NULL;
 
 -- ============================================================================
 -- ROW-LEVEL SECURITY (RLS)
@@ -336,7 +360,8 @@ ALTER TABLE access_codes ENABLE ROW LEVEL SECURITY;
 ALTER TABLE code_batches ENABLE ROW LEVEL SECURITY;
 ALTER TABLE admin_users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE audit_logs ENABLE ROW LEVEL SECURITY;
-ALTER TABLE ai_interactions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE chat_logs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE content_corpus ENABLE ROW LEVEL SECURITY;
 
 -- Backend service role has full access (configured in Supabase)
 -- CREATE POLICY "Backend service full access" ON game_sessions FOR ALL USING (true);
@@ -575,9 +600,9 @@ FROM generate_series(1, 10);
 DO $$
 BEGIN
     RAISE NOTICE 'Schema created successfully!';
-    RAISE NOTICE 'Tables: %, %, %, %, %, %, %, %, %, %',
+    RAISE NOTICE 'Tables: %, %, %, %, %, %, %, %, %, %, %',
         'admin_users', 'code_batches', 'access_codes', 'game_sessions', 'event_logs',
-        'quiz_attempts', 'checkpoint_verifications', 'audit_logs', 'research_configs', 'ai_interactions';
+        'quiz_attempts', 'checkpoint_verifications', 'audit_logs', 'research_configs', 'chat_logs', 'content_corpus';
     RAISE NOTICE 'Views: %, %, %, %',
         'active_sessions_summary', 'quiz_performance_summary', 'treatment_group_comparison', 'code_usage_report';
     RAISE NOTICE 'Functions: %, %, %',

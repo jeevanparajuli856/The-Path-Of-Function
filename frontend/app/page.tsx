@@ -9,61 +9,51 @@ export default function Home() {
   const session = useGameStore((state) => state.session);
 
   useEffect(() => {
-    // If user already has a valid session, redirect to game
     if (session && useGameStore.getState().isSessionValid()) {
       router.push('/game');
     }
   }, [session, router]);
 
-  const handleStartGame = () => {
-    router.push('/code-entry');
-  };
-
   return (
-    <div className="flex items-center justify-center min-h-screen px-4">
-      <div className="text-center max-w-2xl">
-        {/* Title */}
-        <h1 className="text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-          The Path of Function
-        </h1>
+    <div className="h-screen overflow-hidden relative">
+      {/* Banner as full-screen background */}
+      <img
+        src="/assets/banner.png"
+        alt="The Path of Function"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
 
-        {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-slate-300 mb-8">
-          An Interactive Journey Through Programming Functions
-        </p>
+      {/* Dark scrim for readability */}
+      <div className="absolute inset-0 bg-black/30" />
 
-        {/* Description */}
-        <div className="bg-slate-800 bg-opacity-50 border border-slate-700 rounded-lg p-8 mb-12">
-          <p className="text-slate-200 text-lg leading-relaxed mb-4">
-            Embark on an adventure where programming concepts come to life. Learn about functions,
-            parameters, return values, and more through interactive challenges and real-world scenarios.
+      {/* All content overlaid */}
+      <div className="relative z-10 h-full flex flex-col justify-between px-6 py-10">
+        {/* Tagline + CTA — placed below banner title text */}
+        <div className="flex-1 flex flex-col items-center justify-end gap-4 pb-24">
+          <p className="text-white text-xl drop-shadow-lg tracking-wide">
+            Learn Python functions through story
           </p>
-          <p className="text-slate-300 text-sm">
-            Each checkpoint will test your knowledge with code verification challenges.
-          </p>
+          <button
+            onClick={() => router.push('/code-entry')}
+            className="btn-game text-xl py-4 px-16 hover:scale-105 transform transition shadow-xl"
+          >
+            Enter Game
+          </button>
         </div>
 
-        {/* CTA Button */}
-        <button
-          onClick={handleStartGame}
-          className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-4 px-12 rounded-lg text-lg transition duration-200 transform hover:scale-105 inline-block"
-        >
-          Enter Game
-        </button>
-
-        {/* Features */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-          <div className="bg-slate-800 bg-opacity-30 border border-slate-700 rounded-lg p-6">
-            <h3 className="text-cyan-400 font-bold text-lg mb-2">Learn</h3>
-            <p className="text-slate-300 text-sm">Master programming concepts through interactive storytelling</p>
+        {/* Bottom — feature cards */}
+        <div className="grid grid-cols-3 gap-4 max-w-4xl mx-auto w-full">
+          <div className="bg-white/70 backdrop-blur-sm border border-[#C9A899] rounded-xl p-5">
+            <h3 className="text-[#6AA6D9] font-bold text-lg mb-1">Learn</h3>
+            <p className="text-[#2E2E2E] text-sm">Master programming concepts through interactive storytelling</p>
           </div>
-          <div className="bg-slate-800 bg-opacity-30 border border-slate-700 rounded-lg p-6">
-            <h3 className="text-cyan-400 font-bold text-lg mb-2">Practice</h3>
-            <p className="text-slate-300 text-sm">Solve challenges and verify your understanding with code</p>
+          <div className="bg-white/70 backdrop-blur-sm border border-[#C9A899] rounded-xl p-5">
+            <h3 className="text-[#6AA6D9] font-bold text-lg mb-1">Practice</h3>
+            <p className="text-[#2E2E2E] text-sm">Solve challenges and verify your understanding with code</p>
           </div>
-          <div className="bg-slate-800 bg-opacity-30 border border-slate-700 rounded-lg p-6">
-            <h3 className="text-cyan-400 font-bold text-lg mb-2">Progress</h3>
-            <p className="text-slate-300 text-sm">Track your learning journey and unlock achievements</p>
+          <div className="bg-white/70 backdrop-blur-sm border border-[#C9A899] rounded-xl p-5">
+            <h3 className="text-[#6AA6D9] font-bold text-lg mb-1">Progress</h3>
+            <p className="text-[#2E2E2E] text-sm">Track your learning journey and unlock achievements</p>
           </div>
         </div>
       </div>
