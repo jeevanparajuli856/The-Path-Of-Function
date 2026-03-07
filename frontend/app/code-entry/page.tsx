@@ -9,9 +9,39 @@ import toast, { Toaster } from 'react-hot-toast';
 export default function CodeEntryPage() {
   const [code, setCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isValidating, setIsValidating] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [validationState, setValidationState] = useState<{
+    valid: boolean;
+    can_start: boolean;
+    can_resume: boolean;
+    message: string;
+  } | null>(null);
   const router = useRouter();
   const setSession = useGameStore((state) => state.setSession);
+
+  const handleValidateCodeOnly = async () => {
+    if (code.length === 0) return;
+    setIsValidating(true);
+    setError(null);
+
+    try {
+      const validation = await studentAPI.validateCode(code);
+      setValidationState(validation);
+
+      if (!validation.valid) {
+        setError(validation.message || 'Invalid code');
+      } else {
+        setError(null);
+      }
+    } catch (err) {
+      const errorMsg = handleAPIError(err);
+      setError(errorMsg);
+      setValidationState(null);
+    } finally {
+      setIsValidating(false);
+    }
+  };
 
   const handleValidateCode = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,12 +105,37 @@ export default function CodeEntryPage() {
       setIsLoading(false);
     }
   };
+             onBlur={handleValidateCodeOnly}
 
   return (
     <div className="flex items-center justify-center min-h-screen px-4">
       <Toaster position="top-right" />
       <div className="w-full max-w-md">
         {/* Header */}
+                 {/* Validation Status */}
+                 {validationState && (
+                   <div className={`rounded-lg p-4 border ${
+                     validationState.valid
+                       ? 'bg-green-900 bg-opacity-30 border-green-700 text-green-200'
+                       : 'bg-red-900 bg-opacity-30 border-red-700 text-red-200'
+                   }`}>
+                     <p className="text-sm font-semibold mb-2">
+                       {validationState.valid ? '✓ Code Valid' : '✗ Code Invalid'}
+                     </p>
+                     <p className="text-xs">{validationState.message}</p>
+                     {validationState.valid && (
+                       <div className="mt-2 text-xs text-slate-300 space-y-1">
+                         {validationState.can_resume && (
+                           <p>💾 You can resume your previous session</p>
+                         )}
+                         {validationState.can_start && (
+                           <p>🆕 You can start a new game</p>
+                         )}
+                       </div>
+                     )}
+                   </div>
+                 )}
+
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-2 text-white">Enter Your Code</h1>
           <p className="text-slate-300">

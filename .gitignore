@@ -22,3 +22,5 @@ __pycache__/
 .env.local
 *.env.local
 node_modules/
+ThePathofFunction_dist_Web
+.next/
