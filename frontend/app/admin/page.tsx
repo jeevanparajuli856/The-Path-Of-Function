@@ -472,7 +472,7 @@ export default function AdminDashboard() {
               <div className="bg-white border border-[#C9A899] rounded-xl p-6 shadow-sm">
                 <div className="text-sm text-[#2E2E2E] opacity-70 mb-4 font-semibold">Session Completion</div>
                 <ResponsiveContainer width="100%" height={300}>
-                  <FunnelChart>
+                  <FunnelChart margin={{ top: 20, right: 160, bottom: 20, left: 0 }}>
                     <Funnel
                       dataKey="value"
                       data={[
@@ -481,7 +481,6 @@ export default function AdminDashboard() {
                         { name: 'Attempted Quiz', value: analytics.funnel.attempted_quiz },
                         { name: 'Completed', value: analytics.funnel.completed },
                       ]}
-                      margin={{ top: 20, right: 160, bottom: 20, left: 0 }}
                     >
                       <Tooltip />
                       <Cell fill="#6AA6D9" />
