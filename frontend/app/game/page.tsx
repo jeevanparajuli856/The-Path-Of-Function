@@ -186,30 +186,25 @@ export default function GamePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F7F3EA]">
+    <div className="h-screen flex flex-col bg-[#F7F3EA] overflow-hidden">
       <Toaster position="top-right" />
 
       {/* Game Header */}
-      <header className="bg-[#C9A899] border-b border-[#6AA6D9] px-4 py-2 flex items-center justify-between">
+      <header className="bg-[#C9A899] border-b border-[#6AA6D9] px-4 py-2 flex items-center justify-between flex-shrink-0">
         <div className="flex items-center gap-3">
           <span className="font-bold text-[#2E2E2E]">The Path of Function</span>
-          {currentScene && (
-            <span className="text-xs bg-[#F0EBE0] text-[#2E2E2E] px-2 py-1 rounded-full border border-[#6AA6D9]">
-              {currentScene}
-            </span>
-          )}
         </div>
 
         <button
           onClick={handleExit}
-          className="text-red-500 hover:text-red-700 text-sm font-medium transition duration-200"
+          className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-200 shadow-md"
         >
           Exit Game
         </button>
       </header>
 
       {/* Game Container */}
-      <div className="h-[85vh] border border-[#C9A899] rounded-b-xl overflow-hidden">
+      <div className="flex-1 overflow-hidden relative">
         <GameWindow
           renpyUrl="/renpy-game/index.html"
           onSceneChanged={handleSceneChanged}
@@ -218,7 +213,11 @@ export default function GamePage() {
       </div>
 
       {/* Emma ChatBot */}
-      <ChatBot sessionToken={session.session_token} currentScene={currentScene || ''} gameContext={chatContext} />
+      <ChatBot 
+        sessionToken={session.session_token} 
+        currentScene={currentScene || ''} 
+        gameContext={chatContext}
+      />
     </div>
   );
 }

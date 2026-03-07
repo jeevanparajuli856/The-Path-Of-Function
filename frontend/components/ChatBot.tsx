@@ -68,9 +68,17 @@ export default function ChatBot({ sessionToken, currentScene, gameContext }: Cha
 
   return (
     <>
+      {/* Game Pause Overlay - makes game unclickable when chat is open */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-30 z-[100]"
+          style={{ pointerEvents: 'auto' }}
+        />
+      )}
+
       {/* Expanded Panel */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-80 rounded-2xl overflow-hidden shadow-2xl border border-[#C9A899]">
+        <div className="fixed bottom-28 right-6 z-[110] w-80 rounded-2xl overflow-hidden shadow-2xl border border-[#C9A899]">
           {/* Panel Header */}
           <div className="bg-[#C9A899] px-4 py-3 flex items-center gap-3">
             <img
@@ -134,7 +142,7 @@ export default function ChatBot({ sessionToken, currentScene, gameContext }: Cha
       {/* Chat Icon (collapsed) */}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 cursor-pointer drop-shadow-lg hover:scale-105 transition p-0 bg-transparent border-none"
+        className="fixed bottom-6 right-6 z-[110] w-24 h-24 cursor-pointer drop-shadow-lg hover:scale-105 transition p-0 bg-transparent border-none"
         aria-label="Open Emma chat"
       >
         <img
