@@ -3,8 +3,23 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAdminStore } from '@/lib/store';
-import { adminAPI, handleAPIError } from '@/lib/api';
+import { adminAPI, handleAPIError, DashboardAnalytics } from '@/lib/api';
 import toast, { Toaster } from 'react-hot-toast';
+import {
+  PieChart,
+  Pie,
+  Cell,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  FunnelChart,
+  Funnel,
+} from 'recharts';
 
 interface CodeBatch {
   id: string;
@@ -33,6 +48,7 @@ export default function AdminDashboard() {
 
   const [batches, setBatches] = useState<CodeBatch[]>([]);
   const [summary, setSummary] = useState<DashboardSummary | null>(null);
+  const [analytics, setAnalytics] = useState<DashboardAnalytics | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [showGenerateModal, setShowGenerateModal] = useState(false);
@@ -61,12 +77,14 @@ export default function AdminDashboard() {
       }
 
       try {
-        const [batchesData, summaryData] = await Promise.all([
+        const [batchesData, summaryData, analyticsData] = await Promise.all([
           adminAPI.getBatches(),
           adminAPI.getDashboardSummary(),
+          adminAPI.getDashboardAnalytics(),
         ]);
         setBatches(batchesData);
         setSummary(summaryData);
+        setAnalytics(analyticsData);
 
         if (!silent) {
           toast.success('Dashboard refreshed');
@@ -267,7 +285,7 @@ export default function AdminDashboard() {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
           <div className="bg-white border border-[#C9A899] rounded-xl p-6 shadow-sm">
             <div className="text-sm text-[#2E2E2E] opacity-70 mb-2">Total Codes</div>
             <div className="text-4xl font-bold text-[#6AA6D9]">{totalCodes}</div>
@@ -286,14 +304,6 @@ export default function AdminDashboard() {
             <div className="text-xs text-[#2E2E2E] opacity-50 mt-2">
               Completed: {summary?.completed_sessions ?? 0}
             </div>
-          </div>
-
-          <div className="bg-white border border-[#C9A899] rounded-xl p-6 shadow-sm">
-            <div className="text-sm text-[#2E2E2E] opacity-70 mb-2">Avg Session Duration</div>
-            <div className="text-4xl font-bold text-[#C9A899]">
-              {(summary?.avg_session_duration_minutes ?? 0).toFixed(1)} min
-            </div>
-            <div className="text-xs text-[#2E2E2E] opacity-50 mt-2">Per student</div>
           </div>
         </div>
 
@@ -321,7 +331,210 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="flex gap-4 mb-8 items-center">
+        {/* ANALYTICS VISUALIZATIONS SECTION */}
+        {isLoading ? (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+            <div className="bg-white border border-[#C9A899] rounded-xl p-6 shadow-sm flex items-center justify-center min-h-[300px]">
+              <p className="text-[#2E2E2E] opacity-60">Loading analytics...</p>
+            </div>
+            <div className="bg-white border border-[#C9A899] rounded-xl p-6 shadow-sm flex items-center justify-center min-h-[300px]">
+              <p className="text-[#2E2E2E] opacity-60">Loading analytics...</p>
+            </div>
+          </div>
+        ) : analytics ? (
+          <>
+            {/* Row 1: Live Activity + Quiz Correctness */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+              {/* Live Activity Indicator */}
+              <div className="bg-white border border-[#C9A899] rounded-xl p-6 shadow-sm">
+                <div className="text-sm text-[#2E2E2E] opacity-70 mb-4 font-semibold">Live Activity</div>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-3 bg-[#F0EBE0] rounded-lg">
+                    <span className="text-xs text-[#2E2E2E]">Last 5 min</span>
+                    <span className="text-xl font-bold text-[#6AA6D9]">{analytics.activity.last_5_minutes}</span>
+                    <span className="text-xs text-[#2E2E2E] opacity-60">events</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-[#F0EBE0] rounded-lg">
+                    <span className="text-xs text-[#2E2E2E]">Last 15 min</span>
+                    <span className="text-xl font-bold text-[#4A8CC4]">{analytics.activity.last_15_minutes}</span>
+                    <span className="text-xs text-[#2E2E2E] opacity-60">events</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-[#F0EBE0] rounded-lg">
+                    <span className="text-xs text-[#2E2E2E]">Last 60 min</span>
+                    <span className="text-xl font-bold text-[#4A8CC4]">{analytics.activity.last_60_minutes}</span>
+                    <span className="text-xs text-[#2E2E2E] opacity-60">events</span>
+                  </div>
+                  <div className="text-xs text-[#2E2E2E] opacity-50 mt-3 p-2 bg-blue-50 rounded border border-blue-200">
+                    🟢 System is actively being used
+                  </div>
+                </div>
+              </div>
+
+              {/* Quiz Correctness Pie Chart */}
+              <div className="bg-white border border-[#C9A899] rounded-xl p-6 shadow-sm">
+                <div className="text-sm text-[#2E2E2E] opacity-70 mb-4 font-semibold">Quiz Correctness</div>
+                {analytics.quiz.total_submissions > 0 ? (
+                  <>
+                    <ResponsiveContainer width="100%" height={250}>
+                      <PieChart>
+                        <Pie
+                          data={[
+                            { name: 'Correct', value: analytics.quiz.correct_count },
+                            { name: 'Incorrect', value: analytics.quiz.total_submissions - analytics.quiz.correct_count },
+                          ]}
+                          cx="50%"
+                          cy="50%"
+                          labelLine={false}
+                          label={({ name, value, percent }) =>
+                            `${name}: ${value} (${(percent * 100).toFixed(1)}%)`
+                          }
+                          outerRadius={80}
+                          fill="#8884d8"
+                          dataKey="value"
+                        >
+                          <Cell fill="#4CAF50" />
+                          <Cell fill="#F44336" />
+                        </Pie>
+                        <Tooltip formatter={(value: number) => `${value} answers`} />
+                      </PieChart>
+                    </ResponsiveContainer>
+                    <div className="text-center mt-4 p-3 bg-[#F0EBE0] rounded-lg">
+                      <div className="text-2xl font-bold text-[#6AA6D9]">
+                        {analytics.quiz.overall_accuracy.toFixed(1)}%
+                      </div>
+                      <div className="text-xs text-[#2E2E2E] opacity-60">Overall Accuracy</div>
+                    </div>
+                  </>
+                ) : (
+                  <div className="h-[250px] flex items-center justify-center text-[#2E2E2E] opacity-60">
+                    No quiz data yet
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Row 2: Per-Question Accuracy Bar Chart (Full Width) */}
+            {Object.keys(analytics.quiz.per_question).length > 0 && (
+              <div className="bg-white border border-[#C9A899] rounded-xl p-6 shadow-sm mb-8">
+                <div className="text-sm text-[#2E2E2E] opacity-70 mb-4 font-semibold">Per-Question Accuracy</div>
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart
+                    data={Object.entries(analytics.quiz.per_question).map(([quizId, stats]) => ({
+                      quiz: quizId,
+                      accuracy: Number(stats.accuracy.toFixed(1)),
+                      total: stats.total,
+                      correct: stats.correct,
+                    }))}
+                    layout="vertical"
+                    margin={{ top: 5, right: 30, left: 200, bottom: 5 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" stroke="#E8E4DB" />
+                    <XAxis type="number" domain={[0, 100]} />
+                    <YAxis dataKey="quiz" type="category" tick={{ fontSize: 12 }} />
+                    <Tooltip
+                      formatter={(value: number, name: string) => {
+                        if (name === 'accuracy') return [`${value.toFixed(1)}%`, 'Accuracy'];
+                        return [value, name];
+                      }}
+                      labelFormatter={(label: string) => `Question: ${label}`}
+                    />
+                    <Bar dataKey="accuracy" fill="#6AA6D9" radius={[0, 8, 8, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+                <div className="mt-4 flex gap-4 justify-center text-xs">
+                  <div className="flex items-center gap-1">
+                    <div className="w-4 h-4 bg-[#F44336]"></div>
+                    <span className="text-[#2E2E2E] opacity-70">&lt;50%</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <div className="w-4 h-4 bg-[#FFC107]"></div>
+                    <span className="text-[#2E2E2E] opacity-70">50-80%</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <div className="w-4 h-4 bg-[#4CAF50]"></div>
+                    <span className="text-[#2E2E2E] opacity-70">&gt;80%</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Row 3: Funnel + Heatmap */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+              {/* Session Completion Funnel */}
+              <div className="bg-white border border-[#C9A899] rounded-xl p-6 shadow-sm">
+                <div className="text-sm text-[#2E2E2E] opacity-70 mb-4 font-semibold">Session Completion</div>
+                <ResponsiveContainer width="100%" height={300}>
+                  <FunnelChart>
+                    <Funnel
+                      dataKey="value"
+                      data={[
+                        { name: 'Sessions Started', value: analytics.funnel.started },
+                        { name: 'Reached Lab', value: analytics.funnel.reached_lab },
+                        { name: 'Attempted Quiz', value: analytics.funnel.attempted_quiz },
+                        { name: 'Completed', value: analytics.funnel.completed },
+                      ]}
+                      margin={{ top: 20, right: 160, bottom: 20, left: 0 }}
+                    >
+                      <Tooltip />
+                      <Cell fill="#6AA6D9" />
+                      <Cell fill="#4A8CC4" />
+                      <Cell fill="#3B79AE" />
+                      <Cell fill="#2A5191" />
+                    </Funnel>
+                  </FunnelChart>
+                </ResponsiveContainer>
+              </div>
+
+              {/* Scene Engagement Heatmap */}
+              <div className="bg-white border border-[#C9A899] rounded-xl p-6 shadow-sm">
+                <div className="text-sm text-[#2E2E2E] opacity-70 mb-4 font-semibold">Scene Engagement (Avg Time)</div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="bg-[#F0EBE0]">
+                        <th className="px-3 py-2 text-left text-xs font-semibold text-[#2E2E2E]">Scene</th>
+                        <th className="px-3 py-2 text-center text-xs font-semibold text-[#2E2E2E]">Control</th>
+                        <th className="px-3 py-2 text-center text-xs font-semibold text-[#2E2E2E]">Treatment A</th>
+                        <th className="px-3 py-2 text-center text-xs font-semibold text-[#2E2E2E]">Treatment B</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-[#E8E4DB]">
+                      {Object.entries(analytics.scene_engagement).map(([scene, times]) => (
+                        <tr key={scene} className="hover:bg-[#F0EBE0]">
+                          <td className="px-3 py-2 text-[#2E2E2E] font-medium text-xs">{scene}</td>
+                          <td
+                            className="px-3 py-2 text-center text-xs text-[#2E2E2E]"
+                            style={{
+                              backgroundColor: `rgba(100, 150, 217, ${Math.min(times.control / 300, 0.8)})`,
+                            }}
+                          >
+                            {Math.round(times.control)}s
+                          </td>
+                          <td
+                            className="px-3 py-2 text-center text-xs text-[#2E2E2E]"
+                            style={{
+                              backgroundColor: `rgba(74, 140, 196, ${Math.min(times.treatment_a / 300, 0.8)})`,
+                            }}
+                          >
+                            {Math.round(times.treatment_a)}s
+                          </td>
+                          <td
+                            className="px-3 py-2 text-center text-xs text-[#2E2E2E]"
+                            style={{
+                              backgroundColor: `rgba(59, 121, 174, ${Math.min(times.treatment_b / 300, 0.8)})`,
+                            }}
+                          >
+                            {Math.round(times.treatment_b)}s
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </>
+        ) : null}
           <button onClick={() => setShowGenerateModal(true)} className="btn-game flex items-center gap-2">
             <span>+</span> Generate New Batch
           </button>

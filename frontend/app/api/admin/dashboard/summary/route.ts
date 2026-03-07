@@ -17,7 +17,7 @@ export async function GET(req: Request) {
     supabase.from('access_codes').select('*', { count: 'exact', head: true }).gt('times_used', 0),
     supabase.from('game_sessions').select('*', { count: 'exact', head: true }).eq('status', 'active'),
     supabase.from('game_sessions').select('*', { count: 'exact', head: true }).eq('status', 'completed'),
-    supabase.from('game_sessions').select('total_duration_seconds, quizzes_attempted_count, quizzes_correct_count').eq('status', 'completed'),
+    supabase.from('game_sessions').select('started_at, ended_at, quizzes_attempted_count, quizzes_correct_count').eq('status', 'completed').not('ended_at', 'is', null),
   ]);
 
   let avgDurationMinutes = 0;
@@ -25,7 +25,11 @@ export async function GET(req: Request) {
 
   if (durationData && durationData.length > 0) {
     const totalDuration = durationData.reduce(
-      (sum: number, s: { total_duration_seconds: number }) => sum + (s.total_duration_seconds ?? 0),
+      (sum: number, s: { started_at: string; ended_at: string }) => {
+        const startTime = new Date(s.started_at).getTime();
+        const endTime = new Date(s.ended_at).getTime();
+        return sum + (endTime - startTime) / 1000; // Convert to seconds
+      },
       0
     );
     avgDurationMinutes = Math.round(totalDuration / durationData.length / 60);
