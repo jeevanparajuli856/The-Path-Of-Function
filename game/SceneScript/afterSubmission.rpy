@@ -144,17 +144,38 @@ label afterDragNDrop:
     scene bg classroom with fade
     show ale standing hand both fold at aleAlign with dissolve
     show ale speaking hand both fold at aleAlign with dissolve 
+    $ emit_dialogue(TELEMETRY_DIALOGUE_IDS["after_stack_prompt"], "e", "Which function was the last to be removed from the stack?")
     e "Alright, Kevin. One last check before we end the session."
     show ale question hand right down at aleAlign with dissolve
     e "Which function was the last to be removed from the stack?"
     show ale standing hand both fold with dissolve
+    python:
+        emit_quiz_started(
+            quiz_id=TELEMETRY_QUIZ_IDS["stack_last_removed"],
+            question_id=TELEMETRY_QUESTION_IDS["stack_last_removed_1"],
+            extra={"question_text": "Which function was last removed from the stack?", "max_attempts": 1}
+        )
     menu:
         "Which function was the last to be removed from the stack?"
         "calculate_area()":
             $ emit_choice_made("final_stack_quiz_wrong", "calculate_area()")
+            python:
+                emit_quiz_submitted(
+                    quiz_id=TELEMETRY_QUIZ_IDS["stack_last_removed"],
+                    question_id=TELEMETRY_QUESTION_IDS["stack_last_removed_1"],
+                    is_correct=False,
+                    extra={"attempt_number": 1, "student_answer": "calculate_area()"}
+                )
             call lastWrong
         "main()":
             $ emit_choice_made("final_stack_quiz_correct", "main()")
+            python:
+                emit_quiz_submitted(
+                    quiz_id=TELEMETRY_QUIZ_IDS["stack_last_removed"],
+                    question_id=TELEMETRY_QUESTION_IDS["stack_last_removed_1"],
+                    is_correct=True,
+                    extra={"attempt_number": 1, "student_answer": "main()"}
+                )
             call lastCorrect
     return
     

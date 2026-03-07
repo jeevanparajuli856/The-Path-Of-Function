@@ -76,65 +76,108 @@ export default function ChatBot({ sessionToken, currentScene, gameContext }: Cha
         />
       )}
 
-      {/* Expanded Panel */}
+      {/* Expanded Panel - Visual Novel Style Dialogue Box */}
       {isOpen && (
-        <div className="fixed bottom-28 right-6 z-[110] w-80 rounded-2xl overflow-hidden shadow-2xl border border-[#C9A899]">
-          {/* Panel Header */}
-          <div className="bg-[#C9A899] px-4 py-3 flex items-center gap-3">
-            <img
-              src={avatarMap[avatarState]}
-              alt="Emma avatar"
-              className="w-12 h-12 rounded-full object-cover border-2 border-white"
-            />
-            <span className="text-[#2E2E2E] font-bold flex-1">Emma AI Tutor</span>
+        <div className="fixed bottom-28 right-6 z-[110] w-96 rounded-3xl overflow-hidden shadow-2xl" 
+             style={{ 
+               backgroundColor: 'rgba(249, 246, 240, 0.98)',
+               border: '3px solid #C9A899',
+               backdropFilter: 'blur(10px)'
+             }}>
+          {/* Panel Header - Like VN Name Tag */}
+          <div className="bg-gradient-to-r from-[#C9A899] to-[#D4B5A5] px-4 py-3 flex items-center gap-3 border-b-2 border-[#B8978A]">
+            <div className="relative">
+              <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg">
+                <img
+                  src={avatarMap[avatarState]}
+                  alt="Emma avatar"
+                  className="w-full h-full object-cover object-center scale-[1.65]"
+                />
+              </div>
+              <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white"></div>
+            </div>
+            <div className="flex-1">
+              <span className="text-[#2E2E2E] font-bold text-lg block">Ask Emma</span>
+            </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-[#2E2E2E] hover:text-red-600 font-bold text-lg leading-none"
+              className="text-[#2E2E2E] hover:text-red-600 font-bold text-2xl leading-none w-8 h-8 flex items-center justify-center hover:bg-white/30 rounded-full transition"
               aria-label="Close chat"
             >
               ×
             </button>
           </div>
 
-          {/* Message List */}
-          <div className="bg-[#F7F3EA] p-3 overflow-y-auto max-h-64 flex flex-col gap-2">
+          {/* Message List - Visual Novel Dialogue Style */}
+          <div className="p-4 overflow-y-auto max-h-80 flex flex-col gap-3" 
+               style={{ 
+                 backgroundColor: 'rgba(247, 243, 234, 0.95)',
+                 backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(201, 168, 153, 0.05) 0%, transparent 50%)'
+               }}>
             {messages.map((msg, i) => (
               <div
                 key={i}
-                className={`rounded-xl px-3 py-2 max-w-[75%] text-sm ${
-                  msg.role === 'user'
-                    ? 'self-end bg-[#6AA6D9] text-white'
-                    : 'self-start bg-white border border-[#C9A899] text-[#2E2E2E]'
-                }`}
+                className={`flex gap-2 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
               >
-                {msg.text}
+                {msg.role === 'assistant' && (
+                  <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+                    <img
+                      src={avatarMap[avatarState]}
+                      alt="Emma"
+                      className="w-full h-full object-cover object-center scale-[1.65]"
+                    />
+                  </div>
+                )}
+                <div
+                  className={`rounded-2xl px-4 py-3 max-w-[80%] shadow-md ${
+                    msg.role === 'user'
+                      ? 'bg-[#6AA6D9] text-white'
+                      : 'bg-white/90 border-2 border-[#C9A899] text-[#2E2E2E]'
+                  }`}
+                  style={{
+                    backdropFilter: msg.role === 'assistant' ? 'blur(5px)' : 'none'
+                  }}
+                >
+                  <p className="text-sm leading-relaxed">{msg.text}</p>
+                </div>
               </div>
             ))}
             {isLoading && (
-              <div className="self-start bg-white border border-[#C9A899] text-[#2E2E2E] rounded-xl px-3 py-2 text-sm">
-                <span className="animate-pulse">...</span>
+              <div className="flex gap-2">
+                <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+                  <img
+                    src={avatarMap.thinking}
+                    alt="Emma thinking"
+                    className="w-full h-full object-cover object-center scale-[1.65]"
+                  />
+                </div>
+                <div className="bg-white/90 border-2 border-[#C9A899] text-[#2E2E2E] rounded-2xl px-4 py-3 shadow-md">
+                  <span className="animate-pulse">Emma is thinking...</span>
+                </div>
               </div>
             )}
           </div>
 
-          {/* Input Row */}
-          <div className="bg-white border-t border-[#C9A899] flex items-center px-3 py-2 gap-2">
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Ask Emma something..."
-              className="input-game flex-1 text-sm py-1"
-              disabled={isLoading}
-            />
-            <button
-              onClick={handleSend}
-              disabled={isLoading || !inputValue.trim()}
-              className="bg-[#6AA6D9] hover:bg-[#4A8CC4] disabled:opacity-50 text-white px-3 py-1 rounded-lg text-sm transition"
-            >
-              Send
-            </button>
+          {/* Input Row - Visual Novel Style */}
+          <div className="bg-gradient-to-r from-[#F0EBE0] to-[#F7F3EA] border-t-2 border-[#C9A899] p-3">
+            <div className="flex items-center gap-2 bg-white rounded-2xl px-4 py-2 shadow-inner border border-[#C9A899]">
+              <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Ask Emma something..."
+                className="flex-1 text-sm py-1 bg-transparent border-none outline-none text-[#2E2E2E] placeholder-[#9A9A9A]"
+                disabled={isLoading}
+              />
+              <button
+                onClick={handleSend}
+                disabled={isLoading || !inputValue.trim()}
+                className="bg-[#6AA6D9] hover:bg-[#5A96C9] disabled:opacity-40 disabled:cursor-not-allowed text-white px-4 py-2 rounded-xl text-sm font-medium transition shadow-md hover:shadow-lg"
+              >
+                Send
+              </button>
+            </div>
           </div>
         </div>
       )}

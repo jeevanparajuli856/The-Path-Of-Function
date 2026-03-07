@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export"
+    "export": "next export",
+    "seed:corpus": "node scripts/populate-corpus.mjs"
   },
   "dependencies": {
     "react": "^18.2.0",

@@ -258,10 +258,31 @@ define TELEMETRY_TOPIC_IDS = {
 
 define TELEMETRY_QUIZ_IDS = {
     "dragdrop_main": "q1_dragdrop_main",
+    "input_output": "q2_input_output",
+    "celsius_value": "q3_celsius_value",
+    "stack_last_removed": "q4_stack_last_removed",
 }
 
 define TELEMETRY_QUESTION_IDS = {
     "dragdrop_main_1": "dragdrop_main_1",
+    "input_output_1": "input_output_1",
+    "celsius_value_1": "celsius_value_1",
+    "stack_last_removed_1": "stack_last_removed_1",
+}
+
+define TELEMETRY_DIALOGUE_IDS = {
+    "teaching1_topic_intro": "dlg_teaching1_topic_intro",
+    "teaching1_builtin_explain": "dlg_teaching1_builtin_explain",
+    "teaching1_input_prompt": "dlg_teaching1_input_prompt",
+    "teaching1_userdef_intro": "dlg_teaching1_userdef_intro",
+    "teaching1_param_intro": "dlg_teaching1_param_intro",
+    "teaching1_return_intro": "dlg_teaching1_return_intro",
+    "teaching1_name_prompt": "dlg_teaching1_name_prompt",
+    "teaching1_celsius_prompt": "dlg_teaching1_celsius_prompt",
+    "teaching2_program_exec_intro": "dlg_teaching2_program_exec_intro",
+    "teaching2_main_intro": "dlg_teaching2_main_intro",
+    "teaching2_ready_prompt": "dlg_teaching2_ready_prompt",
+    "after_stack_prompt": "dlg_after_stack_prompt",
 }
 
 # Optional debug flag in store for log output.

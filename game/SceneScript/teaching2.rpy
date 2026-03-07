@@ -8,6 +8,7 @@ label teachingSecond:
     show fahren with dissolve
     show ale standing hand both wrist at aleAlign with dissolve
     show ale question hand both down at aleAlign with dissolve
+    $ emit_dialogue(TELEMETRY_DIALOGUE_IDS["teaching2_program_exec_intro"], "e", "Will this program execute or not?")
     e "What do you think, Kevin? Will this program execute or not?" #Askign the qns
     menu: #Choice for the qns
         "Will this program execute?"
@@ -42,6 +43,7 @@ label teachingSecond:
         difficulty="medium",
         tags=["main", "function_organization", "program_structure"]
     )
+    $ emit_dialogue(TELEMETRY_DIALOGUE_IDS["teaching2_main_intro"], "e", "This is where main() function concept comes in.")
     e "This is the where the concept of using main() function comes in."
     hide fahren2 
     show mains with dissolve
@@ -86,6 +88,7 @@ label teachingSecond:
         spoiler_guard="medium"
     )
     show ale question hand both down with dissolve
+    $ emit_dialogue(TELEMETRY_DIALOGUE_IDS["teaching2_ready_prompt"], "e", "Are you ready?")
     e "Are you ready?"
     menu:
         "Are you ready?"

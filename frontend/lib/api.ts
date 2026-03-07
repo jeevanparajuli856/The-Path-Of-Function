@@ -93,6 +93,13 @@ export interface DashboardSummary {
   avg_quiz_score: number;
 }
 
+export interface RebuildCorpusResponse {
+  rebuilt: boolean;
+  embedded_rows: number;
+  total_rows: number;
+  model_id: string;
+}
+
 export interface ValidateCodeRequest {
   code: string;
 }
@@ -204,6 +211,12 @@ export const adminAPI = {
   // Export analytics as JSON
   exportAnalytics: async (): Promise<any> => {
     const response = await apiClient.get('/admin/export/analytics');
+    return response.data;
+  },
+
+  // Rebuild vector corpus (delete + embed + upsert)
+  rebuildCorpus: async (): Promise<RebuildCorpusResponse> => {
+    const response = await apiClient.post<RebuildCorpusResponse>('/admin/corpus/rebuild');
     return response.data;
   },
 

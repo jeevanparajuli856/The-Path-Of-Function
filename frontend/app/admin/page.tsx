@@ -37,6 +37,7 @@ export default function AdminDashboard() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [showGenerateModal, setShowGenerateModal] = useState(false);
   const [generatingBatch, setGeneratingBatch] = useState(false);
+  const [rebuildingCorpus, setRebuildingCorpus] = useState(false);
   const [busyBatchId, setBusyBatchId] = useState<string | null>(null);
   const [pendingDeleteBatch, setPendingDeleteBatch] = useState<CodeBatch | null>(null);
 
@@ -152,6 +153,21 @@ export default function AdminDashboard() {
       toast.error(`Failed to delete batch: ${errorMsg}`);
     } finally {
       setBusyBatchId(null);
+    }
+  };
+
+  const handleRebuildCorpus = async () => {
+    setRebuildingCorpus(true);
+    try {
+      const result = await adminAPI.rebuildCorpus();
+      toast.success(
+        `Corpus rebuilt. Embedded ${result.embedded_rows} rows (${result.model_id}).`
+      );
+    } catch (error) {
+      const errorMsg = handleAPIError(error);
+      toast.error(`Failed to rebuild corpus: ${errorMsg}`);
+    } finally {
+      setRebuildingCorpus(false);
     }
   };
 
@@ -286,6 +302,13 @@ export default function AdminDashboard() {
         <div className="flex gap-4 mb-8 items-center">
           <button onClick={() => setShowGenerateModal(true)} className="btn-game flex items-center gap-2">
             <span>+</span> Generate New Batch
+          </button>
+          <button
+            onClick={() => void handleRebuildCorpus()}
+            disabled={rebuildingCorpus}
+            className="bg-[#6AA6D9] hover:bg-[#4A8CC4] disabled:opacity-50 text-white font-bold py-3 px-6 rounded-xl transition duration-200"
+          >
+            {rebuildingCorpus ? 'Rebuilding Corpus...' : 'Rebuild Vector Corpus'}
           </button>
           <button
             onClick={() => void loadDashboardData({ silent: false, background: true })}

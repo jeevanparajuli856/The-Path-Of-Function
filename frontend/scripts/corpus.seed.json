@@ -1,0 +1,51 @@
+[
+  {
+    "source_id": "functions.builtin",
+    "source_type": "lesson",
+    "scene_id": "teaching1",
+    "topic": "functions.builtin",
+    "content": "Built-in functions are predefined Python functions like print() and len() that you can call directly."
+  },
+  {
+    "source_id": "functions.user_defined",
+    "source_type": "lesson",
+    "scene_id": "teaching1",
+    "topic": "functions.user_defined",
+    "content": "User-defined functions are created with def and can be reused by calling their function name."
+  },
+  {
+    "source_id": "functions.parameters",
+    "source_type": "lesson",
+    "scene_id": "teaching1",
+    "topic": "functions.parameters",
+    "content": "Parameters receive values from function calls and act as local variables inside the function body."
+  },
+  {
+    "source_id": "functions.return_values",
+    "source_type": "lesson",
+    "scene_id": "teaching1",
+    "topic": "functions.return_values",
+    "content": "A return statement sends a computed value back to the caller so it can be used later in the program."
+  },
+  {
+    "source_id": "functions.main",
+    "source_type": "lesson",
+    "scene_id": "teaching2",
+    "topic": "functions.main",
+    "content": "A main() function organizes the program flow: define functions first, then call main() to execute core logic."
+  },
+  {
+    "source_id": "functions.call_stack",
+    "source_type": "lesson",
+    "scene_id": "aftersubmission",
+    "topic": "functions.call_stack",
+    "content": "The call stack executes the most recent function call first and returns to the previous function when done."
+  },
+  {
+    "source_id": "q1_dragdrop_main",
+    "source_type": "quiz",
+    "scene_id": "dragqns",
+    "topic": "functions.main",
+    "content": "For drag-and-drop exercises, focus on function definition order, argument passing, return assignment, and main() call placement."
+  }
+]

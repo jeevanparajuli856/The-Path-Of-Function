@@ -3,8 +3,7 @@ import {
   InvokeModelCommand,
 } from '@aws-sdk/client-bedrock-runtime';
 import { v4 as uuidv4 } from 'uuid';
-
-// ── Types ──────────────────────────────────────────────────────────────────────
+import { supabase } from '@/lib/db';
 
 export interface GameContext {
   scene_id?: string;
@@ -39,75 +38,67 @@ interface CorpusItem {
   relevance_score: number;
 }
 
-// ── Local corpus ───────────────────────────────────────────────────────────────
-
-const LOCAL_CORPUS: CorpusItem[] = [
-  {
-    source_type: 'lesson',
-    source_id: 'functions.builtin',
-    scene_id: 'teaching1',
-    topic: 'functions.builtin',
-    content:
-      'Built-in functions are predefined Python functions like print() and len() that you can call directly.',
-    relevance_score: 0.9,
-  },
-  {
-    source_type: 'lesson',
-    source_id: 'functions.user_defined',
-    scene_id: 'teaching1',
-    topic: 'functions.user_defined',
-    content:
-      'User-defined functions are created with def and can be reused by calling their function name.',
-    relevance_score: 0.9,
-  },
-  {
-    source_type: 'lesson',
-    source_id: 'functions.parameters',
-    scene_id: 'teaching1',
-    topic: 'functions.parameters',
-    content:
-      'Parameters receive values from function calls and act as local variables inside the function body.',
-    relevance_score: 0.92,
-  },
-  {
-    source_type: 'lesson',
-    source_id: 'functions.return_values',
-    scene_id: 'teaching1',
-    topic: 'functions.return_values',
-    content:
-      'A return statement sends a computed value back to the caller so it can be used later in the program.',
-    relevance_score: 0.92,
-  },
-  {
-    source_type: 'lesson',
-    source_id: 'functions.main',
-    scene_id: 'teaching2',
-    topic: 'functions.main',
-    content:
-      'A main() function organizes the program flow: define functions first, then call main() to execute core logic.',
-    relevance_score: 0.94,
-  },
-  {
-    source_type: 'lesson',
-    source_id: 'functions.call_stack',
-    scene_id: 'aftersubmission',
-    topic: 'functions.call_stack',
-    content:
-      'The call stack executes the most recent function call first and returns to the previous function when done.',
-    relevance_score: 0.93,
-  },
-  {
-    source_type: 'quiz',
-    source_id: 'q1_dragdrop_main',
-    scene_id: 'dragqns',
-    topic: 'functions.main',
-    content:
-      'For drag-and-drop exercises, focus on function definition order, argument passing, return assignment, and main() call placement.',
-    relevance_score: 0.91,
-  },
+const SCENE_PROGRESSION = [
+  'start',
+  'inbed',
+  'hallway',
+  'hallwayafter',
+  'teaching1',
+  'teaching2',
+  'dragqns',
+  'aftersubmission',
+  'ending',
 ];
 
-// ── Guardrails ─────────────────────────────────────────────────────────────────
+function sceneRank(sceneId?: string): number {
+  if (!sceneId) return -1;
+  const idx = SCENE_PROGRESSION.indexOf(sceneId);
+  return idx === -1 ? -1 : idx;
+}
+
+function isAllowedBySceneProgress(contentSceneId: string, currentSceneId?: string): boolean {
+  const contentRank = sceneRank(contentSceneId);
+  const currentRank = sceneRank(currentSceneId);
+  const effectiveCurrentRank = currentRank === -1 ? 0 : currentRank;
+
+  if (contentRank === -1) return false;
+  return contentRank <= effectiveCurrentRank;
+}
+
+function parseEmbedding(raw: unknown): number[] | null {
+  if (Array.isArray(raw)) {
+    const parsed = raw.map((v) => Number(v)).filter((v) => Number.isFinite(v));
+    return parsed.length ? parsed : null;
+  }
+
+  if (typeof raw !== 'string') return null;
+  const cleaned = raw.trim().replace(/^\[|\]$/g, '');
+  if (!cleaned) return null;
+
+  const parsed = cleaned
+    .split(',')
+    .map((chunk) => Number(chunk.trim()))
+    .filter((v) => Number.isFinite(v));
+
+  return parsed.length ? parsed : null;
+}
+
+function cosineSimilarity(a: number[], b: number[]): number {
+  if (!a.length || !b.length || a.length !== b.length) return -1;
+
+  let dot = 0;
+  let aNorm = 0;
+  let bNorm = 0;
+
+  for (let i = 0; i < a.length; i += 1) {
+    dot += a[i] * b[i];
+    aNorm += a[i] * a[i];
+    bNorm += b[i] * b[i];
+  }
+
+  if (!aNorm || !bNorm) return -1;
+  return dot / (Math.sqrt(aNorm) * Math.sqrt(bNorm));
+}
 
 export function checkGuardrails(
   message: string,
@@ -139,6 +130,9 @@ export function checkGuardrails(
     'exact code',
     'what is the right',
     'final answer',
+    'next scene',
+    'later scene',
+    'future',
   ];
   const isSpoilerRequest = spoilerKeywords.some((kw) => normalized.includes(kw));
 
@@ -163,38 +157,53 @@ function isGameRelated(message: string): boolean {
   return keywords.some((kw) => lower.includes(kw));
 }
 
-// ── RAG corpus query ────────────────────────────────────────────────────────────
-
-export function queryRagCorpus(
+export async function queryRagCorpus(
   message: string,
   gameContext?: GameContext
-): CorpusItem[] {
+): Promise<CorpusItem[]> {
   const sceneId = gameContext?.scene_id;
   const topicId = gameContext?.topic_id;
-  const queryTokens = new Set(
-    message
-      .split(/\s+/)
-      .map((t) => t.replace(/[.,!?()[\]{}"']/g, '').toLowerCase())
-      .filter(Boolean)
-  );
 
-  const scored = LOCAL_CORPUS.map((item) => {
-    let score = item.relevance_score;
-    if (topicId && item.topic === topicId) score += 0.25;
-    if (sceneId && item.scene_id === sceneId) score += 0.15;
+  const queryEmbedding = await getQueryEmbedding(message);
+  if (!queryEmbedding) return [];
 
-    const contentWords = new Set(item.content.toLowerCase().split(/\s+/));
-    const overlap = [...queryTokens].filter((t) => contentWords.has(t)).length;
-    if (overlap) score += Math.min(0.2, overlap * 0.03);
+  const { data, error } = await supabase
+    .from('content_corpus')
+    .select('source_type, source_id, scene_id, topic, content, embedding')
+    .not('embedding', 'is', null)
+    .limit(300);
 
-    return { ...item, relevance_score: Math.min(Math.round(score * 1000) / 1000, 0.99) };
-  });
+  if (error || !data?.length) return [];
 
-  const top = scored.sort((a, b) => b.relevance_score - a.relevance_score).slice(0, 3);
-  return top.length ? top : LOCAL_CORPUS.slice(0, 2);
+  const ranked = data
+    .map((row) => {
+      const rowEmbedding = parseEmbedding(row.embedding);
+      if (!rowEmbedding) return null;
+
+      const similarity = cosineSimilarity(queryEmbedding, rowEmbedding);
+      if (similarity < 0) return null;
+      if (!isAllowedBySceneProgress(row.scene_id ?? '', sceneId)) return null;
+
+      let score = similarity;
+      if (topicId && row.topic === topicId) score += 0.12;
+      if (sceneId && row.scene_id === sceneId) score += 0.08;
+
+      return {
+        source_type: row.source_type,
+        source_id: row.source_id,
+        scene_id: row.scene_id ?? '',
+        topic: row.topic ?? '',
+        content: row.content,
+        relevance_score: Math.min(Math.round(score * 1000) / 1000, 0.99),
+      } as CorpusItem;
+    })
+    .filter((item): item is CorpusItem => Boolean(item))
+    .filter((item) => item.relevance_score >= 0.2)
+    .sort((a, b) => b.relevance_score - a.relevance_score)
+    .slice(0, 3);
+
+  return ranked;
 }
-
-// ── Prompt builder ─────────────────────────────────────────────────────────────
 
 export function buildPrompt(
   message: string,
@@ -214,44 +223,39 @@ export function buildPrompt(
   let guardrailInstruction = '';
   if (guardrailMode === 'hint') {
     guardrailInstruction =
-      'Provide hints rather than direct answers. Help them learn, do not give away solutions.';
+      'Provide hints rather than direct answers. Help the learner reason without giving final solutions.';
   } else if (guardrailMode === 'spoiler') {
     guardrailInstruction =
-      'Do not reveal solutions or scene outcomes. Offer general guidance instead.';
+      'Do not reveal direct solutions or future-scene content. Offer general guidance only.';
   } else if (guardrailMode === 'out_of_scope') {
     guardrailInstruction =
-      'The question is not about the game or programming. Politely redirect to game-related topics.';
+      'The question is outside game scope. Politely redirect to game-related programming topics.';
   }
 
-  return `You are a helpful tutor in an educational game about programming and functions.
-The learner is in the game and needs your help understanding concepts.
-
+  return `You are Emma, a tutor in an educational game about programming functions.
 ${sceneInfo}
-
-Keep responses:
-- Friendly and encouraging (matching the game tone)
-- Focused on the game's learning objectives
-- Short and conversational (1-2 paragraphs max)
-- Grounded in the game's context
+Rules:
+- Answer only using the provided lesson content.
+- Never reveal future-scene content.
+- Keep responses concise and supportive.
+- If context is insufficient, say exactly: "I don't have enough information from this lesson yet."
 
 ${guardrailInstruction}
 
-Relevant game content:
+Relevant lesson content:
 ${ragContext}
 
-Student's question: ${message}
+Student question: ${message}
 
-Provide a helpful response:`;
+Answer:`;
 }
-
-// ── Citation extractor ─────────────────────────────────────────────────────────
 
 export function extractCitations(
   ragResults: CorpusItem[],
   responseText: string
 ): Citation[] {
   const lower = responseText.toLowerCase();
-  let citations: Citation[] = ragResults
+  let citations = ragResults
     .filter((r) => lower.includes(r.content.toLowerCase()))
     .map((r) => ({
       source_type: r.source_type,
@@ -274,8 +278,6 @@ export function extractCitations(
 
   return citations;
 }
-
-// ── Bedrock client ─────────────────────────────────────────────────────────────
 
 let bedrockClient: BedrockRuntimeClient | null = null;
 
@@ -321,7 +323,7 @@ export async function callBedrock(
   const body = JSON.parse(new TextDecoder().decode(result.body));
   const text: string =
     (body.content?.[0]?.text as string | undefined) ??
-    'I can help explain this step by step.';
+    "I don't have enough information from this lesson yet.";
 
   const tokenCount =
     prompt.split(/\s+/).length + text.split(/\s+/).length;
@@ -329,7 +331,27 @@ export async function callBedrock(
   return { text, tokenCount };
 }
 
-// ── Top-level generator ────────────────────────────────────────────────────────
+async function getQueryEmbedding(text: string): Promise<number[] | null> {
+  const modelId = process.env.BEDROCK_EMBED_MODEL_ID ?? 'amazon.titan-embed-text-v2:0';
+  const command = new InvokeModelCommand({
+    modelId,
+    contentType: 'application/json',
+    accept: 'application/json',
+    body: JSON.stringify({ inputText: text }),
+  });
+
+  try {
+    const result = await getBedrockClient().send(command);
+    const body = JSON.parse(new TextDecoder().decode(result.body));
+    if (!Array.isArray(body.embedding)) return null;
+    const parsed = body.embedding
+      .map((v: unknown) => Number(v))
+      .filter((v: number) => Number.isFinite(v));
+    return parsed.length ? parsed : null;
+  } catch {
+    return null;
+  }
+}
 
 export async function generateAIResponse(
   userMessage: string,
@@ -338,10 +360,10 @@ export async function generateAIResponse(
 ): Promise<AIResponse> {
   const messageId = uuidv4();
   const guardrailMode = checkGuardrails(userMessage, gameContext);
-  const ragResults = queryRagCorpus(userMessage, gameContext);
 
   let responseText: string;
   let tokenCount: number;
+  let ragResults: CorpusItem[] = [];
 
   if (guardrailMode === 'out_of_scope') {
     responseText =
@@ -349,21 +371,24 @@ export async function generateAIResponse(
     tokenCount = userMessage.split(/\s+/).length + responseText.split(/\s+/).length;
   } else if (guardrailMode === 'spoiler') {
     responseText =
-      'I cannot provide direct answers for this step. Try breaking the problem into function definition, arguments, return value, and where main() is called.';
+      'I cannot provide direct answers for this step. I can still give a small hint based on your current scene.';
     tokenCount = userMessage.split(/\s+/).length + responseText.split(/\s+/).length;
   } else {
-    const prompt = buildPrompt(userMessage, ragResults, gameContext, guardrailMode);
-    try {
-      const result = await callBedrock(prompt);
-      responseText = result.text;
-      tokenCount = result.tokenCount;
-    } catch {
-      // Guarded local fallback when Bedrock is unavailable
-      responseText =
-        guardrailMode === 'hint'
-          ? 'Try identifying what each function is responsible for first, then trace what value is passed in and what value is returned.'
-          : 'A function is a reusable block of code that performs one task. Focus on the call flow: define functions, pass inputs as parameters, return the result, then call main() to run the logic.';
+    ragResults = await queryRagCorpus(userMessage, gameContext);
+
+    if (!ragResults.length) {
+      responseText = "I don't have enough information from this lesson yet.";
       tokenCount = userMessage.split(/\s+/).length + responseText.split(/\s+/).length;
+    } else {
+      const prompt = buildPrompt(userMessage, ragResults, gameContext, guardrailMode);
+      try {
+        const result = await callBedrock(prompt);
+        responseText = result.text;
+        tokenCount = result.tokenCount;
+      } catch {
+        responseText = "I don't have enough information from this lesson yet.";
+        tokenCount = userMessage.split(/\s+/).length + responseText.split(/\s+/).length;
+      }
     }
   }
 
