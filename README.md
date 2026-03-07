@@ -1,160 +1,53 @@
-# **Visual Novel for Teaching Functions** 
-# **The Path of Function**
+# The Path of Function
 
-**Developed in Ren'Py**
+Educational visual novel project that teaches Python functions through a Ren'Py game, wrapped by a Next.js web app with telemetry, admin tools, and an in-game AI tutor.
 
----
+## Repo Structure
+- `game/` - Ren'Py source
+- `frontend/` - Next.js app (UI + API routes) for students/admin
+- `database/` - SQL/schema assets
+- `infra/` - infrastructure templates
+- `docs/` - current project documentation
 
-## **Overview**
-This visual novel project is an interactive educational tool designed to help CSCI 2000 students understand and apply programming concepts, specifically **functions**. By blending storytelling with educational content, the project provides an engaging and effective learning experience, encouraging both conceptual understanding and practical application.
+## Local Development
 
----
+### 1) Frontend + API
+```bash
+cd frontend
+cp .env.local.example .env.local
+npm install
+npm run dev
+```
 
-## **Features**
-- **Interactive Storytelling**: Players engage with an immersive storyline that introduces programming challenges in a relatable context.
-- **Function Tutorials**: Embedded lessons explain the basics of functions, including:
-  - Syntax
-  - Parameters
-  - Return values
-  - Real-world applications
-- **Hands-on Practice**: Mini-games and puzzles allow players to apply the concepts they've learned.
-- **Customizable Experience**: Player choices influence the story progression and the type of coding challenges encountered.
+App runs at `http://localhost:3000`.
 
----
+### 2) Ren'Py Game
+- Open project in Ren'Py launcher.
+- Build web distribution when needed.
+- Copy exported web files to `frontend/public/renpy-game/`.
 
-## **Getting Started**
-
-### **Prerequisites**
-- Install Ren'Py (version 8.0 or later).
-- Download the project files from the repository.
-
-### **Installation**
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/jeevanparajuli856/The-Path-Of-Function.git
-   ```
-2. Open the project in Ren'Py.
-3. Run the project to start the visual novel.
-
----
-
-## **How to Play**
-1. Launch the game through Ren'Py.
-2. Click through dialogue options to follow the story.
-3. Learn programming concepts through in-game tutorials.
-4. Complete coding challenges to progress in the storyline.
-
----
-
-## **Development Details**
-- **Engine**: Ren'Py
-- **Programming Language**: Python (Ren'Py Framework), TypeScript
-- **Web Layer**: Next.js 14 App Router (deployed on Vercel)
-- **API**: Next.js API Routes (serverless) — no separate backend server
-- **AI Assistant**: AWS Bedrock (Claude Haiku) via `@aws-sdk/client-bedrock-runtime`
-- **Database**: Supabase (PostgreSQL)
-- **Target Audience**:
-  - CSCI 2000 students
-  - Beginners learning programming functions
-- **Main Objective**: Assist in teaching programming functions interactively through a fun and engaging medium.
-
-### **Running the Web Layer**
+## Ren'Py Bridge Step (Required after each web export)
 
 ```bash
 cd frontend
-cp .env.local.example .env.local   # fill in Supabase + AWS + JWT values
-npm install
-npm run dev      # http://localhost:3000
-npm run build    # production build
+npm run renpy:bridge
+npm run renpy:bridge:check
 ```
 
-No separate backend process needed - everything runs via `npm run dev`.
+Without this, telemetry/chat sync can break.
 
-### **Important: After Every Ren'Py Web Export**
-Ren'Py export rewrites `frontend/public/renpy-game/index.html`.  
-If the bridge is missing, telemetry/chat sync breaks.
+## Deploy to Vercel
+- Set Vercel project root directory to `frontend`.
+- Configure required environment variables.
+- Deploy from the main branch.
 
-1. Copy new Ren'Py web distribution into `frontend/public/renpy-game/`.
-2. Re-inject/check the bridge:
-   ```bash
-   cd frontend
-   npm run renpy:bridge
-   npm run renpy:bridge:check
-   ```
-3. Hard refresh browser (`Ctrl+Shift+R`).
+Full guide: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
 
-Bridge script expected in `frontend/public/renpy-game/index.html`:
-```html
-<script>
-  window.sendToFrontend = function(type, payload) {
-    try {
-      if (window.parent && window.parent !== window) {
-        window.parent.postMessage({ type: type, payload: payload || {} }, '*');
-        return true;
-      }
-    } catch (e) {
-      console.warn('sendToFrontend bridge error:', e);
-    }
-    return false;
-  };
+## Current Docs
+- [Documentation Index](docs/README.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Telemetry and Chat Contract](docs/TELEMETRY_AND_CHAT.md)
+- [Game Content Notes](docs/GAME_CONTENT.md)
 
-  try {
-    if (window.parent && window.parent !== window) {
-      window.parent.postMessage({ type: 'bridge_ready', payload: {} }, '*');
-    }
-  } catch (e) {
-    console.warn('bridge_ready postMessage failed:', e);
-  }
-</script>
-```
-
----
-
-## **Contributing**
-Contributions are welcome! To improve the visual novel, follow these steps:
-1. Fork the repository.
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes and push the branch.
-4. Submit a pull request for review.
-
----
-
-## **Access the Game**
-Play the game in your PC browser:
-
-[**The Path of Function**](https://jeevanparajuli856.itch.io/thepathofthefunction)
-
-> **Note**: Currently, the game is supported only on PC browsers.
-
----
-
-## **Planned Features (Future Enhancements)**
-- Additional mini-games to reinforce programming concepts.
-- Expanded storyline to cover other topics, such as:
-  - Loops
-  - Conditionals
-  - Recursion
-- Voice acting and music integration for a more immersive experience.
-- Compatibility with mobile and other platforms.
-
----
-
-## **License**
-This project is licensed under the MIT License. See the LICENSE file for details.
-
----
-
-## **Contact**
-For questions or feedback, feel free to reach out:
-
-- **Developer**: Jeevan Parajuli  
-  **Email**: jeevanparajuli856@gmail.com  
-- **Contributor**: Prasanna Jha  
-  **Email**: prasannajha401@gmail.com  
-
----
-
-
+## License
+MIT - see [LICENSE](LICENSE).
