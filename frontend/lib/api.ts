@@ -376,6 +376,9 @@ export const clearAuthToken = (): void => {
 // Error handler utility
 export const handleAPIError = (error: unknown): string => {
   if (axios.isAxiosError(error)) {
+    if (error.response?.data?.message) {
+      return error.response.data.message;
+    }
     if (error.response?.data?.error) {
       return error.response.data.error;
     }

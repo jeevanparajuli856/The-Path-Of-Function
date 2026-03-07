@@ -36,7 +36,11 @@ export default function CodeEntryPage() {
       }
     } catch (err) {
       const errorMsg = handleAPIError(err);
-      setError(errorMsg);
+      if (errorMsg === 'Invalid code format' || errorMsg === 'Code not found') {
+        setError('Invalid code');
+      } else {
+        setError(errorMsg);
+      }
       setValidationState(null);
     }
   };
@@ -98,8 +102,12 @@ export default function CodeEntryPage() {
       router.push('/game');
     } catch (err) {
       const errorMsg = handleAPIError(err);
-      setError(errorMsg);
-      toast.error(errorMsg);
+      const uiMessage =
+        errorMsg === 'Invalid code format' || errorMsg === 'Code not found'
+          ? 'Invalid code'
+          : errorMsg;
+      setError(uiMessage);
+      toast.error(uiMessage);
       setIsLoading(false);
     }
   };
