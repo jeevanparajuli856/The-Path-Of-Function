@@ -29,15 +29,17 @@ const POLL_INTERVAL_MS = 30000;
 
 export default function AdminDashboard() {
   const router = useRouter();
-  const { adminEmail, isAdminAuthenticated } = useAdminStore();
+  const { isAdminAuthenticated } = useAdminStore();
 
   const [batches, setBatches] = useState<CodeBatch[]>([]);
   const [summary, setSummary] = useState<DashboardSummary | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [showGenerateModal, setShowGenerateModal] = useState(false);
+  const [showResearchExportModal, setShowResearchExportModal] = useState(false);
   const [generatingBatch, setGeneratingBatch] = useState(false);
   const [rebuildingCorpus, setRebuildingCorpus] = useState(false);
+  const [exportingResearchCsv, setExportingResearchCsv] = useState(false);
   const [busyBatchId, setBusyBatchId] = useState<string | null>(null);
   const [pendingDeleteBatch, setPendingDeleteBatch] = useState<CodeBatch | null>(null);
 
@@ -171,6 +173,28 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleDownloadResearchCsv = async (mode: 'detailed' | 'minimal') => {
+    setExportingResearchCsv(true);
+    try {
+      const blob = await adminAPI.exportResearchCsv(mode);
+      const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `research-export-${mode}-${stamp}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(url);
+      toast.success('Research export downloaded');
+    } catch (error) {
+      const errorMsg = handleAPIError(error);
+      toast.error(`Failed to export research data: ${errorMsg}`);
+    } finally {
+      setExportingResearchCsv(false);
+    }
+  };
+
   const handleLogout = () => {
     adminAPI.logout();
     useAdminStore.getState().clearAdminToken();
@@ -231,9 +255,7 @@ export default function AdminDashboard() {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-3xl font-bold text-[#2E2E2E]">Admin Dashboard</h1>
           <div className="flex items-center gap-6">
-            <span className="text-[#2E2E2E]">
-              Welcome, <span className="font-semibold text-[#6AA6D9]">{adminEmail}</span>
-            </span>
+            <span className="text-[#2E2E2E] font-semibold">Welcome Admin</span>
             <button
               onClick={handleLogout}
               className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-200"
@@ -302,6 +324,13 @@ export default function AdminDashboard() {
         <div className="flex gap-4 mb-8 items-center">
           <button onClick={() => setShowGenerateModal(true)} className="btn-game flex items-center gap-2">
             <span>+</span> Generate New Batch
+          </button>
+          <button
+            onClick={() => setShowResearchExportModal(true)}
+            disabled={exportingResearchCsv}
+            className="bg-[#4A8CC4] hover:bg-[#3B79AE] disabled:opacity-50 text-white font-bold py-3 px-6 rounded-xl transition duration-200"
+          >
+            {exportingResearchCsv ? 'Preparing Export...' : 'Download Research Excel (CSV)'}
           </button>
           <button
             onClick={() => void handleRebuildCorpus()}
@@ -472,6 +501,49 @@ export default function AdminDashboard() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {showResearchExportModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+          <div className="bg-white border border-[#C9A899] rounded-2xl p-8 shadow-xl max-w-md w-full">
+            <h3 className="text-2xl font-bold text-[#2E2E2E] mb-3">Download Research Export</h3>
+            <p className="text-sm text-[#2E2E2E] opacity-80 mb-6">
+              Choose export type. Detailed includes all event rows. Minimal gives one row per code with summarized metrics.
+            </p>
+            <div className="flex gap-4">
+              <button
+                type="button"
+                onClick={async () => {
+                  setShowResearchExportModal(false);
+                  await handleDownloadResearchCsv('detailed');
+                }}
+                disabled={exportingResearchCsv}
+                className="flex-1 bg-[#4A8CC4] hover:bg-[#3B79AE] text-white font-bold py-2 px-4 rounded transition duration-200 disabled:opacity-50"
+              >
+                Detailed
+              </button>
+              <button
+                type="button"
+                onClick={async () => {
+                  setShowResearchExportModal(false);
+                  await handleDownloadResearchCsv('minimal');
+                }}
+                disabled={exportingResearchCsv}
+                className="flex-1 bg-[#6AA6D9] hover:bg-[#4A8CC4] text-white font-bold py-2 px-4 rounded transition duration-200 disabled:opacity-50"
+              >
+                Minimal
+              </button>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowResearchExportModal(false)}
+              disabled={exportingResearchCsv}
+              className="w-full mt-4 bg-[#F0EBE0] text-[#2E2E2E] border border-[#C9A899] font-bold py-2 px-4 rounded transition duration-200 disabled:opacity-50"
+            >
+              Cancel
+            </button>
           </div>
         </div>
       )}

@@ -55,7 +55,7 @@ export default function AdminLoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="jeevanparajuli856@gmail.com"
+                placeholder="example@gmail.com"
                 className="input-game"
                 disabled={isLoading}
                 required

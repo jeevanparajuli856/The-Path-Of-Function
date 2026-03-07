@@ -54,7 +54,7 @@ export default function AdminForgotPasswordPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="jeevanparajuli856@gmail.com"
+              placeholder="example@gmail.com"
               className="input-game"
               disabled={isSending}
               required

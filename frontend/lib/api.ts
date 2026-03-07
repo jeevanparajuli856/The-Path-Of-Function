@@ -214,6 +214,14 @@ export const adminAPI = {
     return response.data;
   },
 
+  // Export research telemetry/data collection as Excel-compatible CSV
+  exportResearchCsv: async (mode: 'detailed' | 'minimal' = 'detailed'): Promise<Blob> => {
+    const response = await apiClient.get(`/admin/export/research-csv?mode=${mode}`, {
+      responseType: 'blob',
+    });
+    return response.data;
+  },
+
   // Rebuild vector corpus (delete + embed + upsert)
   rebuildCorpus: async (): Promise<RebuildCorpusResponse> => {
     const response = await apiClient.post<RebuildCorpusResponse>('/admin/corpus/rebuild');
