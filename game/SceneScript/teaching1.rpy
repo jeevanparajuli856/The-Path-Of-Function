@@ -210,7 +210,7 @@ label inputCheck:
 
         if outputIn == "2":
             with dissolve
-            show ale speaking hand left side
+            show ale speaking hand left side at aleAlign
             a "You got it right!"
             $ count = 0
 
@@ -219,7 +219,7 @@ label inputCheck:
             $ count -= 1
             if count == 0:
                 with dissolve
-                show ale sad hand left side
+                show ale sad hand left side at aleAlign
                 a "Kevin, you gave a wrong answer."
                 with moveinleft
             else: 
@@ -275,8 +275,8 @@ label valcheck:
             $ count -= 1
             if count == 0:
                 with dissolve
-                show ale sad hand both fold
-                a "Kevin, It's not a right answer."
+                show ale sad hand both fold at aleAlign
+                a "Kevin, It's not a right answer." 
                 with moveinleft
             else: 
                 call screen notiGuide(count)
