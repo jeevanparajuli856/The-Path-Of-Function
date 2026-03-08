@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/db';
 import { requireAdmin, isNextResponse } from '@/lib/api-middleware';
 
+const ANALYTICS_WINDOW_DAYS = 180;
+const MAX_QUIZ_EVENTS = 20000;
+const MAX_SCENE_EVENTS = 30000;
+
 type QuizEventRow = {
   session_id: string;
   created_at: string;
@@ -49,6 +53,8 @@ export async function GET(req: Request) {
   if (isNextResponse(auth)) return auth;
 
   try {
+    const analyticsCutoff = new Date(Date.now() - ANALYTICS_WINDOW_DAYS * 24 * 60 * 60 * 1000).toISOString();
+
     const [
       quizEventsResult,
       sceneEventsResult,
@@ -61,11 +67,17 @@ export async function GET(req: Request) {
       supabase
         .from('event_logs')
         .select('session_id, event_data, created_at')
-        .eq('event_type', 'quiz_submitted'),
+        .eq('event_type', 'quiz_submitted')
+        .gte('created_at', analyticsCutoff)
+        .order('created_at', { ascending: false })
+        .limit(MAX_QUIZ_EVENTS),
       supabase
         .from('event_logs')
         .select('session_id, event_data, created_at')
-        .eq('event_type', 'scene_start'),
+        .eq('event_type', 'scene_start')
+        .gte('created_at', analyticsCutoff)
+        .order('created_at', { ascending: false })
+        .limit(MAX_SCENE_EVENTS),
       supabase
         .from('game_sessions')
         .select('id, code_id, status, current_scene, scenes_visited_count, quizzes_attempted_count'),
@@ -86,12 +98,6 @@ export async function GET(req: Request) {
         .gte('created_at', new Date(Date.now() - 60 * 60 * 1000).toISOString()),
     ]);
 
-    if (quizEventsResult.error) {
-      throw new Error(`Failed to fetch quiz events: ${quizEventsResult.error.message}`);
-    }
-    if (sceneEventsResult.error) {
-      throw new Error(`Failed to fetch scene events: ${sceneEventsResult.error.message}`);
-    }
     if (sessionsResult.error) {
       throw new Error(`Failed to fetch sessions: ${sessionsResult.error.message}`);
     }
@@ -104,8 +110,15 @@ export async function GET(req: Request) {
       throw new Error(`Failed to fetch activity counts: ${message}`);
     }
 
-    const quizEvents = (quizEventsResult.data ?? []) as QuizEventRow[];
-    const sceneEvents = (sceneEventsResult.data ?? []) as SceneEventRow[];
+    if (quizEventsResult.error) {
+      console.error('Analytics warning: quiz events query failed', quizEventsResult.error.message);
+    }
+    if (sceneEventsResult.error) {
+      console.error('Analytics warning: scene events query failed', sceneEventsResult.error.message);
+    }
+
+    const quizEvents = ((quizEventsResult.error ? [] : quizEventsResult.data) ?? []) as QuizEventRow[];
+    const sceneEvents = ((sceneEventsResult.error ? [] : sceneEventsResult.data) ?? []) as SceneEventRow[];
     const allSessions = (sessionsResult.data ?? []) as SessionRow[];
     const accessCodes = (accessCodesResult.data ?? []) as AccessCodeRow[];
 
