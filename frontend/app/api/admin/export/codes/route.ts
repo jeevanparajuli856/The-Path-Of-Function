@@ -20,7 +20,11 @@ export async function GET(req: Request) {
     .order('created_at', { ascending: true });
 
   if (error) {
-    return NextResponse.json({ error: 'Failed to export codes' }, { status: 500 });
+    console.error('Export codes query failed:', error.message);
+    return NextResponse.json(
+      { error: 'Failed to export codes', details: error.message },
+      { status: 500 }
+    );
   }
 
   const batchNameRaw = (() => {

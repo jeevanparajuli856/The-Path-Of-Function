@@ -19,7 +19,11 @@ export async function GET(req: Request) {
     .order('created_at', { ascending: false });
 
   if (error) {
-    return NextResponse.json({ error: 'Failed to fetch batches' }, { status: 500 });
+    console.error('Batches query failed:', error.message);
+    return NextResponse.json(
+      { error: 'Failed to fetch batches', details: error.message },
+      { status: 500 }
+    );
   }
 
   const result = (batches ?? []).map((b) => {
