@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/db';
-import { generateAIResponse, GameContext } from '@/lib/bedrock';
+import { generateAIResponse, GameContext, ConversationTurn } from '@/lib/bedrock';
 
 type EventLogRow = {
   event_type: string;
@@ -193,8 +193,20 @@ export async function POST(req: Request) {
   const gameContext: GameContext | undefined = context ?? undefined;
   const telemetryContext = await getLatestContextFromTelemetry(session.id);
   const resolvedContext = mergeContextWithTelemetry(gameContext, telemetryContext);
+  const { data: recentChatRows } = await supabase
+    .from('chat_logs')
+    .select('user_message, ai_response')
+    .eq('session_id', session.id)
+    .order('created_at', { ascending: false })
+    .limit(6);
+  const conversationHistory: ConversationTurn[] = (recentChatRows ?? [])
+    .map((row) => ({
+      user_message: row.user_message,
+      ai_response: row.ai_response,
+    }))
+    .reverse();
   const start = Date.now();
-  const aiResponse = await generateAIResponse(message, resolvedContext, session.id);
+  const aiResponse = await generateAIResponse(message, resolvedContext, session.id, conversationHistory);
   const latencyMs = Date.now() - start;
 
   const modelId = process.env.BEDROCK_MODEL_ID ?? 'anthropic.claude-3-haiku-20240307-v1:0';

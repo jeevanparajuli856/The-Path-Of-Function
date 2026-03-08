@@ -38,6 +38,11 @@ interface CorpusItem {
   relevance_score: number;
 }
 
+export interface ConversationTurn {
+  user_message: string;
+  ai_response: string;
+}
+
 const SCENE_PROGRESSION = [
   'start',
   'inbed',
@@ -130,6 +135,22 @@ function isAllowedBySceneProgress(contentSceneId: string, currentSceneId?: strin
 
   if (contentRank === -1) return false;
   return contentRank <= effectiveCurrentRank;
+}
+
+function isFollowUpPrompt(message: string): boolean {
+  const { normalized } = normalizeForIntent(message);
+  const followUpPhrases = [
+    'give more',
+    'more detail',
+    'more details',
+    'long answer',
+    'explain more',
+    'elaborate',
+    'expand this',
+    'can you expand',
+    'continue',
+  ];
+  return followUpPhrases.some((phrase) => normalized.includes(phrase));
 }
 
 function parseEmbedding(raw: unknown): number[] | null {
@@ -235,7 +256,7 @@ export function checkGuardrails(
   const activeQuiz = Boolean(playerState.quiz_id);
   const activePrompt = Boolean(playerState.prompt_active);
   const activeAssessment = activeQuiz || activePrompt;
-  const gameRelated = isGameRelated(message);
+  const gameRelated = isGameRelated(message, gameContext);
 
   if (isLeakAttempt) return 'leak_attempt';
   if (isSocialBoundaryMessage) return 'social_boundary';
@@ -246,8 +267,14 @@ export function checkGuardrails(
   return 'none';
 }
 
-function isGameRelated(message: string): boolean {
+function isGameRelated(message: string, gameContext?: GameContext): boolean {
   const { normalized, tokens } = normalizeForIntent(message);
+  if (
+    isFollowUpPrompt(message) &&
+    Boolean(gameContext?.scene_id || gameContext?.topic_id || gameContext?.learning_objective)
+  ) {
+    return true;
+  }
   if (normalized.includes('call stack')) return true;
   if (tokens.includes('call') && tokens.includes('stack')) return true;
   return hasApproxKeyword(tokens);
@@ -381,7 +408,8 @@ export function buildPrompt(
   message: string,
   ragResults: CorpusItem[],
   gameContext: GameContext | undefined,
-  guardrailMode: string
+  guardrailMode: string,
+  conversationHistory: ConversationTurn[] = []
 ): string {
   const sceneInfo =
     gameContext?.scene_id
@@ -391,6 +419,12 @@ export function buildPrompt(
   const ragContext = ragResults
     .map((r) => `[${r.source_type}: ${r.source_id}] ${r.content}`)
     .join('\n');
+  const historyContext = conversationHistory.length
+    ? conversationHistory
+        .slice(-4)
+        .map((turn, idx) => `Turn ${idx + 1} User: ${turn.user_message}\nTurn ${idx + 1} Emma: ${turn.ai_response}`)
+        .join('\n')
+    : '';
 
   let guardrailInstruction = '';
   if (guardrailMode === 'hint') {
@@ -424,6 +458,9 @@ ${guardrailInstruction}
 
 Relevant lesson content:
 ${ragContext}
+
+Recent conversation:
+${historyContext || '[none]'}
 
 Student question: ${message}
 
@@ -536,7 +573,8 @@ async function getQueryEmbedding(text: string): Promise<number[] | null> {
 export async function generateAIResponse(
   userMessage: string,
   gameContext: GameContext | undefined,
-  _sessionId: string
+  _sessionId: string,
+  conversationHistory: ConversationTurn[] = []
 ): Promise<AIResponse> {
   const messageId = uuidv4();
   const guardrailMode = checkGuardrails(userMessage, gameContext);
@@ -568,7 +606,7 @@ export async function generateAIResponse(
       responseText = buildTeachingFallback(userMessage, isHintMode);
       tokenCount = userMessage.split(/\s+/).length + responseText.split(/\s+/).length;
     } else {
-      const prompt = buildPrompt(userMessage, ragResults, gameContext, guardrailMode);
+      const prompt = buildPrompt(userMessage, ragResults, gameContext, guardrailMode, conversationHistory);
       try {
         const result = await callBedrock(prompt);
         const modelText = result.text?.trim() || '';
