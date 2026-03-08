@@ -114,7 +114,9 @@ function hasApproxKeyword(tokens: string[]): boolean {
 
     for (const keyword of GAME_KEYWORDS) {
       if (Math.abs(keyword.length - token.length) > 2) continue;
-      if (levenshteinDistance(token, keyword) <= 2) return true;
+      const distance = levenshteinDistance(token, keyword);
+      const maxDistance = keyword.length <= 4 ? 1 : 2;
+      if (distance <= maxDistance) return true;
     }
   }
 
@@ -211,7 +213,10 @@ export function checkGuardrails(
   const isLeakAttempt = leakKeywords.some((kw) => normalized.includes(kw));
   const socialBoundaryKeywords = [
     'i love you',
+    'do you love me',
     'love you',
+    'love me',
+    'are you single',
     'marry me',
     'date me',
     'kiss me',
@@ -220,8 +225,11 @@ export function checkGuardrails(
     'sexy',
     'cute',
     'beautiful',
+    'romantic',
   ];
-  const isSocialBoundaryMessage = socialBoundaryKeywords.some((kw) => normalized.includes(kw));
+  const isSocialBoundaryMessage =
+    socialBoundaryKeywords.some((kw) => normalized.includes(kw)) ||
+    normalized.trim() === 'love';
 
   const playerState = (gameContext?.player_state ?? {}) as Record<string, unknown>;
   const activeQuiz = Boolean(playerState.quiz_id);
@@ -542,7 +550,7 @@ export async function generateAIResponse(
     tokenCount = userMessage.split(/\s+/).length + responseText.split(/\s+/).length;
   } else if (guardrailMode === 'social_boundary') {
     responseText =
-      "Thanks for the kind message. I'm here as your tutor, so I can only help with this lesson. Ask me about functions, parameters, return values, main(), or the call stack.";
+      "I can't answer personal or romantic questions. I'm here as your tutor, so ask me about functions, parameters, return values, main(), or the call stack.";
     tokenCount = userMessage.split(/\s+/).length + responseText.split(/\s+/).length;
   } else if (guardrailMode === 'leak_attempt') {
     responseText =
