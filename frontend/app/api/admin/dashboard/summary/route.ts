@@ -7,11 +7,11 @@ export async function GET(req: Request) {
   if (isNextResponse(auth)) return auth;
 
   const [
-    { count: totalCodes },
-    { count: usedCodes },
-    { count: activeSessions },
-    { count: completedSessions },
-    { data: durationData },
+    totalCodesResult,
+    usedCodesResult,
+    activeSessionsResult,
+    completedSessionsResult,
+    durationDataResult,
   ] = await Promise.all([
     supabase.from('access_codes').select('*', { count: 'exact', head: true }),
     supabase.from('access_codes').select('*', { count: 'exact', head: true }).gt('times_used', 0),
@@ -19,6 +19,26 @@ export async function GET(req: Request) {
     supabase.from('game_sessions').select('*', { count: 'exact', head: true }).eq('status', 'completed'),
     supabase.from('game_sessions').select('started_at, ended_at, quizzes_attempted_count, quizzes_correct_count').eq('status', 'completed').not('ended_at', 'is', null),
   ]);
+
+  const firstError =
+    totalCodesResult.error ||
+    usedCodesResult.error ||
+    activeSessionsResult.error ||
+    completedSessionsResult.error ||
+    durationDataResult.error;
+
+  if (firstError) {
+    return NextResponse.json(
+      { error: 'Failed to fetch dashboard summary', details: firstError.message },
+      { status: 500 }
+    );
+  }
+
+  const totalCodes = totalCodesResult.count;
+  const usedCodes = usedCodesResult.count;
+  const activeSessions = activeSessionsResult.count;
+  const completedSessions = completedSessionsResult.count;
+  const durationData = durationDataResult.data;
 
   let avgDurationMinutes = 0;
   let avgQuizScore = 0;

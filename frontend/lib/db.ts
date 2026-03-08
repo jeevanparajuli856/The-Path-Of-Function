@@ -1,17 +1,21 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Server-side vars preferred; fall back to NEXT_PUBLIC_ for public-key setups
+// Server-side admin DB client. Require service role key to avoid RLS failures.
 const supabaseUrl =
   process.env.SUPABASE_URL ??
   process.env.NEXT_PUBLIC_SUPABASE_URL;
 
-const supabaseKey =
-  process.env.SUPABASE_SERVICE_ROLE_KEY ??
-  process.env.NEXT_PUBLIC_SUPABASE_KEY;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (!supabaseUrl || !supabaseKey) {
+if (!supabaseUrl) {
   throw new Error(
-    'Missing Supabase env vars. Set SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY (or NEXT_PUBLIC_ equivalents).'
+    'Missing SUPABASE_URL environment variable.'
+  );
+}
+
+if (!supabaseKey) {
+  throw new Error(
+    'Missing SUPABASE_SERVICE_ROLE_KEY environment variable. Server API routes must use service role key.'
   );
 }
 
