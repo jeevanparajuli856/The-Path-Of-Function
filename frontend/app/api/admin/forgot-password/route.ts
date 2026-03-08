@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/db';
+import { createSupabaseAuthClient } from '@/lib/supabase-auth';
 
 const DEFAULT_ADMIN_EMAIL = 'jeevanparajuli856@gmail.com';
 
@@ -34,7 +34,8 @@ export async function POST(req: Request) {
     new URL(req.url).origin;
   const redirectTo = `${baseUrl}/admin/reset-password`;
 
-  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+  const authClient = createSupabaseAuthClient();
+  const { error } = await authClient.auth.resetPasswordForEmail(email, {
     redirectTo,
   });
 

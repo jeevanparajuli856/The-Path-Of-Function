@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/db';
 import { signAdminToken } from '@/lib/jwt';
+import { createSupabaseAuthClient } from '@/lib/supabase-auth';
 
 export async function POST(req: Request) {
   const body = await req.json().catch(() => ({}));
@@ -18,7 +18,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Unauthorized email.' }, { status: 401 });
   }
 
-  const { data, error } = await supabase.auth.signInWithPassword({
+  const authClient = createSupabaseAuthClient();
+  const { data, error } = await authClient.auth.signInWithPassword({
     email,
     password,
   });
